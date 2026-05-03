@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #0B1F3A;
+    background: #ffffff;
+    overflow-x: hidden;
+  }
+  .font-outfit {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-orange to-yellow text-white font-outfit font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange/40 inline-block text-center;
+  }
+  .btn-outline {
+    @apply bg-transparent text-white border-2 border-white/30 font-outfit font-semibold px-7 py-4 rounded-xl transition-all duration-300 hover:border-orange hover:text-orange inline-block text-center;
+  }
+  .section-tag {
+    @apply inline-block bg-orange/10 text-orange px-4 py-1.5 rounded-full text-xs font-outfit font-bold uppercase tracking-widest mb-4;
+  }
+  .section-title {
+    @apply font-outfit text-3xl md:text-4xl font-extrabold text-navy leading-tight tracking-tight;
+  }
+  .card {
+    @apply bg-white border border-gray-100 rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+}
+
+/* Smooth scroll for anchor links */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #FF7A00; border-radius: 3px; }
+
+/* Energy bar animation */
+@keyframes growWidth {
+  from { width: 0; }
+  to { }
+}
+.animate-bar { animation: growWidth 1.5s ease-out both; }
+
+/* Live pulse */
+@keyframes livePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.animate-live { animation: livePulse 1.5s infinite; }
