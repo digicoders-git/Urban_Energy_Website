@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 const testimonials = [
@@ -49,7 +49,27 @@ const testimonials = [
 export default function Testimonials() {
   const [index, setIndex] = useState(0)
 
-  const maxIndex = testimonials.length - 3
+  // ✅ responsive cards count
+  const getCardsPerView = () => {
+    if (window.innerWidth < 640) return 1
+    if (window.innerWidth < 1024) return 2
+    return 3
+  }
+
+  const [cardsPerView, setCardsPerView] = useState(getCardsPerView())
+
+  // ✅ resize listener
+  useEffect(() => {
+    const handleResize = () => {
+      setCardsPerView(getCardsPerView())
+      setIndex(0) // reset to avoid overflow
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  const maxIndex = testimonials.length - cardsPerView
 
   const next = () => {
     if (index < maxIndex) setIndex(index + 1)
@@ -76,15 +96,18 @@ export default function Testimonials() {
           </h2>
         </motion.div>
 
-        {/* ✅ Slider instead of grid */}
-        <div className="overflow-hidden">
+        {/* Slider */}
+        <div className="overflow-hidden px-2">
           <motion.div
-            className="flex gap-6"
-            animate={{ x: `-${index * (100 / 3)}%` }}
+            className="flex "
+            animate={{ x: `-${index * (100 / cardsPerView)}%` }}
             transition={{ duration: 0.5 }}
           >
             {testimonials.map((t, i) => (
-              <div key={t.name} className="min-w-[calc(100%/3)]">
+              <div
+                key={i}
+                className="min-w-full sm:min-w-[50%] lg:min-w-[33.33%] px-3"
+              >
                 <motion.div
                   whileHover={{ y: -4 }}
                   className="bg-white border border-gray-100 rounded-2xl p-7 relative overflow-hidden hover:shadow-xl h-full"
@@ -114,40 +137,43 @@ export default function Testimonials() {
           </motion.div>
         </div>
 
-        {/* Controls */}
-        <div className="flex items-center justify-center gap-4 mt-10">
-          
-          <button
-            onClick={prev}
-            disabled={index === 0}
-            className="px-4 py-2 btn-primary bg-gray-200 rounded disabled:opacity-50"
-          >
-            Prev
-          </button>
+       {/* Controls */}
+<div className="flex items-center justify-center gap-4 mt-10">
 
-          {/* numbers (optional but adjusted) */}
-          {[...Array(testimonials.length - 2)].map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setIndex(i)}
-              className={`w-9 h-9 rounded-full ${
-                index === i ? 'bg-orange text-white' : 'bg-gray-200'
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
+  {/* Prev */}
+  <button
+    onClick={prev}
+    disabled={index === 0}
+    className="px-4 py-2 btn-primary bg-gray-200 rounded disabled:opacity-50"
+  >
+    Prev
+  </button>
 
-          <button
-            onClick={next}
-            disabled={index === maxIndex}
-            className="px-4 btn-primary py-2 bg-gray-200 rounded disabled:opacity-50"
-          >
-            Next
-          </button>
+  {/* Dots */}
+  <div className="flex items-center gap-2">
+    {[...Array(maxIndex + 1)].map((_, i) => (
+      <button
+        key={i}
+        onClick={() => setIndex(i)}
+        className={`transition-all duration-300 rounded-full ${
+          index === i
+            ? 'w-6 h-2 bg-orange'
+            : 'w-2 h-2 bg-gray-300'
+        }`}
+      />
+    ))}
+  </div>
 
-        </div>
+  {/* Next */}
+  <button
+    onClick={next}
+    disabled={index === maxIndex}
+    className="px-4 py-2 btn-primary bg-gray-200 rounded disabled:opacity-50"
+  >
+    Next
+  </button>
 
+</div>
       </div>
     </section>
   )

@@ -64,7 +64,7 @@ export default function Contact() {
         >
           <h3 className="font-outfit font-bold text-xl text-navy mb-6">Get a Free Quote</h3>
           <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2  gap-4">
               <div>
                 <label className="block text-sm font-outfit font-semibold text-navy mb-1.5">Full Name *</label>
                 <input
