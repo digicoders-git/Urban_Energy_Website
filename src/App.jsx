@@ -14,7 +14,7 @@ import ContactPage from './pages/ContactPage'
 import NotFound from './pages/NotFound'
 import About from './pages/AboutPage'
 import AdminPanel from './pages/AdminPanel'
-
+import ScrolltoTop from './components/ScrollTop'
 // 👉 Layout component
 function Layout({ children }) {
   const location = useLocation()
@@ -35,7 +35,10 @@ function Layout({ children }) {
 
 export default function App() {
   return (
+    
+
     <BrowserRouter>
+    <ScrolltoTop/>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />

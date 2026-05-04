@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-
+import { FaWhatsapp } from "react-icons/fa";
 export default function WhatsAppButton() {
   const [hovered, setHovered] = useState(false)
 
@@ -23,7 +23,7 @@ export default function WhatsAppButton() {
       }}
       aria-label="Chat on WhatsApp"
     >
-      💬
+      <FaWhatsapp size={40} color="white" />
       <AnimatePresence>
         {hovered && (
           <motion.span

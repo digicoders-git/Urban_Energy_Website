@@ -90,9 +90,9 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* ── Top Grid ── */}
         <div
-          className="grid gap-10 pb-12"
-          style={{ gridTemplateColumns: '1.5fr 1fr 1fr 1fr', borderBottom: '1px solid rgba(255,255,255,0.07)' }}
-        >
+  className="grid gap-10 pb-12 border-b border-white/10 
+  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+>
           {/* Brand + Newsletter */}
           <div>
             <Link to="/" className="flex items-center gap-3 mb-4 no-underline">
@@ -106,29 +106,7 @@ export default function Footer() {
               commercial installations since 2015.
             </p>
 
-            {/* Newsletter */}
-            <div
-              className="font-outfit font-bold text-[10px] uppercase tracking-widest mb-2"
-              style={{ color: 'rgba(255,255,255,0.45)' }}
-            >
-              Get Solar Updates
-            </div>
-            <div
-              className="flex overflow-hidden"
-              style={{ border: '1px solid rgba(255,255,255,0.12)', borderRadius: '10px' }}
-            >
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="flex-1 min-w-0 bg-white/5 border-none outline-none px-3 py-2.5 text-sm text-white placeholder:text-white/30"
-              />
-              <button
-                className="px-4 text-xs font-outfit font-bold text-white border-none cursor-pointer transition-opacity hover:opacity-80"
-                style={{ background: '#FF7A00' }}
-              >
-                Subscribe
-              </button>
-            </div>
+           
 
             {/* Socials */}
             <div className="flex gap-2 mt-4">
@@ -244,25 +222,35 @@ export default function Footer() {
 
         {/* ── Bottom Bar ── */}
         <div className="py-5 flex flex-wrap items-center justify-between gap-3">
-          <span className="text-xs" style={{ color: 'rgba(255,255,255,0.25)' }}>
-            © 2025 Urban Energy Pvt. Ltd. All rights reserved.
-          </span>
-          <div className="flex gap-5">
-            {['Privacy Policy', 'Terms of Service', 'Sitemap'].map((t) => (
-              <Link
-                key={t}
-                to="/"
-                className="text-xs no-underline transition-colors hover:text-orange"
-                style={{ color: 'rgba(255,255,255,0.25)' }}
-              >
-                {t}
-              </Link>
-            ))}
-          </div>
-          <span className="text-[11px] flex items-center gap-1" style={{ color: 'rgba(255,255,255,0.2)' }}>
-            🇮🇳 Made in India
-          </span>
-        </div>
+  
+  <span className="text-xs" style={{ color: 'rgba(255,255,255,0.25)' }}>
+    © 2025 Urban Energy Pvt. Ltd. All rights reserved.
+  </span>
+
+  <div className="flex gap-5">
+    {['Privacy Policy', 'Terms of Service', 'Sitemap'].map((t) => (
+      <Link
+        key={t}
+        to="/"
+        className="text-xs no-underline transition-colors hover:text-orange"
+        style={{ color: 'rgba(255,255,255,0.25)' }}
+      >
+        {t}
+      </Link>
+    ))}
+  </div>
+
+  <a
+  href="https://digicoders.in"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-sm flex items-center gap-1 no-underline transition-colors hover:opacity-80"
+  style={{ color: '#FF7A00', fontWeight: 500 }}
+>
+  Crafted By DigiCoders
+</a>
+
+</div>
       </div>
     </footer>
   )

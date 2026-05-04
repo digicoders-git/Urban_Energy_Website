@@ -7,6 +7,7 @@ import {
   Sprout, FlaskConical, Handshake, Trophy,
   User, UserCog, UserCheck, Headphones
 } from "lucide-react";
+import { FaUser } from "react-icons/fa";
 
 const stats = [
   { num: '2015', label: 'Founded', icon: <Building2 size={28} /> },
@@ -73,7 +74,7 @@ export default function About() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div {...fadeUp(0)}>
             <span className="inline-flex items-center gap-2 bg-orange/15 border border-orange/30 text-orange px-4 py-1.5 rounded-full text-xs font-outfit font-bold uppercase tracking-widest mb-5">
-              🌞 About Us
+              <FaUser/> About Us
             </span>
           </motion.div>
           <motion.h1

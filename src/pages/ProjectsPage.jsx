@@ -4,7 +4,7 @@ import Projects from '../components/Projects'
 import Dashboard from '../components/Dashboard'
 import Testimonials from '../components/Testimonials'
 import { Link } from 'react-router-dom'
-
+import { FaBriefcase } from "react-icons/fa";
 export default function ProjectsPage() {
   return (
     <main className="pt-16">
@@ -13,7 +13,7 @@ export default function ProjectsPage() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="inline-flex items-center gap-2 bg-orange/15 border border-orange/30 text-orange px-4 py-1.5 rounded-full text-xs font-outfit font-bold uppercase tracking-widest mb-5">
-              🏗️ Our Work
+              <FaBriefcase /> Our Work
             </span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="font-outfit text-4xl md:text-6xl font-black text-white leading-tight mb-5">
