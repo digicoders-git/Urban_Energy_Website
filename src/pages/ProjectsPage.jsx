@@ -39,7 +39,7 @@ export default function ProjectsPage() {
       <section className="py-12 px-5 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #FF7A00, transparent 60%)' }} />
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center relative z-10">
-          <h3 className="font-outfit text-2xl md:text-3xl font-black text-white mb-3">Your Project Could Be Next ⚡</h3>
+          <h3 className="font-outfit text-2xl md:text-3xl font-black text-white mb-3">Your Project Could Be Next </h3>
           <p className="text-white/60 mb-7">Join 5,000+ happy customers who've made the switch to solar.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact" className="btn-primary">Start My Project</Link>

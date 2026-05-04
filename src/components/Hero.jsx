@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import HeroImage from '../../public/hero.png'
-
+import { HandCoins } from "lucide-react";
 const stats = [
   { num: '5000+', label: 'Installations Done' },
   { num: '15 MW', label: 'Capacity Installed' },
@@ -91,13 +91,25 @@ export default function Hero() {
     panels installed by certified experts. Clean energy for a brighter India.
   </motion.p>
 
-  <motion.div
-    {...fadeUp(0.3)}
-    className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-12 justify-center lg:justify-start"
+ <motion.div
+  {...fadeUp(0.3)}
+  className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-12 justify-center lg:justify-start"
+>
+  <Link 
+    to="/calculator" 
+    className="btn-primary flex items-center justify-center gap-2"
   >
-    <Link to="/calculator" className="btn-primary">Calculate Savings ⚡</Link>
-    <Link to="/contact" className="btn-outline">Free Site Survey</Link>
-  </motion.div>
+    Calculate Savings 
+    <HandCoins />
+  </Link>
+
+  <Link 
+    to="/contact" 
+    className="btn-outline flex items-center justify-center"
+  >
+    Free Site Survey
+  </Link>
+</motion.div>
 
   <motion.div
     {...fadeUp(0.4)}

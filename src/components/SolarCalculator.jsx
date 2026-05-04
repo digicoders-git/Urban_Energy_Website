@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-
 const cityIrr = {
   lucknow: 5.2, delhi: 5.5, mumbai: 5.0,
   bangalore: 5.3, chennai: 5.6, jaipur: 6.0,
@@ -124,7 +123,7 @@ export default function SolarCalculator() {
                 className="w-full py-4 mt-10 btn-primary rounded-xl font-outfit font-bold text-lg text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange/30"
                 
               >
-                Calculate My Savings ⚡
+                Calculate My Savings
               </button>
             </div>
           </motion.div>

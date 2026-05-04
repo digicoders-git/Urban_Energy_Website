@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { FiPlus, FiMinus } from "react-icons/fi";
 
 const faqs = [
   {
@@ -63,16 +64,17 @@ export default function FAQ() {
                 className="w-full flex justify-between items-center px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors"
               >
                 <span className="font-outfit font-semibold text-navy text-base pr-4">{faq.q}</span>
-                <motion.span
-                  animate={{ rotate: open === i ? 45 : 0 }}
-                  className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-lg font-light transition-colors"
-                  style={{
-                    background: open === i ? '#FF7A00' : 'rgba(255,122,0,0.1)',
-                    color: open === i ? '#fff' : '#FF7A00',
-                  }}
-                >
-                  +
-                </motion.span>
+              <motion.span
+            animate={{ rotate: open === i ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+            className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center"
+            style={{
+                 background: open === i ? '#FF7A00' : 'rgba(255,122,0,0.1)',
+              color: open === i ? '#fff' : '#FF7A00',
+            }}
+          >
+  {open === i ? <FiMinus size={16} /> : <FiPlus size={16} />}
+</motion.span>
               </button>
               <AnimatePresence>
                 {open === i && (

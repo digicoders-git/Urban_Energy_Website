@@ -1,12 +1,28 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-
+import { MapPin, Phone, Mail, Clock, HandCoins } from "lucide-react";
 const contactInfo = [
-  { icon: '📍', label: 'Address', val: 'Urban Energy, Lucknow, Uttar Pradesh – 226001' },
-  { icon: '📞', label: 'Phone', val: '+91 98000 12345' },
-  { icon: '📧', label: 'Email', val: 'hello@urbanenergy.in' },
-  { icon: '⏰', label: 'Working Hours', val: 'Mon – Sat: 9 AM – 7 PM' },
-]
+  {
+    icon: <MapPin size={20} />,
+    label: 'Address',
+    val: 'Urban Energy, Lucknow, Uttar Pradesh – 226001'
+  },
+  {
+    icon: <Phone size={20} />,
+    label: 'Phone',
+    val: '+91 98000 12345'
+  },
+  {
+    icon: <Mail size={20} />,
+    label: 'Email',
+    val: 'hello@urbanenergy.in'
+  },
+  {
+    icon: <Clock size={20} />,
+    label: 'Working Hours',
+    val: 'Mon – Sat: 9 AM – 7 PM'
+  },
+];
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', city: '', bill: '', message: '' })
@@ -44,7 +60,9 @@ export default function Contact() {
             {contactInfo.map((c) => (
               <div key={c.label} className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-orange/10 flex items-center justify-center text-xl flex-shrink-0">
-                  {c.icon}
+                  {React.cloneElement(c.icon, {
+  className: "text-orange group-hover:scale-110 transition"
+})}
                 </div>
                 <div>
                   <div className="text-xs font-outfit font-semibold text-slate-400 uppercase tracking-widest">{c.label}</div>
@@ -128,10 +146,10 @@ export default function Contact() {
             </div>
             <button
               onClick={handleSubmit}
-              className="w-full py-4 rounded-xl font-outfit font-bold text-lg text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange/30"
+              className="w-full py-4 rounded-xl font-outfit flex items-center justify-center gap-2 font-bold text-lg text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange/30"
               style={{ background: 'linear-gradient(135deg, #FF7A00, #ff9500)' }}
             >
-              Send My Request ⚡
+              Send My Request <HandCoins/>
             </button>
             {submitted && (
               <motion.div

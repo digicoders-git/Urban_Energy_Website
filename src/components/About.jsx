@@ -1,27 +1,49 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import {
+  Building2, Zap, Sun, IndianRupee,
+  Award, ShieldCheck, Leaf, Lock,
+  Sprout, FlaskConical, Handshake, Trophy,
+  User, UserCog, UserCheck, Headphones
+} from "lucide-react";
 
 const stats = [
-  { num: '2015', label: 'Founded', icon: '🏢' },
-  { num: '5000+', label: 'Installations', icon: '⚡' },
-  { num: '15 MW', label: 'Capacity Installed', icon: '☀️' },
-  { num: '₹12Cr+', label: 'Savings Generated', icon: '💰' },
-]
+  { num: '2015', label: 'Founded', icon: <Building2 size={28} /> },
+  { num: '5000+', label: 'Installations', icon: <Zap size={28} /> },
+  { num: '15 MW', label: 'Capacity Installed', icon: <Sun size={28} /> },
+  { num: '₹12Cr+', label: 'Savings Generated', icon: <IndianRupee size={28} /> },
+];
 
 const team = [
-  { name: 'Arjun Mehta', role: 'Founder & CEO', emoji: '👨‍💼', exp: '12 yrs in Renewable Energy' },
-  { name: 'Priya Sharma', role: 'Head of Engineering', emoji: '👩‍🔧', exp: 'IIT Kanpur, 9 yrs experience' },
-  { name: 'Rohit Verma', role: 'Operations Lead', emoji: '👨‍🔬', exp: '500+ projects delivered' },
-  { name: 'Neha Singh', role: 'Customer Success', emoji: '👩‍💻', exp: '98% satisfaction rate' },
-]
+  { name: 'Arjun Mehta', role: 'Founder & CEO', emoji: <User size={40} />, exp: '12 yrs in Renewable Energy' },
+  { name: 'Priya Sharma', role: 'Head of Engineering', emoji: <UserCog size={40} />, exp: 'IIT Kanpur, 9 yrs experience' },
+  { name: 'Rohit Verma', role: 'Operations Lead', emoji: <UserCheck size={40} />, exp: '500+ projects delivered' },
+  { name: 'Neha Singh', role: 'Customer Success', emoji: <Headphones size={40} />, exp: '98% satisfaction rate' },
+];
 
 const values = [
-  { icon: '🌱', title: 'Sustainability First', desc: 'Every installation we do reduces India\'s carbon footprint. We\'re committed to a greener planet for the next generation.' },
-  { icon: '🔬', title: 'Quality Engineering', desc: 'We use only Tier-1 panels and certified inverters. Every system is engineered for maximum output and 25+ year life.' },
-  { icon: '🤝', title: 'Customer Trust', desc: 'Transparent pricing, no hidden fees, and lifetime support. We build relationships, not just installations.' },
-  { icon: '🏆', title: 'Certified Excellence', desc: 'MNRE empanelled, DISCOM certified installers. We meet every government standard for quality and safety.' },
-]
+  {
+    icon: <Sprout size={28} />,
+    title: 'Sustainability First',
+    desc: "Every installation we do reduces India's carbon footprint. We're committed to a greener planet for the next generation."
+  },
+  {
+    icon: <FlaskConical size={28} />,
+    title: 'Quality Engineering',
+    desc: 'We use only Tier-1 panels and certified inverters. Every system is engineered for maximum output and 25+ year life.'
+  },
+  {
+    icon: <Handshake size={28} />,
+    title: 'Customer Trust',
+    desc: 'Transparent pricing, no hidden fees, and lifetime support. We build relationships, not just installations.'
+  },
+  {
+    icon: <Trophy size={28} />,
+    title: 'Certified Excellence',
+    desc: 'MNRE empanelled, DISCOM certified installers. We meet every government standard for quality and safety.'
+  },
+];
 const milestones = [
   { year: '2015', title: 'Company founded in Lucknow', desc: 'First residential installation completed. A small team, a big vision.' },
   { year: '2018', title: '500th installation milestone', desc: 'Expanded to commercial and industrial segment. MNRE empanelment received.' },
@@ -85,7 +107,9 @@ export default function About() {
       >
 
         {/* Icon */}
-        <div className="text-3xl mb-3">{s.icon}</div>
+        <div className="text-3xl mb-3">{React.cloneElement(s.icon, {
+  className: "text-orange group-hover:scale-110 transition"
+})}</div>
 
         {/* Number (HIGHLIGHT FIX) */}
         <div className="font-outfit text-3xl md:text-4xl font-black text-orange">
@@ -123,13 +147,15 @@ export default function About() {
           </motion.div>
           <motion.div {...fadeUp(0.2)} className="grid grid-cols-2 gap-4">
             {[
-              { icon: '🏅', title: 'MNRE Empanelled', sub: 'Certified by Ministry of New & Renewable Energy' },
-              { icon: '⚡', title: 'DISCOM Certified', sub: 'Approved by State Electricity Distribution Companies' },
-              { icon: '🌿', title: 'PM Surya Ghar Partner', sub: 'Official partner for government subsidy processing' },
-              { icon: '🔒', title: '25-Year Warranty', sub: 'Industry-best performance guarantee on every panel' },
+              { icon: <Award size={26} />, title: 'MNRE Empanelled', sub: 'Certified by Ministry of New & Renewable Energy' },
+              { icon: <ShieldCheck size={26} />, title: 'DISCOM Certified', sub: 'Approved by State Electricity Distribution Companies' },
+              { icon: <Leaf size={26} />, title: 'PM Surya Ghar Partner', sub: 'Official partner for government subsidy processing' },
+              { icon: <Lock size={26} />, title: '25-Year Warranty', sub: 'Industry-best performance guarantee on every panel' },
             ].map((item, i) => (
               <div key={item.title} className="card">
-                <div className="text-3xl mb-3">{item.icon}</div>
+                <div className="text-3xl mb-3">{React.cloneElement(item.icon, {
+  className: "text-orange group-hover:scale-110 transition"
+})}</div>
                 <div className="font-outfit font-bold text-navy text-sm mb-1">{item.title}</div>
                 <div className="text-slate-500 text-xs leading-relaxed">{item.sub}</div>
               </div>
@@ -168,7 +194,9 @@ export default function About() {
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange to-yellow scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-t-2xl" />
 
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange/10 to-yellow/10 flex items-center justify-center text-3xl mb-5">
-            {v.icon}
+            {React.cloneElement(v.icon, {
+  className: "text-orange group-hover:scale-110 transition"
+})}
           </div>
 
           <h3 className="font-outfit font-bold text-navy mb-3">
@@ -260,7 +288,7 @@ export default function About() {
           </h2>
           <p className="text-white/60 mb-8">Get your free site survey and customized proposal within 24 hours.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn-primary">Get Free Quote ⚡</Link>
+            <Link to="/contact" className="btn-primary">Get Free Quote </Link>
             <Link to="/calculator" className="btn-outline">Calculate Savings</Link>
           </div>
         </motion.div>

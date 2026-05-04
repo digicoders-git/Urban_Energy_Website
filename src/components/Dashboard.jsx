@@ -52,7 +52,7 @@ export default function Dashboard() {
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6 sm:mb-7 relative z-10">
             <h3 className="font-outfit font-bold text-lg sm:text-xl text-white">
-              ⚡ Energy Dashboard — Sample View
+               Energy Dashboard — Sample View
             </h3>
             <span className="flex items-center gap-2 text-green-400 text-xs font-semibold">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-live" />

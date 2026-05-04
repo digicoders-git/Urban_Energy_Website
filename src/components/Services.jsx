@@ -1,32 +1,33 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Home, Building2, Sun, Wrench } from "lucide-react";
 
 const services = [
   {
-    icon: '🏠',
+    icon: <Home size={28} />,
     title: 'Residential Solar',
     desc: 'Custom rooftop solutions for homes. Dramatically reduce electricity bills with panels designed for Indian climate conditions and net metering.',
     tag: '1–10 kW Systems',
   },
   {
-    icon: '🏭',
+    icon: <Building2 size={28} />,
     title: 'Commercial Solar',
     desc: 'Large-scale installations for businesses, factories, and institutions. Maximize ROI with high-efficiency commercial-grade solar panels.',
     tag: '10 kW – 5 MW',
   },
   {
-    icon: '🔆',
+    icon: <Sun size={28} />,
     title: 'Rooftop EPC',
     desc: 'End-to-end Engineering, Procurement & Construction services. We handle everything — design, supply, installation, and grid commissioning.',
     tag: 'Turnkey Projects',
   },
   {
-    icon: '🔧',
+    icon: <Wrench size={28} />,
     title: 'AMC & O&M',
     desc: 'Annual Maintenance Contracts and Operations & Maintenance packages to ensure peak panel performance, longevity, and maximum output.',
     tag: '24/7 Monitoring',
   },
-]
+];
 
 export default function Services() {
   return (
@@ -62,7 +63,7 @@ export default function Services() {
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange to-yellow scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-t-2xl" />
 
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange/10 to-yellow/10 flex items-center justify-center text-3xl mb-5">
-                {s.icon}
+                {s.icon && React.cloneElement(s.icon, { className: "text-orange group-hover:scale-110 transition" })}
               </div>
               <h3 className="font-outfit font-bold text-lg text-navy mb-3">{s.title}</h3>
               <p className="text-slate-500 text-sm leading-relaxed mb-5">{s.desc}</p>

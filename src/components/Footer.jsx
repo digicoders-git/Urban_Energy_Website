@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../../public/urbanlogo.png'
-
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock,FaFacebookF, FaLinkedinIn, FaTwitter, FaYoutube } from "react-icons/fa";
 const footerLinks = {
   Services: [
     { label: 'Residential Solar', to: '/services' },
@@ -27,12 +27,27 @@ const footerLinks = {
 }
 
 const contactInfo = [
-  { icon: '📍', label: 'Address', val: 'Lucknow, Uttar Pradesh – 226001' },
-  { icon: '📞', label: 'Phone', val: '+91 98000 12345' },
-  { icon: '✉️', label: 'Email', val: 'hello@urbanenergy.in' },
-  { icon: '⏰', label: 'Hours', val: 'Mon – Sat: 9 AM – 7 PM' },
-]
-
+  {
+    icon: <FaMapMarkerAlt size={16} />,
+    label: 'Address',
+    val: 'Lucknow, Uttar Pradesh – 226001'
+  },
+  {
+    icon: <FaPhoneAlt size={16} />,
+    label: 'Phone',
+    val: '+91 98000 12345'
+  },
+  {
+    icon: <FaEnvelope size={16} />,
+    label: 'Email',
+    val: 'hello@urbanenergy.in'
+  },
+  {
+    icon: <FaClock size={16} />,
+    label: 'Hours',
+    val: 'Mon – Sat: 9 AM – 7 PM'
+  },
+];
 const trustBadges = [
   'MNRE Empanelled',
   'DISCOM Certified',
@@ -41,7 +56,12 @@ const trustBadges = [
   'ISO 9001:2015',
 ]
 
-const socials = ['f', 'in', 'X', 'yt']
+const socials = [
+  { icon: <FaFacebookF size={16} /> },
+  { icon: <FaLinkedinIn size={16} /> },
+  { icon: <FaTwitter size={16} /> },
+  { icon: <FaYoutube size={16} /> },
+];
 
 export default function Footer() {
   return (
@@ -122,7 +142,9 @@ export default function Footer() {
                     color: 'rgba(255,255,255,0.6)',
                   }}
                 >
-                  {s}
+                  {React.cloneElement(s.icon, {
+  className: "text-white/60 group-hover:text-orange transition"
+})}
                 </div>
               ))}
             </div>
@@ -172,7 +194,9 @@ export default function Footer() {
                     border: '1px solid rgba(255,122,0,0.2)',
                   }}
                 >
-                  {c.icon}
+                  {React.cloneElement(c.icon, {
+  className: "text-orange group-hover:scale-110 transition"
+})}
                 </div>
                 <div>
                   <div

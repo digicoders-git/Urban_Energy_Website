@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import FAQ from '../components/FAQ'
 import { Link } from 'react-router-dom'
-
+import { FaQuestionCircle, FaBolt, FaPhoneAlt } from "react-icons/fa";
 export default function FAQPage() {
   return (
     <main className="pt-16">
@@ -25,15 +25,41 @@ export default function FAQPage() {
       </section>
       <FAQ />
       <section className="py-10 px-5 bg-slate-50 border-t border-gray-100">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center">
-          <div className="text-5xl mb-4">🤔</div>
-          <h3 className="font-outfit text-2xl font-black text-navy mb-3">Still Have Questions?</h3>
-          <p className="text-slate-500 mb-7">Our solar experts are available Mon–Sat, 9 AM to 7 PM. We'll answer any question you have.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn-primary">Talk to an Expert ⚡</Link>
-            <a href="tel:+919800012345" className="btn-outline" style={{ color: '#0B1F3A', borderColor: 'rgba(11,31,58,0.3)' }}>📞 Call Us Now</a>
-          </div>
-        </motion.div>
+      <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  className="max-w-2xl mx-auto text-center"
+>
+  {/* Icon */}
+  <div className="text-5xl mb-4 flex justify-center text-orange">
+    <FaQuestionCircle />
+  </div>
+
+  <h3 className="font-outfit text-2xl font-black text-navy mb-3">
+    Still Have Questions?
+  </h3>
+
+  <p className="text-slate-500 mb-7">
+    Our solar experts are available Mon–Sat, 9 AM to 7 PM. We'll answer any question you have.
+  </p>
+
+  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+    <Link to="/contact" className="btn-primary flex items-center gap-2 justify-center">
+      <FaBolt />
+      Talk to an Expert
+    </Link>
+
+    <a
+      href="tel:+919800012345"
+      className="btn-outline flex items-center gap-2 justify-center"
+      style={{ color: '#0B1F3A', borderColor: 'rgba(11,31,58,0.3)' }}
+    >
+      <FaPhoneAlt />
+      Call Us Now
+    </a>
+  </div>
+</motion.div>
       </section>
     </main>
   )
