@@ -15,6 +15,7 @@ import NotFound from './pages/NotFound'
 import About from './pages/AboutPage'
 import ScrolltoTop from './components/ScrollTop'
 import BlogPage from './pages/BlogPage'
+import AdminPanel from './pages/AdminPanel'
 // 👉 Layout component
 function Layout({ children }) {
   const location = useLocation()
@@ -42,8 +43,7 @@ export default function App() {
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/contact" element={<ContactPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-
+          <Route path="/blog" element={<BlogPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
