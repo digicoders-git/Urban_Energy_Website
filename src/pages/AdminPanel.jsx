@@ -901,7 +901,7 @@ function Blogs({ blogs, setBlogs }) {
 }
 
 // ══════════════════════════════════════════════════════
-//  NAV — react-icons instead of emoji
+//  NAV 
 // ══════════════════════════════════════════════════════
 const NAV = [
   { id: 'dashboard', icon: <FaChartPie />, label: 'Dashboard' },
