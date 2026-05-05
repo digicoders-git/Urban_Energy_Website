@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+
+const API = import.meta.env.VITE_API_URL
 const cityIrr = {
   lucknow: 5.2, delhi: 5.5, mumbai: 5.0,
   bangalore: 5.3, chennai: 5.6, jaipur: 6.0,
@@ -10,6 +12,10 @@ const cityIrr = {
 export default function SolarCalculator() {
   const [form, setForm] = useState({ bill: 3000, city: 'lucknow', roof: 500, type: 'grid' })
   const [results, setResults] = useState(null)
+  const [queryForm, setQueryForm] = useState({ name: '', phone: '', requirement: '' })
+  const [queryLoading, setQueryLoading] = useState(false)
+  const [queryDone, setQueryDone] = useState(false)
+  const [queryError, setQueryError] = useState('')
 
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }))
 
@@ -31,6 +37,27 @@ export default function SolarCalculator() {
     const payback = (net / annual).toFixed(1)
     const co2 = (size * sun * 365 * 0.82 / 1000).toFixed(1)
     setResults({ size, annual, sysCost, subsidy, net, payback, co2, twentyFive: annual * 25 })
+    setQueryForm(f => ({ ...f, requirement: `${size} kW ${form.type} solar system — Monthly bill ₹${form.bill}, City: ${form.city}` }))
+  }
+
+  const submitQuery = async () => {
+    if (!queryForm.name || !queryForm.phone) return setQueryError('Name aur phone required hai.')
+    setQueryError('')
+    setQueryLoading(true)
+    try {
+      const res = await fetch(`${API}/query/add`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: queryForm.name, phone: queryForm.phone, city: form.city, requirement: queryForm.requirement })
+      })
+      const data = await res.json()
+      if (data.success) { setQueryDone(true) }
+      else setQueryError(data.message || 'Something went wrong.')
+    } catch {
+      setQueryError('Server error. Please try again.')
+    } finally {
+      setQueryLoading(false)
+    }
   }
 
   const fmt = (n) => n?.toLocaleString('en-IN')
@@ -226,6 +253,43 @@ export default function SolarCalculator() {
   >
     Get My Custom Quote →
   </a>
+
+  {/* Query Form */}
+  {results && (
+    <div className="bg-slate-50 border border-gray-100 rounded-2xl p-5">
+      <div className="text-sm font-outfit font-bold text-navy mb-3">Get a Free Quote for Your {results.size} kW System</div>
+      {queryDone ? (
+        <div className="text-center py-3 px-4 rounded-xl text-green-700 font-semibold text-sm" style={{ background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.3)' }}>
+          ✓ Query submitted! We'll call you within 24 hours.
+        </div>
+      ) : (
+        <div className="space-y-3">
+          <input
+            value={queryForm.name}
+            onChange={e => setQueryForm(f => ({ ...f, name: e.target.value }))}
+            placeholder="Your Name *"
+            className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-xl text-navy text-sm focus:outline-none focus:border-orange transition-colors"
+          />
+          <input
+            value={queryForm.phone}
+            onChange={e => setQueryForm(f => ({ ...f, phone: e.target.value }))}
+            placeholder="Phone Number *"
+            type="tel"
+            className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-xl text-navy text-sm focus:outline-none focus:border-orange transition-colors"
+          />
+          {queryError && <p className="text-red-500 text-xs">{queryError}</p>}
+          <button
+            onClick={submitQuery}
+            disabled={queryLoading}
+            className="w-full py-3 rounded-xl font-outfit font-bold text-sm text-white disabled:opacity-60"
+            style={{ background: 'linear-gradient(135deg, #FF7A00, #ff9500)' }}
+          >
+            {queryLoading ? 'Submitting...' : 'Send My Query →'}
+          </button>
+        </div>
+      )}
+    </div>
+  )}
 </motion.div>
         </div>
       </div>

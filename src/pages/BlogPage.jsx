@@ -1,8 +1,10 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { FaUser, FaCalendarAlt, FaClock, FaEye } from "react-icons/fa";
 
+const API = import.meta.env.VITE_API_URL;
+
 // ─── DATA ────────────────────────────────────────────────────────────────────
-const POSTS = [
+const FALLBACK_POSTS = [
   {
     id: 1, featured: true,
     title: "PM Surya Ghar Subsidy Guide 2025 — Complete Walkthrough",
@@ -503,12 +505,48 @@ function FilterBar({ activeFilter, setFilter, sort, setSort }) {
 const POSTS_PER_PAGE = 6;
 
 export default function BlogPage() {
+  const [POSTS, setPOSTS] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all");
   const [sort, setSort] = useState("newest");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [activePost, setActivePost] = useState(null);
   const [toast, setToast] = useState({ visible: false, msg: "" });
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await fetch(`${API}/blog`);
+        const data = await res.json();
+        if (data.success && data.data) {
+          const blogs = data.data.map(b => ({
+            id: b._id,
+            featured: b.featured || false,
+            title: b.title,
+            excerpt: b.excerpt,
+            category: b.category,
+            author: b.author || 'Admin',
+            date: new Date(b.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+            views: b.views || 0,
+            readTime: b.readTime || '5 min',
+            image: b.image,
+            tags: b.tags || [],
+            content: b.content
+          }));
+          setPOSTS(blogs);
+        } else {
+          setPOSTS(FALLBACK_POSTS);
+        }
+      } catch (err) {
+        console.error('Blog fetch error:', err);
+        setPOSTS(FALLBACK_POSTS);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlogs();
+  }, []);
 
   const showToast = (msg) => {
     setToast({ visible: true, msg });
@@ -534,7 +572,7 @@ export default function BlogPage() {
     else if (sort === "oldest") posts.sort((a, b) => a.id - b.id);
     else posts.sort((a, b) => b.id - a.id);
     return posts;
-  }, [filter, sort, search]);
+  }, [POSTS, filter, sort, search]);
 
   const featured = filter === "all" && !search && page === 1 ? filtered.find(p => p.featured) || filtered[0] : null;
   const gridPosts = featured ? filtered.filter(p => p.id !== featured.id) : filtered;
@@ -543,6 +581,17 @@ export default function BlogPage() {
 
   const openPost = (p) => { setActivePost(p); window.scrollTo({ top: 0, behavior: "smooth" }); };
   const closePost = () => { setActivePost(null); window.scrollTo({ top: 0, behavior: "smooth" }); };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#F7F9FC] flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-5xl mb-4">☀</div>
+          <p className="text-slate-500 font-semibold">Loading blogs...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#F7F9FC]" style={{ fontFamily: "'Outfit', sans-serif" }}>

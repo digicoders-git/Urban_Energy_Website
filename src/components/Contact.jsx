@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Phone, Mail, Clock, HandCoins } from "lucide-react";
+
+const API = import.meta.env.VITE_API_URL
 const contactInfo = [
   {
     icon: <MapPin size={20} />,
@@ -27,16 +29,42 @@ const contactInfo = [
 export default function Contact() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', city: '', bill: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }))
 
-  const handleSubmit = () => {
-    if (!form.name || !form.phone) return alert('Please fill in your name and phone number.')
-    setSubmitted(true)
-    setTimeout(() => {
-      setForm({ name: '', phone: '', email: '', city: '', bill: '', message: '' })
-      setSubmitted(false)
-    }, 5000)
+  const handleSubmit = async () => {
+    if (!form.name || !form.phone || !form.email || !form.city || !form.bill)
+      return setError('Please fill all required fields.')
+    setError('')
+    setLoading(true)
+    try {
+      const res = await fetch(`${API}/contact/add`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: form.name,
+          phoneNumber: form.phone,
+          email: form.email,
+          city: form.city,
+          monthlyBill: Number(form.bill),
+          message: form.message
+        })
+      })
+      const data = await res.json()
+      if (data.success) {
+        setSubmitted(true)
+        setForm({ name: '', phone: '', email: '', city: '', bill: '', message: '' })
+        setTimeout(() => setSubmitted(false), 5000)
+      } else {
+        setError(data.message || 'Something went wrong.')
+      }
+    } catch {
+      setError('Server error. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -146,11 +174,17 @@ export default function Contact() {
             </div>
             <button
               onClick={handleSubmit}
-              className="w-full py-4 rounded-xl font-outfit flex items-center justify-center gap-2 font-bold text-lg text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange/30"
+              disabled={loading}
+              className="w-full py-4 rounded-xl font-outfit flex items-center justify-center gap-2 font-bold text-lg text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange/30 disabled:opacity-60 disabled:cursor-not-allowed"
               style={{ background: 'linear-gradient(135deg, #FF7A00, #ff9500)' }}
             >
-              Send My Request <HandCoins/>
+              {loading ? 'Sending...' : <> Send My Request <HandCoins/> </>}
             </button>
+            {error && (
+              <div className="text-center py-3 px-4 rounded-xl text-red-700 font-semibold text-sm" style={{ background: 'rgba(220,38,38,0.08)', border: '1px solid rgba(220,38,38,0.2)' }}>
+                ⚠ {error}
+              </div>
+            )}
             {submitted && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
