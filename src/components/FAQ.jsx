@@ -31,7 +31,7 @@ const faqs = [
 
 export default function FAQ() {
   const [open, setOpen] = useState(null)
-
+ 
   return (
     <section id="faq" className="py-12 px-5 bg-white">
       <div className="max-w-3xl mx-auto">
@@ -59,6 +59,7 @@ export default function FAQ() {
                 open === i ? 'border-orange/30 shadow-md shadow-orange/5' : 'border-gray-100'
               }`}
             >
+              
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full flex justify-between items-center px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors"
@@ -89,6 +90,7 @@ export default function FAQ() {
                     </div>
                   </motion.div>
                 )}
+                
               </AnimatePresence>
             </motion.div>
           ))}

@@ -14,13 +14,13 @@ export default function NotFound() {
         <div className="text-orange font-outfit font-black text-9xl mb-4">404</div>
         <h1 className="text-white font-outfit font-bold text-3xl mb-4">Page Not Found</h1>
         <p className="text-white/60 text-lg mb-8">
-          Yeh page exist nahi karta. Wapas home par chalte hain.
+          Not exist! Back to Home.
         </p>
         <Link
           to="/"
           className="inline-block bg-orange hover:bg-orange/90 text-white font-outfit font-bold px-8 py-3 rounded-lg transition-all duration-200 hover:-translate-y-0.5 no-underline"
         >
-          Home Par Jao
+          Go to Home
         </Link>
       </motion.div>
     </main>

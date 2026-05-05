@@ -1,9 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import FAQ from '../components/FAQ'
 import { Link } from 'react-router-dom'
 import { FaQuestionCircle, FaBolt, FaPhoneAlt,FaQuestion } from "react-icons/fa";
 export default function FAQPage() {
+   const [form, setForm] = useState({
+    name: '',
+    phone: '',
+    requirement: '',
+    city: ''
+  })
+  
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  
+    console.log("Query Submitted:", form)
+  
+    alert("Your query has been submitted!")
+  
+    setForm({
+      name: '',
+      phone: '',
+      requirement: '',
+      city: ''
+    })
+  }
+  
   return (
     <main className="pt-16">
       <section className="relative py-20 px-5 overflow-hidden bg-navy">
@@ -43,6 +65,47 @@ export default function FAQPage() {
   <p className="text-slate-500 mb-7">
     Our solar experts are available Mon–Sat, 9 AM to 7 PM. We'll answer any question you have.
   </p>
+<form onSubmit={handleSubmit} className="grid gap-3 my-3 mb-4">
+
+    <input
+      type="text"
+      placeholder="Your Name"
+      value={form.name}
+      onChange={(e) => setForm({ ...form, name: e.target.value })}
+      className="px-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-orange"
+    />
+
+    <input
+      type="text"
+      placeholder="Phone Number"
+      value={form.phone}
+      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+      className="px-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-orange"
+    />
+
+    <textarea
+      placeholder="Your Requirement (e.g. 1000W solar plant)"
+      value={form.requirement}
+      onChange={(e) => setForm({ ...form, requirement: e.target.value })}
+      className="px-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-orange min-h-[90px]"
+    />
+
+    <input
+      type="text"
+      placeholder="City"
+      value={form.city}
+      onChange={(e) => setForm({ ...form, city: e.target.value })}
+      className="px-4 py-2 rounded-lg border border-gray-200 outline-none focus:border-orange"
+    />
+
+    <button
+      type="submit"
+      className="btn-primary text-white py-2 rounded-lg font-semibold hover:opacity-90 transition"
+    >
+      Submit Query
+    </button>
+
+  </form>
 
   <div className="flex flex-col sm:flex-row gap-4 justify-center">
     <Link to="/contact" className="btn-primary flex items-center gap-2 justify-center">

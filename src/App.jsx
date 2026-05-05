@@ -13,32 +13,26 @@ import FAQPage from './pages/FAQPage'
 import ContactPage from './pages/ContactPage'
 import NotFound from './pages/NotFound'
 import About from './pages/AboutPage'
-import AdminPanel from './pages/AdminPanel'
 import ScrolltoTop from './components/ScrollTop'
+import BlogPage from './pages/BlogPage'
 // 👉 Layout component
 function Layout({ children }) {
   const location = useLocation()
 
-  const hideLayout = location.pathname.startsWith('/AdminPanel')
-
   return (
     <>
-      {!hideLayout && <Navbar />}
-      
+      <Navbar />
       {children}
-
-      {!hideLayout && <Footer />}
-      {!hideLayout && <WhatsAppButton />}
+      <Footer />
+      <WhatsAppButton />
     </>
   )
 }
 
 export default function App() {
   return (
-    
-
     <BrowserRouter>
-    <ScrolltoTop/>
+      <ScrolltoTop />
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -48,9 +42,7 @@ export default function App() {
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/contact" element={<ContactPage />} />
-
-          {/* 👇 Admin without navbar/footer */}
-          <Route path="/adminpanel" element={<AdminPanel />} />
+            <Route path="/blog" element={<BlogPage />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

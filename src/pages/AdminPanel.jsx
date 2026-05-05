@@ -4,6 +4,13 @@ import {
   AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts'
+import {
+  FaUsers, FaComments, FaBlog, FaPenNib, FaRocket,
+  FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaRupeeSign, FaCalendarAlt,
+  FaTrash, FaEdit, FaSave, FaUser, FaEye, FaChartPie,
+  FaAddressBook, FaStar, FaCheckCircle, FaArrowUp, FaSearch,
+  FaSignOutAlt, FaTimes, FaBook, FaPlus
+} from "react-icons/fa"
 
 // ══════════════════════════════════════════════════════
 //  MOCK DATA
@@ -58,17 +65,15 @@ const CHART_STATUS = [
 const BLOG_CATEGORIES = ['Government Schemes', 'Product Guide', 'Installation', 'Finance', 'Commercial', 'Maintenance', 'News']
 
 // ══════════════════════════════════════════════════════
-//  THEME — Sidebar dark, Content area LIGHT
+//  THEME
 // ══════════════════════════════════════════════════════
 const S = {
-  // Sidebar (dark)
   navy: '#0B1F3A',
   navyLight: '#122944',
   navyBorder: 'rgba(255,255,255,0.08)',
   sideText: 'rgba(255,255,255,0.85)',
   sideTextMuted: 'rgba(255,255,255,0.45)',
   sideTextDim: 'rgba(255,255,255,0.25)',
-  // Content area (light)
   bg: '#F4F6FA',
   card: '#FFFFFF',
   cardBorder: '#E8ECF4',
@@ -80,7 +85,6 @@ const S = {
   textDim: '#94a3b8',
   inputBg: '#F8FAFF',
   inputBorder: '#E2E8F4',
-  // Accent
   orange: '#FF7A00',
   orangeLight: 'rgba(255,122,0,0.10)',
   orangeBorder: 'rgba(255,122,0,0.3)',
@@ -267,15 +271,13 @@ const ChartTooltip = ({ active, payload, label }) => {
 function Dashboard({ contacts, queries, blogs }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      {/* Stat cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
-        <StatCard icon="📋" label="Total Contacts" value={contacts.length} sub="All time leads" color={S.orange} bgColor="rgba(255,122,0,0.08)" />
-        <StatCard icon="💬" label="Open Queries" value={queries.filter(q => q.status === 'open').length} sub="Needs response" color={S.red} bgColor={S.redLight} />
-        <StatCard icon="✍️" label="Published Blogs" value={blogs.filter(b => b.status === 'published').length} sub={`${blogs.filter(b => b.status === 'draft').length} drafts`} color={S.blue} bgColor={S.blueLight} />
-        <StatCard icon="⚡" label="Conversions" value={contacts.filter(c => c.status === 'converted').length} sub="Closed deals" color={S.green} bgColor={S.greenLight} />
+        <StatCard icon={<FaUsers color="#FF7A00" />} label="Total Contacts" value={contacts.length} sub="All time leads" color={S.orange} bgColor="rgba(255,122,0,0.08)" />
+        <StatCard icon={<FaComments color="#FF7A00" />} label="Open Queries" value={queries.filter(q => q.status === 'open').length} sub="Needs response" color={S.red} bgColor={S.redLight} />
+        <StatCard icon={<FaPenNib color="#FF7A00" />} label="Published Blogs" value={blogs.filter(b => b.status === 'published').length} sub={`${blogs.filter(b => b.status === 'draft').length} drafts`} color={S.blue} bgColor={S.blueLight} />
+        <StatCard icon={<FaRocket color="#FF7A00" />} label="Conversions" value={contacts.filter(c => c.status === 'converted').length} sub="Closed deals" color={S.green} bgColor={S.greenLight} />
       </div>
 
-      {/* Charts row */}
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 20 }}>
         <Card style={{ padding: 24 }}>
           <div style={{ fontFamily: 'Outfit,sans-serif', fontSize: 15, fontWeight: 800, color: S.text, marginBottom: 3 }}>Monthly Overview</div>
@@ -284,16 +286,13 @@ function Dashboard({ contacts, queries, blogs }) {
             <AreaChart data={CHART_QUERIES}>
               <defs>
                 <linearGradient id="cGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor={S.orange} stopOpacity={0.2} />
-                  <stop offset="95%" stopColor={S.orange} stopOpacity={0} />
+                  <stop offset="5%" stopColor={S.orange} stopOpacity={0.2} /><stop offset="95%" stopColor={S.orange} stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="qGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor={S.yellow} stopOpacity={0.2} />
-                  <stop offset="95%" stopColor={S.yellow} stopOpacity={0} />
+                  <stop offset="5%" stopColor={S.yellow} stopOpacity={0.2} /><stop offset="95%" stopColor={S.yellow} stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="cnGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor={S.green} stopOpacity={0.2} />
-                  <stop offset="95%" stopColor={S.green} stopOpacity={0} />
+                  <stop offset="5%" stopColor={S.green} stopOpacity={0.2} /><stop offset="95%" stopColor={S.green} stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
@@ -357,18 +356,13 @@ function Dashboard({ contacts, queries, blogs }) {
                 <span style={{ color: S.textMuted, fontSize: 12, fontFamily: 'Outfit,sans-serif' }}>{c.value}%</span>
               </div>
               <div style={{ height: 7, background: '#f1f5f9', borderRadius: 999, overflow: 'hidden' }}>
-                <div style={{
-                  height: '100%', borderRadius: 999, width: `${c.value}%`,
-                  background: i === 0 ? S.orange : i === 1 ? S.yellow : `rgba(255,122,0,${0.55 - i * 0.1})`,
-                  transition: 'width 0.6s ease'
-                }} />
+                <div style={{ height: '100%', borderRadius: 999, width: `${c.value}%`, background: i === 0 ? S.orange : i === 1 ? S.yellow : `rgba(255,122,0,${0.55 - i * 0.1})`, transition: 'width 0.6s ease' }} />
               </div>
             </div>
           ))}
         </Card>
       </div>
 
-      {/* Recent contacts table */}
       <Card style={{ padding: 24 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
           <div style={{ fontFamily: 'Outfit,sans-serif', fontSize: 15, fontWeight: 800, color: S.text }}>Recent Contacts</div>
@@ -378,12 +372,7 @@ function Dashboard({ contacts, queries, blogs }) {
           <thead>
             <tr style={{ background: '#F8FAFF' }}>
               {['Name', 'City', 'Monthly Bill', 'Date', 'Status'].map(h => (
-                <th key={h} style={{
-                  color: S.textMuted, fontSize: 11, fontWeight: 700, textAlign: 'left',
-                  padding: '10px 14px', fontFamily: 'Outfit,sans-serif',
-                  textTransform: 'uppercase', letterSpacing: '0.06em',
-                  borderBottom: `1.5px solid ${S.cardBorder}`
-                }}>{h}</th>
+                <th key={h} style={{ color: S.textMuted, fontSize: 11, fontWeight: 700, textAlign: 'left', padding: '10px 14px', fontFamily: 'Outfit,sans-serif', textTransform: 'uppercase', letterSpacing: '0.06em', borderBottom: `1.5px solid ${S.cardBorder}` }}>{h}</th>
               ))}
             </tr>
           </thead>
@@ -435,11 +424,18 @@ function Contacts({ contacts, setContacts }) {
     <div style={{ display: 'flex', gap: 20, height: 'calc(100vh - 130px)' }}>
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-          <input placeholder="🔍  Search contacts..." value={search} onChange={e => setSearch(e.target.value)}
-            style={{ flex: 1, minWidth: 200, background: '#fff', border: `1.5px solid ${S.cardBorder}`, borderRadius: 10, padding: '9px 14px', color: S.text, fontSize: 14, fontFamily: 'Outfit,sans-serif', outline: 'none', boxShadow: S.cardShadow }}
-            onFocus={e => { e.target.style.borderColor = S.orange; e.target.style.boxShadow = '0 0 0 3px rgba(255,122,0,0.1)' }}
-            onBlur={e => { e.target.style.borderColor = S.cardBorder; e.target.style.boxShadow = S.cardShadow }}
-          />
+          {/* Search with icon */}
+          <div style={{ flex: 1, minWidth: 200, position: 'relative' }}>
+            <FaSearch style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: S.textDim, fontSize: 13, pointerEvents: 'none' }} />
+            <input
+              placeholder="Search contacts..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              style={{ width: '100%', background: '#fff', border: `1.5px solid ${S.cardBorder}`, borderRadius: 10, padding: '9px 14px 9px 36px', color: S.text, fontSize: 14, fontFamily: 'Outfit,sans-serif', outline: 'none', boxShadow: S.cardShadow, boxSizing: 'border-box' }}
+              onFocus={e => { e.target.style.borderColor = S.orange; e.target.style.boxShadow = '0 0 0 3px rgba(255,122,0,0.1)' }}
+              onBlur={e => { e.target.style.borderColor = S.cardBorder; e.target.style.boxShadow = S.cardShadow }}
+            />
+          </div>
           {['all', 'new', 'contacted', 'converted'].map(f => (
             <Btn key={f} variant={filter === f ? 'primary' : 'secondary'} size="sm" onClick={() => setFilter(f)}>
               {f.charAt(0).toUpperCase() + f.slice(1)}
@@ -499,19 +495,23 @@ function Contacts({ contacts, setContacts }) {
             </div>
           </div>
           {[
-            { label: '📞 Phone', val: selected.phone },
-            { label: '📧 Email', val: selected.email },
-            { label: '📍 City', val: selected.city },
-            { label: '💡 Monthly Bill', val: `₹${selected.bill}` },
-            { label: '📅 Date', val: selected.date },
+            { icon: <FaPhoneAlt style={{ color: S.orange, fontSize: 11 }} />, label: 'Phone', val: selected.phone },
+            { icon: <FaEnvelope style={{ color: S.orange, fontSize: 11 }} />, label: 'Email', val: selected.email },
+            { icon: <FaMapMarkerAlt style={{ color: S.orange, fontSize: 11 }} />, label: 'City', val: selected.city },
+            { icon: <FaRupeeSign style={{ color: S.orange, fontSize: 11 }} />, label: 'Monthly Bill', val: `₹${selected.bill}` },
+            { icon: <FaCalendarAlt style={{ color: S.orange, fontSize: 11 }} />, label: 'Date', val: selected.date },
           ].map(row => (
             <div key={row.label} style={{ marginBottom: 14, paddingBottom: 14, borderBottom: `1px solid ${S.cardBorder}` }}>
-              <div style={{ color: S.textMuted, fontSize: 11, fontFamily: 'Outfit,sans-serif', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 3 }}>{row.label}</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: S.textMuted, fontSize: 11, fontFamily: 'Outfit,sans-serif', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 3 }}>
+                {row.icon} {row.label}
+              </div>
               <div style={{ color: S.text, fontSize: 13, fontFamily: 'Outfit,sans-serif', fontWeight: 600 }}>{row.val}</div>
             </div>
           ))}
           <div style={{ marginBottom: 18 }}>
-            <div style={{ color: S.textMuted, fontSize: 11, fontFamily: 'Outfit,sans-serif', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 6 }}>💬 Message</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: S.textMuted, fontSize: 11, fontFamily: 'Outfit,sans-serif', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 6 }}>
+              <FaComments style={{ color: S.orange, fontSize: 11 }} /> Message
+            </div>
             <div style={{ color: S.text, fontSize: 13, fontFamily: 'Outfit,sans-serif', lineHeight: 1.65, background: '#F8FAFF', borderRadius: 10, padding: '12px', border: `1px solid ${S.cardBorder}` }}>{selected.message}</div>
           </div>
           <div style={{ marginBottom: 18 }}>
@@ -522,11 +522,13 @@ function Contacts({ contacts, setContacts }) {
               ))}
             </div>
           </div>
-          <Btn variant="danger" onClick={() => deleteContact(selected.id)} style={{ width: '100%', justifyContent: 'center' }}>🗑 Delete Contact</Btn>
+          <Btn variant="danger" onClick={() => deleteContact(selected.id)} style={{ width: '100%', justifyContent: 'center' }}>
+            <FaTrash style={{ fontSize: 12 }} /> Delete Contact
+          </Btn>
         </Card>
       ) : (
         <div style={{ width: 300, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: S.textMuted, fontFamily: 'Outfit,sans-serif', gap: 10 }}>
-          <div style={{ fontSize: 40 }}>👆</div>
+          <FaArrowUp style={{ fontSize: 36, color: S.textDim }} />
           <div style={{ fontSize: 14 }}>Select a contact to view details</div>
         </div>
       )}
@@ -557,17 +559,24 @@ function Queries({ queries, setQueries }) {
     if (selected?.id === id) setSelected(null)
   }
 
-  const priorityIcon = { high: '🔴', medium: '🟡', low: '🟢' }
+  // Priority dot colors (replacing emoji)
+  const priorityColor = { high: '#dc2626', medium: '#d97706', low: '#16a34a' }
 
   return (
     <div style={{ display: 'flex', gap: 20, height: 'calc(100vh - 130px)' }}>
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-          <input placeholder="🔍  Search queries..." value={search} onChange={e => setSearch(e.target.value)}
-            style={{ flex: 1, minWidth: 200, background: '#fff', border: `1.5px solid ${S.cardBorder}`, borderRadius: 10, padding: '9px 14px', color: S.text, fontSize: 14, fontFamily: 'Outfit,sans-serif', outline: 'none', boxShadow: S.cardShadow }}
-            onFocus={e => { e.target.style.borderColor = S.orange; e.target.style.boxShadow = '0 0 0 3px rgba(255,122,0,0.1)' }}
-            onBlur={e => { e.target.style.borderColor = S.cardBorder; e.target.style.boxShadow = S.cardShadow }}
-          />
+          <div style={{ flex: 1, minWidth: 200, position: 'relative' }}>
+            <FaSearch style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: S.textDim, fontSize: 13, pointerEvents: 'none' }} />
+            <input
+              placeholder="Search queries..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              style={{ width: '100%', background: '#fff', border: `1.5px solid ${S.cardBorder}`, borderRadius: 10, padding: '9px 14px 9px 36px', color: S.text, fontSize: 14, fontFamily: 'Outfit,sans-serif', outline: 'none', boxShadow: S.cardShadow, boxSizing: 'border-box' }}
+              onFocus={e => { e.target.style.borderColor = S.orange; e.target.style.boxShadow = '0 0 0 3px rgba(255,122,0,0.1)' }}
+              onBlur={e => { e.target.style.borderColor = S.cardBorder; e.target.style.boxShadow = S.cardShadow }}
+            />
+          </div>
           {['all', 'open', 'in-progress', 'resolved'].map(f => (
             <Btn key={f} variant={filter === f ? 'primary' : 'secondary'} size="sm" onClick={() => setFilter(f)}>
               {f.charAt(0).toUpperCase() + f.slice(1)}
@@ -592,7 +601,8 @@ function Queries({ queries, setQueries }) {
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                      <span>{priorityIcon[q.priority]}</span>
+                      {/* Colored dot instead of emoji */}
+                      <div style={{ width: 8, height: 8, borderRadius: '50%', background: priorityColor[q.priority], flexShrink: 0 }} />
                       <div style={{ color: S.text, fontSize: 14, fontWeight: 700, fontFamily: 'Outfit,sans-serif' }}>{q.subject}</div>
                     </div>
                     <div style={{ color: S.textMuted, fontSize: 12, fontFamily: 'Outfit,sans-serif', marginBottom: 5 }}>{q.name} · {q.email}</div>
@@ -617,17 +627,21 @@ function Queries({ queries, setQueries }) {
             <div style={{ display: 'flex', gap: 8 }}><Badge label={selected.status} /><Badge label={selected.priority} /></div>
           </div>
           {[
-            { label: '👤 From', val: selected.name },
-            { label: '📧 Email', val: selected.email },
-            { label: '📅 Date', val: selected.date },
+            { icon: <FaUser style={{ color: S.orange, fontSize: 11 }} />, label: 'From', val: selected.name },
+            { icon: <FaEnvelope style={{ color: S.orange, fontSize: 11 }} />, label: 'Email', val: selected.email },
+            { icon: <FaCalendarAlt style={{ color: S.orange, fontSize: 11 }} />, label: 'Date', val: selected.date },
           ].map(row => (
             <div key={row.label} style={{ marginBottom: 14, paddingBottom: 14, borderBottom: `1px solid ${S.cardBorder}` }}>
-              <div style={{ color: S.textMuted, fontSize: 11, fontFamily: 'Outfit,sans-serif', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 3 }}>{row.label}</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: S.textMuted, fontSize: 11, fontFamily: 'Outfit,sans-serif', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 3 }}>
+                {row.icon} {row.label}
+              </div>
               <div style={{ color: S.text, fontSize: 13, fontFamily: 'Outfit,sans-serif', fontWeight: 600 }}>{row.val}</div>
             </div>
           ))}
           <div style={{ marginBottom: 18 }}>
-            <div style={{ color: S.textMuted, fontSize: 11, fontFamily: 'Outfit,sans-serif', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 6 }}>💬 Message</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: S.textMuted, fontSize: 11, fontFamily: 'Outfit,sans-serif', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 6 }}>
+              <FaComments style={{ color: S.orange, fontSize: 11 }} /> Message
+            </div>
             <div style={{ color: S.text, fontSize: 13, lineHeight: 1.65, background: '#F8FAFF', borderRadius: 10, padding: 12, border: `1px solid ${S.cardBorder}`, fontFamily: 'Outfit,sans-serif' }}>{selected.message}</div>
           </div>
           <div style={{ marginBottom: 14 }}>
@@ -646,11 +660,13 @@ function Queries({ queries, setQueries }) {
               ))}
             </div>
           </div>
-          <Btn variant="danger" onClick={() => deleteQuery(selected.id)} style={{ width: '100%', justifyContent: 'center' }}>🗑 Delete Query</Btn>
+          <Btn variant="danger" onClick={() => deleteQuery(selected.id)} style={{ width: '100%', justifyContent: 'center' }}>
+            <FaTrash style={{ fontSize: 12 }} /> Delete Query
+          </Btn>
         </Card>
       ) : (
         <div style={{ width: 300, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: S.textMuted, fontFamily: 'Outfit,sans-serif', gap: 10 }}>
-          <div style={{ fontSize: 40 }}>👆</div>
+          <FaArrowUp style={{ fontSize: 36, color: S.textDim }} />
           <div style={{ fontSize: 14 }}>Select a query to view details</div>
         </div>
       )}
@@ -679,13 +695,18 @@ function BlogEditor({ blog, onSave, onCancel }) {
   return (
     <Card hoverable={false} style={{ padding: 28, maxHeight: 'calc(100vh - 150px)', overflowY: 'auto' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 28 }}>
-        <div style={{ fontFamily: 'Outfit,sans-serif', fontSize: 18, fontWeight: 800, color: S.text }}>
-          {blog ? '✏️ Edit Blog Post' : '✍️ New Blog Post'}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontFamily: 'Outfit,sans-serif', fontSize: 18, fontWeight: 800, color: S.text }}>
+          {blog ? <FaEdit style={{ color: S.orange }} /> : <FaPenNib style={{ color: S.orange }} />}
+          {blog ? 'Edit Blog Post' : 'New Blog Post'}
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
           <Btn variant="secondary" onClick={onCancel}>Cancel</Btn>
-          <Btn variant="success" onClick={() => handleSave('published')}>🚀 Publish</Btn>
-          <Btn variant="primary" onClick={() => handleSave()}>💾 Save Draft</Btn>
+          <Btn variant="success" onClick={() => handleSave('published')}>
+            <FaRocket style={{ fontSize: 12 }} /> Publish
+          </Btn>
+          <Btn variant="primary" onClick={() => handleSave()}>
+            <FaSave style={{ fontSize: 12 }} /> Save Draft
+          </Btn>
         </div>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
@@ -729,10 +750,16 @@ function BlogEditor({ blog, onSave, onCancel }) {
       </div>
       {form.title && (
         <div style={{ marginTop: 24, background: '#F8FAFF', border: `1.5px solid ${S.cardBorder}`, borderRadius: 12, padding: 20 }}>
-          <div style={{ color: S.textMuted, fontSize: 11, fontFamily: 'Outfit,sans-serif', textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: 12, fontWeight: 700 }}>📖 Card Preview</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: S.textMuted, fontSize: 11, fontFamily: 'Outfit,sans-serif', textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: 12, fontWeight: 700 }}>
+            <FaBook style={{ color: S.orange, fontSize: 12 }} /> Card Preview
+          </div>
           <div style={{ display: 'flex', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
             {form.category && <span style={{ background: S.orangeLight, color: S.orange, fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 999, fontFamily: 'Outfit,sans-serif' }}>{form.category}</span>}
-            {form.featured && <span style={{ background: 'rgba(245,158,11,0.12)', color: S.yellow, fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 999, fontFamily: 'Outfit,sans-serif' }}>⭐ Featured</span>}
+            {form.featured && (
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, background: 'rgba(245,158,11,0.12)', color: S.yellow, fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 999, fontFamily: 'Outfit,sans-serif' }}>
+                <FaStar style={{ fontSize: 9 }} /> Featured
+              </span>
+            )}
             <Badge label={form.status} />
           </div>
           <div style={{ color: S.text, fontSize: 16, fontWeight: 800, fontFamily: 'Outfit,sans-serif', marginBottom: 6, lineHeight: 1.3 }}>{form.title}</div>
@@ -776,35 +803,44 @@ function Blogs({ blogs, setBlogs }) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', flex: 1 }}>
-          <input placeholder="🔍  Search blogs..." value={search} onChange={e => setSearch(e.target.value)}
-            style={{ flex: 1, minWidth: 200, maxWidth: 300, background: '#fff', border: `1.5px solid ${S.cardBorder}`, borderRadius: 10, padding: '9px 14px', color: S.text, fontSize: 14, fontFamily: 'Outfit,sans-serif', outline: 'none', boxShadow: S.cardShadow }}
-            onFocus={e => { e.target.style.borderColor = S.orange; e.target.style.boxShadow = '0 0 0 3px rgba(255,122,0,0.1)' }}
-            onBlur={e => { e.target.style.borderColor = S.cardBorder; e.target.style.boxShadow = S.cardShadow }}
-          />
+          <div style={{ flex: 1, minWidth: 200, maxWidth: 300, position: 'relative' }}>
+            <FaSearch style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: S.textDim, fontSize: 13, pointerEvents: 'none' }} />
+            <input
+              placeholder="Search blogs..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              style={{ width: '100%', background: '#fff', border: `1.5px solid ${S.cardBorder}`, borderRadius: 10, padding: '9px 14px 9px 36px', color: S.text, fontSize: 14, fontFamily: 'Outfit,sans-serif', outline: 'none', boxShadow: S.cardShadow, boxSizing: 'border-box' }}
+              onFocus={e => { e.target.style.borderColor = S.orange; e.target.style.boxShadow = '0 0 0 3px rgba(255,122,0,0.1)' }}
+              onBlur={e => { e.target.style.borderColor = S.cardBorder; e.target.style.boxShadow = S.cardShadow }}
+            />
+          </div>
           {['all', 'published', 'draft'].map(f => (
             <Btn key={f} variant={filter === f ? 'primary' : 'secondary'} size="sm" onClick={() => setFilter(f)}>
               {f.charAt(0).toUpperCase() + f.slice(1)} {f !== 'all' && `(${blogs.filter(b => b.status === f).length})`}
             </Btn>
           ))}
         </div>
-        <Btn variant="primary" onClick={() => { setEditing(null); setView('editor') }}>✍️ New Blog Post</Btn>
+        <Btn variant="primary" onClick={() => { setEditing(null); setView('editor') }}>
+          <FaPlus style={{ fontSize: 12 }} /> New Blog Post
+        </Btn>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 18 }}>
         {filtered.map(b => (
           <Card key={b.id} style={{ overflow: 'hidden' }}>
             <div style={{
-              height: 130, background: b.image ? 'none' : 'linear-gradient(135deg, #fff7ed, #fef3c7)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 40,
+              height: 130,
+              background: b.image ? 'none' : 'linear-gradient(135deg, #fff7ed, #fef3c7)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
               position: 'relative', overflow: 'hidden', borderBottom: `1px solid ${S.cardBorder}`
             }}>
               {b.image
                 ? <img src={b.image} alt={b.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => e.target.style.display = 'none'} />
-                : '📝'
+                : <FaPenNib style={{ fontSize: 36, color: S.orange, opacity: 0.35 }} />
               }
               {b.featured && (
-                <div style={{ position: 'absolute', top: 10, left: 10, background: S.yellow, color: '#fff', fontSize: 10, fontWeight: 800, padding: '4px 10px', borderRadius: 999, fontFamily: 'Outfit,sans-serif', boxShadow: '0 2px 8px rgba(245,158,11,0.4)' }}>
-                  ⭐ FEATURED
+                <div style={{ position: 'absolute', top: 10, left: 10, display: 'flex', alignItems: 'center', gap: 4, background: S.yellow, color: '#fff', fontSize: 10, fontWeight: 800, padding: '4px 10px', borderRadius: 999, fontFamily: 'Outfit,sans-serif', boxShadow: '0 2px 8px rgba(245,158,11,0.4)' }}>
+                  <FaStar style={{ fontSize: 9 }} /> FEATURED
                 </div>
               )}
               <div style={{ position: 'absolute', top: 10, right: 10 }}>
@@ -826,15 +862,24 @@ function Blogs({ blogs, setBlogs }) {
                 ))}
               </div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: `1px solid ${S.cardBorder}`, paddingTop: 12 }}>
-                <div style={{ color: S.textMuted, fontSize: 11, fontFamily: 'Outfit,sans-serif' }}>
-                  👤 {b.author} · 👁 {b.views.toLocaleString()}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: S.textMuted, fontSize: 11, fontFamily: 'Outfit,sans-serif' }}>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                    <FaUser style={{ fontSize: 10 }} /> {b.author}
+                  </span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                    <FaEye style={{ fontSize: 10 }} /> {b.views.toLocaleString()}
+                  </span>
                 </div>
                 <div style={{ display: 'flex', gap: 7 }}>
-                  <Btn variant="secondary" size="sm" onClick={() => { setEditing(b); setView('editor') }}>✏️</Btn>
-                  <Btn variant={b.status === 'published' ? 'secondary' : 'success'} size="sm" onClick={() => toggleStatus(b.id)}>
-                    {b.status === 'published' ? 'Unpublish' : '🚀 Publish'}
+                  <Btn variant="secondary" size="sm" onClick={() => { setEditing(b); setView('editor') }}>
+                    <FaEdit style={{ fontSize: 11 }} />
                   </Btn>
-                  <Btn variant="danger" size="sm" onClick={() => deleteBlog(b.id)}>🗑</Btn>
+                  <Btn variant={b.status === 'published' ? 'secondary' : 'success'} size="sm" onClick={() => toggleStatus(b.id)}>
+                    {b.status === 'published' ? 'Unpublish' : <><FaRocket style={{ fontSize: 11 }} /> Publish</>}
+                  </Btn>
+                  <Btn variant="danger" size="sm" onClick={() => deleteBlog(b.id)}>
+                    <FaTrash style={{ fontSize: 11 }} />
+                  </Btn>
                 </div>
               </div>
             </div>
@@ -844,11 +889,11 @@ function Blogs({ blogs, setBlogs }) {
 
       {filtered.length === 0 && (
         <div style={{ textAlign: 'center', padding: 60 }}>
-          <div style={{ fontSize: 48, marginBottom: 12 }}>📝</div>
-          <div style={{ color: S.textMuted, fontFamily: 'Outfit,sans-serif', fontSize: 15 }}>No blog posts found</div>
-          <div style={{ marginTop: 16 }}>
-            <Btn variant="primary" onClick={() => { setEditing(null); setView('editor') }}>✍️ Write First Post</Btn>
-          </div>
+          <FaPenNib style={{ fontSize: 44, color: S.textDim, marginBottom: 12 }} />
+          <div style={{ color: S.textMuted, fontFamily: 'Outfit,sans-serif', fontSize: 15, marginBottom: 16 }}>No blog posts found</div>
+          <Btn variant="primary" onClick={() => { setEditing(null); setView('editor') }}>
+            <FaPlus style={{ fontSize: 12 }} /> Write First Post
+          </Btn>
         </div>
       )}
     </div>
@@ -856,13 +901,13 @@ function Blogs({ blogs, setBlogs }) {
 }
 
 // ══════════════════════════════════════════════════════
-//  NAV
+//  NAV — react-icons instead of emoji
 // ══════════════════════════════════════════════════════
 const NAV = [
-  { id: 'dashboard', icon: '📊', label: 'Dashboard' },
-  { id: 'contacts', icon: '📋', label: 'Contacts' },
-  { id: 'queries', icon: '💬', label: 'Queries' },
-  { id: 'blogs', icon: '✍️', label: 'Blogs' },
+  { id: 'dashboard', icon: <FaChartPie />, label: 'Dashboard' },
+  { id: 'contacts', icon: <FaAddressBook />, label: 'Contacts' },
+  { id: 'queries', icon: <FaComments />, label: 'Queries' },
+  { id: 'blogs', icon: <FaPenNib />, label: 'Blogs' },
 ]
 
 // ══════════════════════════════════════════════════════
@@ -881,207 +926,160 @@ export default function AdminPanel() {
     blogs: blogs.filter(b => b.status === 'draft').length,
   }
 
+  const currentNav = NAV.find(n => n.id === page)
+
   return (
     <>
-    <div style={{ display: 'flex', minHeight: '100vh', fontFamily: 'Outfit, sans-serif' }}>
+      <div style={{ display: 'flex', minHeight: '100vh', fontFamily: 'Outfit, sans-serif' }}>
 
-      {/* ── SIDEBAR (dark) ── */}
-      <div style={{
-        width: 224, background: S.navy, borderRight: `1px solid ${S.navyBorder}`,
-        display: 'flex', flexDirection: 'column', padding: '0 0 24px',
-        flexShrink: 0, position: 'sticky', top: 0, height: '100vh'
-      }}>
-        <div style={{ padding: '22px 20px 18px', borderBottom: `1px solid ${S.navyBorder}` }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-             <img src={Logo} className='w-10 object-contain' alt="" />
-            <div>
-              <div style={{ color: '#fff', fontWeight: 800, fontSize: 15, marginTop:10, lineHeight: 1.1 }}>Urban <span style={{ color: S.orange }}>Energy</span></div>
-              <div style={{ color: S.sideTextDim, fontSize: 10, fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase' }}>Admin Panel</div>
+        {/* ── SIDEBAR ── */}
+        <div style={{
+          width: 224, background: S.navy, borderRight: `1px solid ${S.navyBorder}`,
+          display: 'flex', flexDirection: 'column', padding: '0 0 24px',
+          flexShrink: 0, position: 'sticky', top: 0, height: '100vh'
+        }}>
+          <div style={{ padding: '22px 20px 18px', borderBottom: `1px solid ${S.navyBorder}` }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <img src={Logo} className='w-10 object-contain' alt="" />
+              <div>
+                <div style={{ color: '#fff', fontWeight: 800, fontSize: 15, marginTop: 10, lineHeight: 1.1 }}>Urban <span style={{ color: S.orange }}>Energy</span></div>
+                <div style={{ color: S.sideTextDim, fontSize: 10, fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase' }}>Admin Panel</div>
+              </div>
+            </div>
+          </div>
+
+          <nav style={{ flex: 1, padding: '14px 10px', display: 'flex', flexDirection: 'column', gap: 3 }}>
+            {NAV.map(item => {
+              const active = page === item.id
+              return (
+                <button key={item.id} onClick={() => setPage(item.id)} style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  gap: 10, padding: '11px 13px', borderRadius: 11, border: 'none', cursor: 'pointer',
+                  background: active ? 'linear-gradient(135deg, rgba(255,122,0,0.18), rgba(255,193,7,0.08))' : 'transparent',
+                  color: active ? S.orange : S.sideTextMuted,
+                  fontFamily: 'Outfit,sans-serif', fontSize: 14, fontWeight: 600,
+                  transition: 'all 0.15s', textAlign: 'left', width: '100%',
+                  borderLeft: active ? `3px solid ${S.orange}` : '3px solid transparent',
+                }}
+                  onMouseEnter={e => { if (!active) { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.color = '#fff' } }}
+                  onMouseLeave={e => { if (!active) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = S.sideTextMuted } }}
+                >
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <span style={{ fontSize: 15, display: 'flex', alignItems: 'center' }}>{item.icon}</span>
+                    {item.label}
+                  </span>
+                  {badge[item.id] > 0 && (
+                    <span style={{
+                      background: item.id === 'queries' ? '#dc2626' : S.orange,
+                      color: '#fff', fontSize: 10, fontWeight: 800, padding: '2px 8px',
+                      borderRadius: 999, minWidth: 20, textAlign: 'center',
+                      boxShadow: `0 2px 8px ${item.id === 'queries' ? 'rgba(220,38,38,0.4)' : 'rgba(255,122,0,0.4)'}`
+                    }}>{badge[item.id]}</span>
+                  )}
+                </button>
+              )
+            })}
+          </nav>
+
+          <div onClick={() => setShowProfile(true)} style={{ padding: '14px 16px', borderTop: `1px solid ${S.navyBorder}`, cursor: 'pointer' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <div style={{
+                width: 34, height: 34, borderRadius: '50%', background: S.orange,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: '#fff', fontWeight: 800, fontSize: 13,
+                boxShadow: '0 3px 10px rgba(255,122,0,0.35)'
+              }}>A</div>
+              <div>
+                <div style={{ color: '#fff', fontSize: 13, fontWeight: 700 }}>Admin</div>
+                <div style={{ color: S.sideTextDim, fontSize: 11 }}>Super Admin</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <nav style={{ flex: 1, padding: '14px 10px', display: 'flex', flexDirection: 'column', gap: 3 }}>
-          {NAV.map(item => {
-            const active = page === item.id
-            return (
-              <button key={item.id} onClick={() => setPage(item.id)} style={{
-                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                gap: 10, padding: '11px 13px', borderRadius: 11, border: 'none', cursor: 'pointer',
-                background: active ? 'linear-gradient(135deg, rgba(255,122,0,0.18), rgba(255,193,7,0.08))' : 'transparent',
-                color: active ? S.orange : S.sideTextMuted,
-                fontFamily: 'Outfit,sans-serif', fontSize: 14, fontWeight: 600,
-                transition: 'all 0.15s', textAlign: 'left', width: '100%',
-                borderLeft: active ? `3px solid ${S.orange}` : '3px solid transparent',
-              }}
-                onMouseEnter={e => { if (!active) { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.color = '#fff' } }}
-                onMouseLeave={e => { if (!active) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = S.sideTextMuted } }}
+        {/* ── MAIN ── */}
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0, background: S.bg }}>
+          {/* Topbar */}
+          <div style={{
+            background: '#fff', borderBottom: `1.5px solid ${S.cardBorder}`,
+            padding: '14px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            position: 'sticky', top: 0, zIndex: 10, boxShadow: '0 2px 12px rgba(11,31,58,0.06)'
+          }}>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: S.text, fontSize: 19, fontWeight: 900, fontFamily: 'Outfit,sans-serif' }}>
+                <span style={{ color: S.orange, fontSize: 18, display: 'flex', alignItems: 'center' }}>{currentNav?.icon}</span>
+                {currentNav?.label}
+              </div>
+              <div style={{ color: S.textDim, fontSize: 12, fontFamily: 'Outfit,sans-serif' }}>Urban Energy — Solar Admin</div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(22,163,74,0.08)', border: '1.5px solid rgba(22,163,74,0.22)', borderRadius: 999, padding: '5px 13px' }}>
+                <div style={{ width: 7, height: 7, borderRadius: '50%', background: S.green, boxShadow: '0 0 0 3px rgba(22,163,74,0.2)' }} />
+                <span style={{ color: S.green, fontSize: 12, fontWeight: 700, fontFamily: 'Outfit,sans-serif' }}>Live</span>
+              </div>
+              <div style={{ color: S.textMuted, fontSize: 12, fontFamily: 'Outfit,sans-serif', fontWeight: 600 }}>
+                {new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+              </div>
+            </div>
+          </div>
+
+          {/* Page content */}
+          <div style={{ padding: 28, flex: 1, overflowY: 'auto' }}>
+            {page === 'dashboard' && <Dashboard contacts={contacts} queries={queries} blogs={blogs} />}
+            {page === 'contacts' && <Contacts contacts={contacts} setContacts={setContacts} />}
+            {page === 'queries' && <Queries queries={queries} setQueries={setQueries} />}
+            {page === 'blogs' && <Blogs blogs={blogs} setBlogs={setBlogs} />}
+          </div>
+        </div>
+
+      </div>
+
+      {/* ── PROFILE MODAL ── */}
+      {showProfile && (
+        <div
+          onClick={() => setShowProfile(false)}
+          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999 }}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{ width: 320, background: '#fff', borderRadius: 16, padding: 24, boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+              <div style={{ width: 50, height: 50, borderRadius: '50%', background: '#FF7A00', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 18 }}>A</div>
+              <div>
+                <div style={{ fontWeight: 700, fontSize: 16, color: S.text }}>Admin User</div>
+                <div style={{ fontSize: 12, color: S.textMuted }}>Super Admin</div>
+              </div>
+            </div>
+
+            {/* Info rows with react-icons */}
+            {[
+              { icon: <FaEnvelope style={{ color: S.orange, fontSize: 13 }} />, text: 'admin@urbanenergy.com' },
+              { icon: <FaMapMarkerAlt style={{ color: S.orange, fontSize: 13 }} />, text: 'Lucknow, India' },
+              { icon: <FaCheckCircle style={{ color: S.green, fontSize: 13 }} />, text: 'Status: Active' },
+            ].map((row, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: S.text, marginBottom: 12, fontFamily: 'Outfit,sans-serif' }}>
+                {row.icon} {row.text}
+              </div>
+            ))}
+
+            <div style={{ borderTop: `1px solid ${S.cardBorder}`, marginTop: 8, paddingTop: 16, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <button
+                style={{ width: '100%', padding: '10px', background: S.orange, color: '#fff', border: 'none', borderRadius: 10, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, fontFamily: 'Outfit,sans-serif', fontSize: 14 }}
+                onClick={() => { alert('Logged out!'); setShowProfile(false) }}
               >
-                <span style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <span style={{ fontSize: 17 }}>{item.icon}</span>
-                  {item.label}
-                </span>
-                {badge[item.id] > 0 && (
-                  <span style={{
-                    background: item.id === 'queries' ? '#dc2626' : S.orange,
-                    color: '#fff', fontSize: 10, fontWeight: 800, padding: '2px 8px',
-                    borderRadius: 999, minWidth: 20, textAlign: 'center',
-                    boxShadow: `0 2px 8px ${item.id === 'queries' ? 'rgba(220,38,38,0.4)' : 'rgba(255,122,0,0.4)'}`
-                  }}>{badge[item.id]}</span>
-                )}
+                <FaSignOutAlt style={{ fontSize: 14 }} /> Logout
               </button>
-            )
-          })}
-        </nav>
-
-        <div  onClick={() => setShowProfile(true)} style={{ padding: '14px 16px', borderTop: `1px solid ${S.navyBorder},cursor: 'pointer' ` }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{
-              width: 34, height: 34, borderRadius: '50%', background: S.orange,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              color: '#fff', fontWeight: 800, fontSize: 13,
-              boxShadow: '0 3px 10px rgba(255,122,0,0.35)'
-            }}>A</div>
-            <div>
-              <div style={{ color: '#fff', fontSize: 13, fontWeight: 700 }}>Admin</div>
-              <div style={{ color: S.sideTextDim, fontSize: 11 }}>Super Admin</div>
+              <button
+                style={{ width: '100%', padding: '10px', background: '#eee', border: 'none', borderRadius: 10, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, fontFamily: 'Outfit,sans-serif', fontSize: 14, color: S.text }}
+                onClick={() => setShowProfile(false)}
+              >
+                <FaTimes style={{ fontSize: 13 }} /> Close
+              </button>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* ── MAIN (light) ── */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0, background: S.bg }}>
-        {/* Topbar */}
-        <div style={{
-          background: '#fff', borderBottom: `1.5px solid ${S.cardBorder}`,
-          padding: '14px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          position: 'sticky', top: 0, zIndex: 10, boxShadow: '0 2px 12px rgba(11,31,58,0.06)'
-        }}>
-          <div>
-            <div style={{ color: S.text, fontSize: 19, fontWeight: 900, fontFamily: 'Outfit,sans-serif' }}>
-              {NAV.find(n => n.id === page)?.icon} {NAV.find(n => n.id === page)?.label}
-            </div>
-            <div style={{ color: S.textDim, fontSize: 12, fontFamily: 'Outfit,sans-serif' }}>Urban Energy — Solar Admin</div>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            <div style={{
-              display: 'flex', alignItems: 'center', gap: 7,
-              background: 'rgba(22,163,74,0.08)', border: '1.5px solid rgba(22,163,74,0.22)',
-              borderRadius: 999, padding: '5px 13px'
-            }}>
-              <div style={{ width: 7, height: 7, borderRadius: '50%', background: S.green, boxShadow: '0 0 0 3px rgba(22,163,74,0.2)' }} />
-              <span style={{ color: S.green, fontSize: 12, fontWeight: 700, fontFamily: 'Outfit,sans-serif' }}>Live</span>
-            </div>
-            <div style={{ color: S.textMuted, fontSize: 12, fontFamily: 'Outfit,sans-serif', fontWeight: 600 }}>
-              {new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
-            </div>
-          </div>
-        </div>
-
-        {/* Page content */}
-        <div style={{ padding: 28, flex: 1, overflowY: 'auto' }}>
-          {page === 'dashboard' && <Dashboard contacts={contacts} queries={queries} blogs={blogs} />}
-          {page === 'contacts' && <Contacts contacts={contacts} setContacts={setContacts} />}
-          {page === 'queries' && <Queries queries={queries} setQueries={setQueries} />}
-          {page === 'blogs' && <Blogs blogs={blogs} setBlogs={setBlogs} />}
-        </div>
-      </div>
-      
-    </div>
-    {showProfile && (
-  <div
-    onClick={() => setShowProfile(false)}
-    style={{
-      position: 'fixed',
-      inset: 0,
-      background: 'rgba(0,0,0,0.4)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 9999
-    }}
-  >
-    <div
-      onClick={(e) => e.stopPropagation()}
-      style={{
-        width: 320,
-        background: '#fff',
-        borderRadius: 16,
-        padding: 20,
-        boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
-      }}
-    >
-      {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-        <div style={{
-          width: 50,
-          height: 50,
-          borderRadius: '50%',
-          background: '#FF7A00',
-          color: '#fff',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontWeight: 800,
-          fontSize: 18
-        }}>
-          A
-        </div>
-
-        <div>
-          <div style={{ fontWeight: 700, fontSize: 16 }}>Admin User</div>
-          <div style={{ fontSize: 12, color: '#666' }}>Super Admin</div>
-        </div>
-      </div>
-
-      {/* Info */}
-      <div style={{ fontSize: 13, color: '#333', marginBottom: 10 }}>
-        📧 admin@urbanenergy.com
-      </div>
-      <div style={{ fontSize: 13, color: '#333', marginBottom: 10 }}>
-        📍 Lucknow, India
-      </div>
-      <div style={{ fontSize: 13, color: '#333', marginBottom: 20 }}>
-        🟢 Status: Active
-      </div>
-
-      {/* Buttons */}
-      <button
-        style={{
-          width: '100%',
-          padding: '10px',
-          background: S.orange,
-          color: '#fff',
-          border: 'none',
-          borderRadius: 10,
-          fontWeight: 700,
-          cursor: 'pointer'
-        }}
-        onClick={() => {
-          alert('Logged out!')
-          setShowProfile(false)
-        }}
-      >
-        Logout
-      </button>
-
-      <button
-        style={{
-          width: '100%',
-          marginTop: 10,
-          padding: '10px',
-          background: '#eee',
-          border: 'none',
-          borderRadius: 10,
-          cursor: 'pointer'
-        }}
-        onClick={() => setShowProfile(false)}
-      >
-        Close
-      </button>
-    </div>
-  </div>
-)}</>
+      )}
+    </>
   )
 }
