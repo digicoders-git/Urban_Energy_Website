@@ -21,7 +21,7 @@ export default function ContactPage() {
             Get a free site survey and customized solar proposal within 24 hours. Our experts are ready to help you start saving.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="flex flex-wrap justify-center gap-8 mt-8">
-            {[['Free', 'Site Survey'], ['24 hrs', 'Response Time'], ['₹0', 'Consultation Fee'], ['5000+', 'Happy Customers']].map(([val, lbl]) => (
+            {[['Free', 'Site Survey'], ['24 hrs', 'Response Time'], ['₹0', 'Consultation Fee'], ['Premium', 'Service']].map(([val, lbl]) => (
               <div key={lbl} className="text-center">
                 <div className="font-outfit text-xl font-black text-orange">{val}</div>
                 <div className="text-white/50 text-xs mt-0.5">{lbl}</div>

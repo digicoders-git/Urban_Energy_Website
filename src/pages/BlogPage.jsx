@@ -12,7 +12,7 @@ const FALLBACK_POSTS = [
     category: "Government Schemes", author: "Admin", date: "01 May 2025",
     views: 4821, readTime: "8 min",
     image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
-    bg: "from-[#0B1F3A] to-[#1a3a6b]",
+    bg: "from-[#112378] to-[#1a3a6b]",
     tags: ["subsidy", "MNRE", "PM Surya Ghar", "government"],
     content: `<h2>What is PM Surya Ghar Muft Bijli Yojana?</h2>
       <p>Launched in February 2024, PM Surya Ghar Muft Bijli Yojana is India's largest rooftop solar scheme. It aims to provide free electricity to 1 crore households and offers a central government subsidy of up to ₹78,000 for installing a 3 kW system.</p>
@@ -23,19 +23,19 @@ const FALLBACK_POSTS = [
       <p>This is the central government subsidy. Many states like Uttar Pradesh, Rajasthan, and Gujarat offer additional state-level subsidies on top of this amount.</p>
       <h2>Documents Required</h2>
       <ul><li>Aadhaar Card (mandatory)</li><li>Recent electricity bill (last 3 months)</li><li>Bank account details (for direct benefit transfer)</li><li>Roof ownership or landlord's NOC</li><li>Passport-size photograph</li></ul>
-      <div class="highlight-box"><p>Urban Energy has successfully processed ₹12 crore+ in government subsidies for 5000+ customers. We handle 100% of the paperwork — you just enjoy free electricity!</p></div>`,
+      <div class="highlight-box"><p>Urban Energy helps simplify government subsidies for your energy needs. We handle 100% of the paperwork — you just enjoy free electricity!</p></div>`,
   },
   {
     id: 2, featured: false,
     title: "Top 5 Solar Panel Brands in India 2025 — Honest Review",
-    excerpt: "We tested and compared the best solar panels available in India. From efficiency ratings to warranty terms — here is what actually matters.",
+    excerpt: "We tested and compared the best solar panels available in India. From efficiency ratings to performance metrics — here is what actually matters.",
     category: "Product Reviews", author: "Admin", date: "24 Apr 2025",
     views: 3104, readTime: "6 min",
     image: "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80",
     bg: "from-[#1a3a6b] to-[#2d5a9e]",
     tags: ["reviews", "panels", "brands", "efficiency"],
     content: `<h2>How We Evaluated These Panels</h2>
-      <p>We assessed each brand across five parameters: efficiency, warranty, price-to-performance, availability of service centres in India, and customer satisfaction scores from our 5000+ installations.</p>
+      <p>We assessed each brand across five parameters: efficiency, reliability, price-to-performance, availability of service centres in India, and our team satisfaction checks.</p>
       <h2>The Top 5 Brands</h2>
       <ul><li><strong>Waaree Energies</strong> — India's #1 exporter. Best value for money with 22%+ efficiency mono-PERC panels.</li><li><strong>Adani Solar</strong> — Premium quality with strong after-sales support across India.</li><li><strong>Vikram Solar</strong> — Excellent for commercial projects with high-power TOPCon modules.</li><li><strong>Loom Solar</strong> — Best for small residential (1–3 kW) with affordable bifacial panels.</li><li><strong>Tata Power Solar</strong> — Most trusted brand name with pan-India service network.</li></ul>
       <div class="highlight-box"><p>Our recommendation: For residential 3–5 kW systems in UP, Waaree or Loom Solar offer the best value. For commercial 10 kW+, Adani or Vikram Solar is the clear choice.</p></div>`,
@@ -140,7 +140,7 @@ const TAGS = ["solar", "subsidy", "rooftop", "net metering", "battery", "UP", "i
 // ─── TOAST ───────────────────────────────────────────────────────────────────
 function Toast({ msg, visible }) {
   return (
-    <div className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#0B1F3A] text-white px-5 py-3 rounded-xl border-l-4 border-[#FF7A00] text-sm font-semibold shadow-2xl transition-all duration-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none"}`}>
+    <div className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#112378] text-white px-5 py-3 rounded-xl border-l-4 border-[#FF7A00] text-sm font-semibold shadow-2xl transition-all duration-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none"}`}>
       <span>✓</span> {msg}
     </div>
   );
@@ -149,7 +149,7 @@ function Toast({ msg, visible }) {
 // ─── NAV ─────────────────────────────────────────────────────────────────────
 function Navbar({ onNavClick }) {
   return (
-    <nav className="sticky top-0 z-40 bg-[#0B1F3A] border-b border-[#FF7A00]/20 shadow-lg">
+    <nav className="sticky top-0 z-40 bg-[#112378] border-b border-[#FF7A00]/20 shadow-lg">
       <div className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
         <button onClick={() => onNavClick("home")} className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#FF7A00] to-[#FFC107] flex items-center justify-center text-white text-xs font-black">UE</div>
@@ -171,7 +171,7 @@ function Navbar({ onNavClick }) {
 // ─── HERO ────────────────────────────────────────────────────────────────────
 function Hero({ totalPosts }) {
   return (
-    <div className="relative bg-gradient-to-br from-[#0B1F3A] to-[#1a3a6b] overflow-hidden">
+    <div className="relative bg-gradient-to-br from-[#112378] to-[#1a3a6b] overflow-hidden">
       <div className="absolute -top-40 right-0 w-[500px] h-[500px] rounded-full bg-[#FF7A00]/10 blur-3xl pointer-events-none" />
       <div className="relative z-10 max-w-7xl mx-auto px-5 py-10 md:py-12 flex justify-center">
         <div className="max-w-2xl flex flex-col items-center text-center">

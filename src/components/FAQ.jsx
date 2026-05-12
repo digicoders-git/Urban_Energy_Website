@@ -24,8 +24,8 @@ const faqs = [
     a: 'Solar panels are extremely low-maintenance. Periodic cleaning (once a month in dusty areas) and an annual health check-up are typically all that\'s needed. Our AMC plans cover all monitoring, cleaning, and maintenance for complete peace of mind.',
   },
   {
-    q: 'What warranties do you provide?',
-    a: 'We provide a 25-year performance warranty and 10-year product warranty on panels, a 5-year warranty on inverters, and a 1-year workmanship warranty on all installations. We also assist with warranty claims throughout the product life.',
+    q: 'How is long-term system performance ensured?',
+    a: 'We only source high-efficiency, Tier-1 certified modules built to last for decades. Combined with systematic professional installation, periodic health checks, and live app-based monitoring, we ensure your system consistently operates at maximum capability.',
   },
 ]
 

@@ -19,7 +19,7 @@ export default function SubsidyCalc() {
     <section
       id="subsidy"
       className="py-20 px-5 relative overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #0B1F3A 0%, #1a3a6b 100%)' }}
+      style={{ background: 'linear-gradient(135deg, #112378 0%, #1a3a6b 100%)' }}
     >
       <div
         className="absolute inset-0 pointer-events-none"

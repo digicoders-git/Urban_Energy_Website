@@ -116,7 +116,7 @@ export default function FAQPage() {
     <a
       href="tel:+919800012345"
       className="btn-outline flex items-center gap-2 justify-center"
-      style={{ color: '#0B1F3A', borderColor: 'rgba(11,31,58,0.3)' }}
+      style={{ color: '#112378', borderColor: 'rgba(11,31,58,0.3)' }}
     >
       <FaPhoneAlt />
       Call Us Now

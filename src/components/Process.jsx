@@ -21,9 +21,9 @@ export default function Process() {
         >
           <span className="section-tag">How It Works</span>
           <h2 className="section-title">
-            Simple 4-Step <span className="text-orange">Process</span>
+            Simple 4-Step <span className="glow-text">Process</span>
           </h2>
-          <p className="text-slate-500 mt-3 max-w-md mx-auto">
+          <p className="text-slate-500 mt-3 max-w-md mx-auto font-space">
             From inquiry to powering your home — we make going solar completely hassle-free.
           </p>
         </motion.div>
@@ -48,8 +48,8 @@ export default function Process() {
               >
                 {s.num}
               </motion.div>
-              <h3 className="font-outfit font-bold text-lg text-navy mb-2">{s.title}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
+              <h3 className="font-space font-bold text-lg text-navy mb-2">{s.title}</h3>
+              <p className="text-slate-500 text-sm font-space leading-relaxed">{s.desc}</p>
             </motion.div>
           ))}
         </div>

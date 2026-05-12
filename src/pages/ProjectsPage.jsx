@@ -21,10 +21,10 @@ export default function ProjectsPage() {
             <span style={{ background: 'linear-gradient(90deg, #FF7A00, #FFC107)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Real Impact</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="text-white/60 text-lg leading-relaxed max-w-2xl mx-auto mb-8">
-            Over 5,000 installations across Uttar Pradesh and India. See how we're transforming energy consumption one rooftop at a time.
+            Specialized configurations across Uttar Pradesh. See how we're transforming energy consumption one rooftop at a time.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="flex flex-wrap justify-center gap-6">
-            {[['5000+', 'Installations'], ['15 MW', 'Capacity'], ['₹12Cr+', 'Savings'], ['4.9★', 'Rating']].map(([val, lbl]) => (
+            {[['MNRE', 'Empanelled'], ['Top-Tier', 'Grade'], ['Premium', 'Builds'], ['4.9★', 'Rating']].map(([val, lbl]) => (
               <div key={lbl} className="text-center">
                 <div className="font-outfit text-2xl font-black text-orange">{val}</div>
                 <div className="text-white/50 text-xs mt-0.5">{lbl}</div>
@@ -40,7 +40,7 @@ export default function ProjectsPage() {
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #FF7A00, transparent 60%)' }} />
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center relative z-10">
           <h3 className="font-outfit text-2xl md:text-3xl font-black text-white mb-3">Your Project Could Be Next </h3>
-          <p className="text-white/60 mb-7">Join 5,000+ happy customers who've made the switch to solar.</p>
+          <p className="text-white/60 mb-7">Take the definitive next step towards reliable, affordable renewable power.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact" className="btn-primary">Start My Project</Link>
             <Link to="/calculator" className="btn-outline">Calculate Savings</Link>

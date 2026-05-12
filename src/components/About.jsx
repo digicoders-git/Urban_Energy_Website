@@ -8,19 +8,20 @@ import {
   User, UserCog, UserCheck, Headphones
 } from "lucide-react";
 import { FaUser } from "react-icons/fa";
+import Logo from '../../public/urbanlogo.png'
 
 const stats = [
-  { num: '2015', label: 'Founded', icon: <Building2 size={28} /> },
-  { num: '5000+', label: 'Installations', icon: <Zap size={28} /> },
-  { num: '15 MW', label: 'Capacity Installed', icon: <Sun size={28} /> },
-  { num: '₹12Cr+', label: 'Savings Generated', icon: <IndianRupee size={28} /> },
+  { num: '24/7', label: 'Expert Support', icon: <Headphones size={28} /> },
+  { num: '100%', label: 'Client Commitment', icon: <Sprout size={28} /> },
+  { num: 'Premium', label: 'Tech Integration', icon: <FlaskConical size={28} /> },
+  { num: 'MNRE', label: 'Standards Met', icon: <Award size={28} /> },
 ];
 
 const team = [
-  { name: 'Arjun Mehta', role: 'Founder & CEO', emoji: <User size={40} />, exp: '12 yrs in Renewable Energy' },
-  { name: 'Priya Sharma', role: 'Head of Engineering', emoji: <UserCog size={40} />, exp: 'IIT Kanpur, 9 yrs experience' },
-  { name: 'Rohit Verma', role: 'Operations Lead', emoji: <UserCheck size={40} />, exp: '500+ projects delivered' },
-  { name: 'Neha Singh', role: 'Customer Success', emoji: <Headphones size={40} />, exp: '98% satisfaction rate' },
+  { name: 'Arjun Mehta', role: 'Founder & CEO', emoji: <User size={40} />, exp: 'Renewable Energy Specialist' },
+  { name: 'Priya Sharma', role: 'Head of Engineering', emoji: <UserCog size={40} />, exp: 'IIT Kanpur Tech Background' },
+  { name: 'Rohit Verma', role: 'Operations Lead', emoji: <UserCheck size={40} />, exp: 'Scalability Operations Expert' },
+  { name: 'Neha Singh', role: 'Customer Success', emoji: <Headphones size={40} />, exp: 'Support & Client Relations' },
 ];
 
 const values = [
@@ -45,12 +46,7 @@ const values = [
     desc: 'MNRE empanelled, DISCOM certified installers. We meet every government standard for quality and safety.'
   },
 ];
-const milestones = [
-  { year: '2015', title: 'Company founded in Lucknow', desc: 'First residential installation completed. A small team, a big vision.' },
-  { year: '2018', title: '500th installation milestone', desc: 'Expanded to commercial and industrial segment. MNRE empanelment received.' },
-  { year: '2021', title: 'Crossed 5 MW installed capacity', desc: 'Launched AMC & O&M division. Expanded across UP with regional offices.' },
-  { year: '2024', title: 'PM Surya Ghar Yojana partner', desc: '5,000+ installations. 15 MW capacity. ₹12 Cr+ savings generated for customers.' },
-]
+
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
@@ -73,21 +69,22 @@ export default function About() {
         />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div {...fadeUp(0)}>
-            <span className="inline-flex items-center gap-2 bg-orange/15 border border-orange/30 text-orange px-4 py-1.5 rounded-full text-xs font-outfit font-bold uppercase tracking-widest mb-5">
-              <FaUser/> About Us
+            <span className="inline-flex items-center gap-2 bg-orange/15 border border-orange/30 text-orange px-5 py-2 rounded-full text-xs font-space font-bold uppercase tracking-widest mb-5">
+              <img src={Logo} alt="Urban Energy" className="w-4 h-4 object-contain" />
+              Urban Energy Corporate
             </span>
           </motion.div>
           <motion.h1
             {...fadeUp(0.1)}
-            className="font-outfit text-4xl md:text-6xl font-black text-white leading-tight mb-5"
+            className="font-orbitron text-4xl md:text-6xl font-black text-white leading-tight mb-5"
           >
-            Powering India's{' '}
+            Built on Values,{' '}
             <span style={{ background: 'linear-gradient(90deg,#FF7A00,#FFC107)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              Solar Future
+              Driven by Sun
             </span>
           </motion.h1>
           <motion.p {...fadeUp(0.2)} className="text-white/60 text-lg leading-relaxed max-w-2xl mx-auto">
-            Since 2015, Urban Energy has been at the forefront of India's solar revolution — delivering clean, affordable energy to homes and businesses across Uttar Pradesh and beyond.
+            Urban Energy has been at the forefront of India's solar revolution — delivering clean, affordable energy to homes and businesses across Uttar Pradesh and beyond.
           </motion.p>
         </div>
       </section>
@@ -134,13 +131,13 @@ export default function About() {
           <motion.div {...fadeUp(0)}>
             <span className="section-tag">Our Story</span>
             <h2 className="section-title mb-5">
-              Born From a <span className="text-orange">Mission</span>
+              Born From a <span className="glow-text">Mission</span>
             </h2>
             <p className="text-slate-500 leading-relaxed mb-5">
-              Urban Energy was founded in 2015 by a team of IIT engineers and clean-energy enthusiasts who saw a massive opportunity — India had one of the world's highest solar irradiance levels, yet solar penetration was less than 1%.
+              Urban Energy was founded by a team of IIT engineers and clean-energy enthusiasts who saw a massive opportunity — India had one of the world's highest solar irradiance levels, yet solar penetration was less than 1%.
             </p>
             <p className="text-slate-500 leading-relaxed mb-5">
-              We started with a single residential installation in Lucknow. Today, we've powered over 5,000 homes and businesses across UP, saving our customers more than ₹12 Crores in electricity costs and preventing thousands of tonnes of CO₂ emissions.
+              We focus on precise execution for customized solutions. We're built on the ambition to scale quickly across UP, providing state-of-the-art hardware to prevent future outages and reduce recurring electrical overheads for modern homes.
             </p>
             <p className="text-slate-500 leading-relaxed">
               We are MNRE empanelled, DISCOM certified, and proud partners of India's PM Surya Ghar Yojana — helping families claim up to ₹78,000 in government subsidies.
@@ -151,7 +148,7 @@ export default function About() {
               { icon: <Award size={26} />, title: 'MNRE Empanelled', sub: 'Certified by Ministry of New & Renewable Energy' },
               { icon: <ShieldCheck size={26} />, title: 'DISCOM Certified', sub: 'Approved by State Electricity Distribution Companies' },
               { icon: <Leaf size={26} />, title: 'PM Surya Ghar Partner', sub: 'Official partner for government subsidy processing' },
-              { icon: <Lock size={26} />, title: '25-Year Warranty', sub: 'Industry-best performance guarantee on every panel' },
+              { icon: <Lock size={26} />, title: 'Premium Quality', sub: 'Industry-best performance guarantee on every system' },
             ].map((item, i) => (
               <div key={item.title} className="card">
                 <div className="text-3xl mb-3">{React.cloneElement(item.icon, {
@@ -177,7 +174,7 @@ export default function About() {
     >
       <span className="section-tag">Our Values</span>
       <h2 className="section-title">
-        What We <span className="text-orange">Stand For</span>
+        What We <span className="glow-text">Stand For</span>
       </h2>
     </motion.div>
 
@@ -212,39 +209,6 @@ export default function About() {
     </div>
   </div>
 </section>
-  {/* ── Timeline ── */}
-      <section className="py-20 px-5 bg-slate-50">
-        <div className="max-w-2xl mx-auto">
-          <motion.div {...fadeUp(0)} className="text-center text-xl mb-14">
-            <span className="section-tag">Journey</span>
-            <h2 className="section-title">
-              Our <span className="text-orange">Milestones</span>
-            </h2>
-          </motion.div>
-          <div className="flex flex-col">
-            {milestones.map((m, i) => (
-              <motion.div key={m.year} {...fadeUp(i * 0.1)} className="flex gap-5 pb-8 last:pb-0">
-                {/* Left line */}
-                <div className="flex flex-col items-center">
-                  <div
-                    className="w-3 h-3 rounded-full flex-shrink-0 mt-1"
-                    style={{ background: '#FF7A00', boxShadow: '0 0 0 3px rgba(255,122,0,0.2)' }}
-                  />
-                  {i < milestones.length - 1 && (
-                    <div className="w-px flex-1 mt-2 bg-gray-200" />
-                  )}
-                </div>
-                {/* Content */}
-                <div className="pb-2">
-                  <div className="font-outfit text-sm font-bold text-orange uppercase tracking-widest mb-1">{m.year}</div>
-                  <div className="font-outfit font-bold text-navy text-md mb-1">{m.title}</div>
-                  <div className="text-slate-500 text-md leading-relaxed">{m.desc}</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── Team ── */}
       <section className="py-8 px-5 bg-white">
@@ -252,7 +216,7 @@ export default function About() {
           <motion.div {...fadeUp(0)} className="text-center mb-14">
             <span className="section-tag">Our Team</span>
             <h2 className="section-title">
-              The Experts <span className="text-orange">Behind the Panels</span>
+              The Experts <span className="glow-text">Behind the Panels</span>
             </h2>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -282,15 +246,17 @@ export default function About() {
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 70% 50%, #FF7A00, transparent 60%)' }} />
         <motion.div {...fadeUp(0)} className="max-w-2xl mx-auto text-center relative z-10">
           <h2 className="font-outfit text-3xl md:text-4xl font-black text-white mb-4">
-            Ready to Join the{' '}
+            Ready to{' '}
             <span style={{ background: 'linear-gradient(90deg,#FF7A00,#FFC107)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              Solar Revolution?
+              Go Solar?
             </span>
           </h2>
-          <p className="text-white/60 mb-8">Get your free site survey and customized proposal within 24 hours.</p>
+          <p className="text-white/80 text-lg max-w-lg mx-auto mb-8">
+            Book a free home survey today. Our expert will visit, assess your roof, and give you a detailed savings report — completely free, no obligation.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn-primary">Get Free Quote </Link>
-            <Link to="/calculator" className="btn-outline">Calculate Savings</Link>
+            <Link to="/contact" className="bg-orange hover:bg-orange/90 text-white font-outfit font-bold px-10 py-4 rounded-full shadow-xl shadow-orange/30 transition-all duration-300 hover:-translate-y-1 no-underline text-center">Book Free Home Survey</Link>
+            <Link to="/calculator" className="border-2 border-white/30 hover:border-white text-white font-outfit font-bold px-10 py-4 rounded-full transition-all duration-300 hover:bg-white/10 no-underline text-center">Calculate Savings</Link>
           </div>
         </motion.div>
       </section>

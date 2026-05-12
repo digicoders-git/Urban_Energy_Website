@@ -4,17 +4,17 @@ import Logo from '../../public/urbanlogo.png'
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock,FaFacebookF, FaLinkedinIn, FaTwitter, FaYoutube } from "react-icons/fa";
 const footerLinks = {
   Services: [
-    { label: 'Residential Solar', to: '/services' },
-    { label: 'Commercial Solar', to: '/services' },
-    { label: 'Rooftop EPC', to: '/services' },
-    { label: 'AMC & O&M', to: '/services' },
-    { label: 'Off-Grid Systems', to: '/services' },
+    { label: 'Residential Solar', to: '/offering/homes' },
+    { label: 'Commercial Solar', to: '/offering/commercial' },
+    { label: 'Housing Societies', to: '/offering/housing-societies' },
+    { label: 'On-Grid Solar', to: '/solar/on-grid' },
+    { label: 'Off-Grid Solar', to: '/solar/off-grid' },
   ],
   Company: [
     { label: 'About Us', to: '/about' },
     { label: 'Projects', to: '/projects' },
-    { label: 'Blog', to: '/' },
-    { label: 'Careers', to: '/contact' },
+    { label: 'Blog', to: '/blog' },
+    { label: 'Careers', to: '/careers' },
     { label: 'Contact', to: '/contact' },
   ],
   Resources: [
@@ -52,7 +52,7 @@ const trustBadges = [
   'MNRE Empanelled',
   'DISCOM Certified',
   'PM Surya Ghar Partner',
-  '25-Year Panel Warranty',
+  'Tier-1 Certified Components',
   'ISO 9001:2015',
 ]
 
@@ -67,7 +67,7 @@ export default function Footer() {
   return (
     <footer
       className="text-white relative overflow-hidden pt-16 pb-0 px-5"
-      style={{ background: '#0B1F3A' }}
+      style={{ background: '#112378' }}
     >
       {/* Glow */}
       <div
@@ -97,13 +97,13 @@ export default function Footer() {
           <div>
             <Link to="/" className="flex items-center gap-3 mb-4 no-underline">
               <img src={Logo} className="w-9 object-contain" alt="Urban Energy" />
-              <span className="font-outfit font-black text-white text-lg">
-                Urban <span className="text-orange">Energy</span>
+              <span className="font-orbitron font-black text-white text-lg">
+                Urban <span className="glow-text">Energy</span>
               </span>
             </Link>
             <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(255,255,255,0.45)' }}>
               Powering a Brighter Future. India's trusted solar partner for residential and
-              commercial installations since 2015.
+              commercial installations.
             </p>
 
            
@@ -194,51 +194,12 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Trust badges */}
-          <div className="flex flex-wrap gap-3 mt-5">
-            {trustBadges.map((b) => (
-              <div
-                key={b}
-                className="flex items-center gap-2 rounded-lg px-3 py-1.5"
-                style={{
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                }}
-              >
-                <span
-                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                  style={{ background: '#4ade80' }}
-                />
-                <span
-                  className="font-outfit font-semibold text-[11px]"
-                  style={{ color: 'rgba(255,255,255,0.5)' }}
-                >
-                  {b}
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
-
         {/* ── Bottom Bar ── */}
         <div className="py-5 flex flex-wrap items-center justify-between gap-3">
-  
-  <span className="text-xs" style={{ color: 'rgba(255,255,255,0.25)' }}>
-    © 2025 Urban Energy Pvt. Ltd. All rights reserved.
-  </span>
-
-  <div className="flex gap-5">
-    {['Privacy Policy', 'Terms of Service', 'Sitemap'].map((t) => (
-      <Link
-        key={t}
-        to="/"
-        className="text-xs no-underline transition-colors hover:text-orange"
-        style={{ color: 'rgba(255,255,255,0.25)' }}
-      >
-        {t}
-      </Link>
-    ))}
-  </div>
+          <span className="text-xs" style={{ color: 'rgba(255,255,255,0.25)' }}>
+            © 2025 Urban Energy Pvt. Ltd. All rights reserved.
+          </span>
 
   <a
   href="https://digicoders.in"
