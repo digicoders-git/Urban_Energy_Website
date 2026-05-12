@@ -247,9 +247,9 @@ export default function OffGridSolarPage() {
           <Sun className="w-14 h-14 text-white/30 mx-auto mb-6" />
           <h2 className="font-outfit text-4xl md:text-5xl font-black mb-6">Go Off-Grid Today</h2>
           <p className="text-white/70 text-xl mb-10">Tell us your location and power requirements. We'll design the perfect off-grid system and give you a detailed quote — completely free.</p>
-          <Link to="/contact" className="bg-green-500 hover:bg-green-400 text-white font-outfit font-black px-14 py-5 rounded-full text-lg transition-all shadow-2xl shadow-green-500/30 no-underline inline-block">
+          <button onClick={openQuoteModal} className="bg-green-500 hover:bg-green-400 text-white font-outfit font-black px-14 py-5 rounded-full text-lg transition-all shadow-2xl shadow-green-500/30 border-none cursor-pointer inline-block">
             Design My Off-Grid System
-          </Link>
+          </button>
         </motion.div>
       </section>
 

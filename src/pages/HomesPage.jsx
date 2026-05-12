@@ -211,21 +211,6 @@ export default function HomesPage() {
         </div>
       </section>
 
-      {/* ── TESTIMONIAL ── */}
-      <section className="py-24 px-6 bg-navy">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div {...fw(0)}>
-            <div className="flex justify-center gap-1 mb-6">
-              {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 text-orange fill-orange" />)}
-            </div>
-            <blockquote className="font-outfit text-2xl md:text-3xl font-bold text-white leading-relaxed mb-8">
-              "Our electricity bill dropped from ₹4,200 to just ₹180 after Urban Energy installed our 3 kW system. The entire process took less than a week and the team was incredibly professional."
-            </blockquote>
-            <div className="text-white/50 font-medium">— Rajesh Sharma, Pune | 3 kW Residential System</div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* ── FAQ ── */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-3xl mx-auto">

@@ -102,15 +102,6 @@ export default function CommercialPage() {
               </Link>
             </motion.div>
           </div>
-          {/* Stats */}
-          <motion.div {...fw(0.4)} className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-16 border-t border-white/10">
-            {stats.map((s) => (
-              <div key={s.label}>
-                <div className="font-outfit font-black text-orange text-4xl">{s.val}</div>
-                <div className="text-white/50 text-sm mt-1">{s.label}</div>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
@@ -206,21 +197,6 @@ export default function CommercialPage() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── TESTIMONIAL ── */}
-      <section className="py-24 px-6 bg-orange">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div {...fw(0)}>
-            <div className="flex justify-center gap-1 mb-6">
-              {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 text-white fill-white" />)}
-            </div>
-            <blockquote className="font-outfit text-2xl md:text-3xl font-bold text-white leading-relaxed mb-8">
-              "Urban Energy installed a 250 kW plant at our factory. Our electricity bill dropped from ₹4.2 lakh to under ₹40,000 per month. The ROI has been phenomenal and the team delivered on time."
-            </blockquote>
-            <div className="text-white/70 font-medium">— Vikram Mehta, MD | Mehta Textiles, Surat | 250 kW Industrial Plant</div>
-          </motion.div>
         </div>
       </section>
 

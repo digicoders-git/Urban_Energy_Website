@@ -21,14 +21,7 @@ export default function CalculatorPage() {
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="text-white/60 text-lg leading-relaxed max-w-2xl mx-auto">
             Enter your monthly electricity bill and get an instant estimate of your solar savings, system size, and government subsidy eligibility.
           </motion.p>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.35 }} className="flex flex-wrap justify-center gap-8 mt-8">
-            {[['Up to 90%', 'Bill Reduction'], ['₹78K', 'Govt Subsidy'], ['Premium', 'Hardware'], ['3–5 yrs', 'Payback Period']].map(([val, lbl]) => (
-              <div key={lbl} className="text-center">
-                <div className="font-outfit text-xl font-black text-orange">{val}</div>
-                <div className="text-white/50 text-xs mt-0.5">{lbl}</div>
-              </div>
-            ))}
-          </motion.div>
+
         </div>
       </section>
       <SolarCalculator />

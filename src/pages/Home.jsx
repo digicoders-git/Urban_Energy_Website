@@ -5,7 +5,7 @@ import SolarCalculator from '../components/SolarCalculator'
 import Services from '../components/Services'
 import WhyUs from '../components/WhyUs'
 import Process from '../components/Process'
-import Projects from '../components/Projects'
+
 import SubsidyCalc from '../components/SubsidyCalc'
 import Testimonials from '../components/Testimonials'
 import FAQ from '../components/FAQ'
@@ -20,7 +20,7 @@ export default function Home() {
       <Services />
       <WhyUs />
       <Process />
-      <Projects />
+
       <SubsidyCalc />
       <Testimonials />
       <FAQ />
