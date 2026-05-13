@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Handshake, TrendingUp, ShieldCheck, Users, ArrowRight, Send, Building2, Phone, Mail, MapPin, Rocket } from 'lucide-react'
 
+const API = import.meta.env.VITE_API_URL
+
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
@@ -33,13 +35,32 @@ const partnerBenefits = [
 ]
 
 export default function PartnerPage() {
-  const [formData, setFormData] = useState({ name: '', company: '', email: '', phone: '', city: '', type: 'Individual', message: '' });
+  const [formData, setFormData] = useState({ name: '', company: '', email: '', phone: '', city: '', type: 'Dealer', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    // In real logic, handle request sending here
+    setLoading(true); setError('');
+    try {
+      const res = await fetch(`${API}/partners`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          company: formData.company,
+          email: formData.email,
+          phone: formData.phone,
+          city: formData.city,
+          type: formData.type,
+          message: formData.message,
+        })
+      })
+      if (res.ok) { setSubmitted(true) }
+      else { const d = await res.json(); setError(d.message || 'Something went wrong.') }
+    } catch { setError('Server error. Please try again.') }
+    finally { setLoading(false) }
   };
 
   return (
@@ -214,13 +235,13 @@ export default function PartnerPage() {
                   <div>
                     <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Name</label>
                     <div className="relative">
-                      <input required type="text" value={formData.name} onChange={(e)=>setFormData({...formData, name: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="John Doe" />
+                      <input required type="text" value={formData.name} onChange={(e)=>setFormData({...formData, name: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter your full name" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Organization</label>
                     <div className="relative">
-                      <input type="text" value={formData.company} onChange={(e)=>setFormData({...formData, company: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Company Pvt Ltd" />
+                      <input type="text" value={formData.company} onChange={(e)=>setFormData({...formData, company: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter organization name" />
                     </div>
                   </div>
                 </div>
@@ -228,38 +249,38 @@ export default function PartnerPage() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Email ID</label>
-                    <input required type="email" value={formData.email} onChange={(e)=>setFormData({...formData, email: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="you@email.com" />
+                    <input required type="email" value={formData.email} onChange={(e)=>setFormData({...formData, email: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter email address" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Mobile Number</label>
-                    <input required type="tel" value={formData.phone} onChange={(e)=>setFormData({...formData, phone: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="+91 XXXX-XXXXXX" />
+                    <input required type="tel" value={formData.phone} onChange={(e)=>setFormData({...formData, phone: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter mobile number" />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Location (City)</label>
-                    <input required type="text" value={formData.city} onChange={(e)=>setFormData({...formData, city: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Lucknow, Kanpur etc." />
+                    <input required type="text" value={formData.city} onChange={(e)=>setFormData({...formData, city: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter your city" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Applicant Type</label>
                     <select value={formData.type} onChange={(e)=>setFormData({...formData, type: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all bg-white cursor-pointer">
-                      <option>Individual Distributor</option>
-                      <option>Established Enterprise</option>
-                      <option>Lead Gen Affiliate</option>
-                      <option>Others</option>
+                      <option value="Dealer">Dealer</option>
+                      <option value="Installer">Installer</option>
+                      <option value="Distributor">Distributor</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Write something about your background</label>
-                  <textarea rows={3} value={formData.message} onChange={(e)=>setFormData({...formData, message: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all resize-none" placeholder="Tell us about your business interests..." />
+                  <textarea rows={3} value={formData.message} onChange={(e)=>setFormData({...formData, message: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all resize-none" placeholder="Write about your business background..." />
                 </div>
 
-                <button type="submit" className="w-full bg-orange hover:bg-orange/90 text-white font-outfit font-bold py-4 rounded-xl transition-all duration-300 hover:shadow-lg shadow-orange/30 flex items-center justify-center gap-2">
-                  Submit Application <Send size={16} />
+                <button type="submit" disabled={loading} className="w-full bg-orange hover:bg-orange/90 text-white font-outfit font-bold py-4 rounded-xl transition-all duration-300 hover:shadow-lg shadow-orange/30 flex items-center justify-center gap-2 disabled:opacity-60">
+                  {loading ? 'Submitting...' : <> Submit Application <Send size={16} /> </>}
                 </button>
+                {error && <p className="text-center text-red-500 text-xs font-medium bg-red-50 py-2 rounded-lg">{error}</p>}
               </form>
             ) : (
               <motion.div 

@@ -1,89 +1,63 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { Star } from 'lucide-react'
 
-const testimonials = [
-  {
-    initials: 'RK',
-    name: 'Rajesh Kumar',
-    role: 'Homeowner, Lucknow',
-    stars: 5,
-    text: 'My electricity bill dropped from ₹5,200 to almost zero within just 2 months of our 5 kW setup. The installation crew worked cleanly and completed documentation seamlessly.',
-  },
-  {
-    initials: 'PS',
-    name: 'Priya Sharma',
-    role: 'Business Owner, Kanpur',
-    stars: 5,
-    text: 'We powered our commercial facility with a custom rooftop solution from Urban Energy. Their ROI math was highly accurate, and our facility overheads dropped substantially.',
-  },
-  {
-    initials: 'AM',
-    name: 'Arjun Mehta',
-    role: 'Resident, Noida',
-    stars: 5,
-    text: 'The PM Surya Ghar subsidy handling by the Urban team was very professional. We didn’t follow up once; they kept us updated daily until the DISCOM activated net metering.',
-  },
-  {
-    initials: 'SK',
-    name: 'Sandeep Verma',
-    role: 'Society President',
-    stars: 5,
-    text: 'Our apartment society transition to solar common-area lighting was exceptionally smooth. Tech support is available 24/7 and they monitor load performance actively.',
-  },
-  {
-    initials: 'VK',
-    name: 'Vikas Kapoor',
-    role: 'Farm Owner, Unnao',
-    stars: 5,
-    text: 'Installed their hybrid backup system. Now our irrigation pumps run continuously during daylight without diesel cost interruptions. Truly life changing tech!',
-  },
-  {
-    initials: 'MD',
-    name: 'Manish Dwivedi',
-    role: 'SME Entrepreneur',
-    stars: 5,
-    text: 'They explained the difference between Tier-1 components and standard ones honestly, which won my trust instantly. High transparency, highly recommended solar partners.',
-  }
-]
+const API = import.meta.env.VITE_API_URL
 
 export default function Testimonials() {
-  const [index, setIndex] = useState(0)
+  const [testimonials, setTestimonials] = useState([])
+  const [loading, setLoading]           = useState(true)
+  const [index, setIndex]               = useState(0)
+  const [paused, setPaused]             = useState(false)
 
-  // ✅ responsive cards count
+  useEffect(() => {
+    fetch(`${API}/reviews/published`)
+      .then(r => r.json())
+      .then(data => {
+        if (Array.isArray(data) && data.length) {
+          setTestimonials(data.map(r => ({
+            initials: r.initials || r.name[0].toUpperCase(),
+            name:     r.name,
+            role:     r.role || '',
+            stars:    r.stars,
+            text:     r.review,
+          })))
+        }
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false))
+  }, [])
+
   const getCardsPerView = () => {
-    if (window.innerWidth < 640) return 1
+    if (window.innerWidth < 640)  return 1
     if (window.innerWidth < 1024) return 2
     return 3
   }
 
-  const [cardsPerView, setCardsPerView] = useState(getCardsPerView())
+  const [cardsPerView, setCardsPerView] = useState(getCardsPerView)
 
-  // ✅ resize listener
   useEffect(() => {
-    const handleResize = () => {
-      setCardsPerView(getCardsPerView())
-      setIndex(0) // reset to avoid overflow
-    }
-
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
+    const onResize = () => { setCardsPerView(getCardsPerView()); setIndex(0) }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
   }, [])
 
-  const maxIndex = testimonials.length - cardsPerView
+  const maxIndex = Math.max(0, testimonials.length - cardsPerView)
 
-  const next = () => {
-    if (index < maxIndex) setIndex(index + 1)
-  }
+  useEffect(() => {
+    if (paused || testimonials.length === 0) return
+    const t = setInterval(() => setIndex(p => (p >= maxIndex ? 0 : p + 1)), 3000)
+    return () => clearInterval(t)
+  }, [paused, maxIndex, testimonials.length])
 
-  const prev = () => {
-    if (index > 0) setIndex(index - 1)
-  }
+  const next = () => setIndex(p => (p >= maxIndex ? 0 : p + 1))
+  const prev = () => setIndex(p => (p <= 0 ? maxIndex : p - 1))
 
   return (
     <section id="testimonials" className="py-14 px-5 bg-slate-50">
       <div className="max-w-6xl mx-auto">
 
-        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -94,86 +68,92 @@ export default function Testimonials() {
           <h2 className="section-title">
             What Our <span className="text-orange">Customers Say</span>
           </h2>
+          <Link to="/review"
+            className="inline-flex items-center gap-2 mt-5 px-6 py-2.5 rounded-full font-outfit font-bold text-sm text-white transition-all hover:-translate-y-0.5"
+            style={{ background: 'linear-gradient(135deg,#FF7A00,#ff9500)', boxShadow: '0 4px 16px rgba(255,122,0,0.25)' }}>
+            <Star size={14} fill="white" /> Share Your Experience
+          </Link>
         </motion.div>
 
-        {/* Slider */}
-        <div className="overflow-hidden px-2">
-          <motion.div
-            className="flex "
-            animate={{ x: `-${index * (100 / cardsPerView)}%` }}
-            transition={{ duration: 0.5 }}
-          >
-            {testimonials.map((t, i) => (
-              <div
-                key={i}
-                className="min-w-full sm:min-w-[50%] lg:min-w-[33.33%] px-3"
+        {loading ? (
+          <div style={{ textAlign: 'center', padding: '40px 0', color: '#94a3b8' }}>
+            Loading reviews...
+          </div>
+        ) : testimonials.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '40px 0', color: '#94a3b8', fontSize: 14 }}>
+            No reviews published yet.
+          </div>
+        ) : (
+          <>
+            <div
+              className="overflow-hidden px-2"
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+            >
+              <motion.div
+                className="flex"
+                animate={{ x: `-${index * (100 / cardsPerView)}%` }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
               >
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  className="bg-white border border-gray-100 rounded-2xl p-7 relative overflow-hidden hover:shadow-xl h-full"
-                >
-                  <div className="absolute top-4 right-6 text-7xl font-black text-orange/10">
-                    "
-                  </div>
-
-                  <div className="text-yellow mb-3">{'★'.repeat(t.stars)}</div>
-                  <p className="text-slate-500 text-sm italic mb-6">{t.text}</p>
-
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold"
-                      style={{ background: 'linear-gradient(135deg, #FF7A00, #FFC107)' }}
+                {testimonials.map((t, i) => (
+                  <div key={i} className="min-w-full sm:min-w-[50%] lg:min-w-[33.33%] px-3">
+                    <motion.div
+                      whileHover={{ y: -4 }}
+                      className="bg-white border border-gray-100 rounded-2xl p-7 relative overflow-hidden hover:shadow-xl h-full"
                     >
-                      {t.initials}
-                    </div>
-                    <div>
-                      <div className="font-bold text-navy text-sm">{t.name}</div>
-                      <div className="text-slate-400 text-xs">{t.role}</div>
-                    </div>
+                      <div className="absolute top-4 right-6 text-7xl font-black text-orange/10">"</div>
+                      <div className="text-orange mb-3">{'★'.repeat(t.stars)}</div>
+                      <p className="text-slate-500 text-sm italic mb-6">{t.text}</p>
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold"
+                          style={{ background: 'linear-gradient(135deg, #FF7A00, #FFC107)' }}
+                        >
+                          {t.initials}
+                        </div>
+                        <div>
+                          <div className="font-bold text-navy text-sm">{t.name}</div>
+                          <div className="text-slate-400 text-xs">{t.role}</div>
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
-                </motion.div>
+                ))}
+              </motion.div>
+            </div>
+
+            <div className="flex items-center justify-center gap-4 mt-10">
+              <button
+                onClick={prev}
+                className="px-5 py-2 rounded-full font-bold text-sm transition-all"
+                style={{ background: 'linear-gradient(135deg, #FFB800, #FF7A00)', color: 'white' }}
+              >
+                ← Prev
+              </button>
+
+              <div className="flex items-center gap-2">
+                {[...Array(maxIndex + 1)].map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setIndex(i)}
+                    className={`transition-all duration-300 rounded-full ${
+                      index === i ? 'w-6 h-2 bg-orange' : 'w-2 h-2 bg-gray-300'
+                    }`}
+                  />
+                ))}
               </div>
-            ))}
-          </motion.div>
-        </div>
 
-       {/* Controls */}
-<div className="flex items-center justify-center gap-4 mt-10">
+              <button
+                onClick={next}
+                className="px-5 py-2 rounded-full font-bold text-sm transition-all"
+                style={{ background: 'linear-gradient(135deg, #FFB800, #FF7A00)', color: 'white' }}
+              >
+                Next →
+              </button>
+            </div>
+          </>
+        )}
 
-  {/* Prev */}
-  <button
-    onClick={prev}
-    disabled={index === 0}
-    className="px-4 py-2 btn-primary bg-gray-200 rounded disabled:opacity-50"
-  >
-    Prev
-  </button>
-
-  {/* Dots */}
-  <div className="flex items-center gap-2">
-    {[...Array(maxIndex + 1)].map((_, i) => (
-      <button
-        key={i}
-        onClick={() => setIndex(i)}
-        className={`transition-all duration-300 rounded-full ${
-          index === i
-            ? 'w-6 h-2 bg-orange'
-            : 'w-2 h-2 bg-gray-300'
-        }`}
-      />
-    ))}
-  </div>
-
-  {/* Next */}
-  <button
-    onClick={next}
-    disabled={index === maxIndex}
-    className="px-4 py-2 btn-primary bg-gray-200 rounded disabled:opacity-50"
-  >
-    Next
-  </button>
-
-</div>
       </div>
     </section>
   )

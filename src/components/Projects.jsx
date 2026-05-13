@@ -69,7 +69,7 @@ export default function Projects() {
                   className="w-full h-full object-cover"
                 />
 
-                <span className="absolute top-3 right-3 bg-navy/80 text-yellow font-outfit font-bold text-sm px-3 py-1 rounded-full">
+                <span className="absolute top-3 right-3 bg-navy/80 text-white font-outfit font-bold text-sm px-3 py-1 rounded-full">
                   {p.kw}
                 </span>
               </div>

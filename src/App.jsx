@@ -20,6 +20,9 @@ import ContactPage from './pages/ContactPage'
 import CalculatorPage from './pages/CalculatorPage'
 import PartnerPage from './pages/PartnerPage'
 import CareersPage from './pages/CareersPage'
+import ProjectsPage from './pages/ProjectsPage'
+import FAQPage from './pages/FAQPage'
+import ReviewPage from './pages/ReviewPage'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -41,6 +44,9 @@ export default function App() {
           <Route path="/calculator" element={<CalculatorPage />} />
           <Route path="/become-a-partner" element={<PartnerPage />} />
           <Route path="/careers" element={<CareersPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/review" element={<ReviewPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

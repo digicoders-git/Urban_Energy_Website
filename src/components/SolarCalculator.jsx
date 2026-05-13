@@ -45,14 +45,16 @@ export default function SolarCalculator() {
     setQueryError('')
     setQueryLoading(true)
     try {
-      const res = await fetch(`${API}/query/add`, {
+      const res = await fetch(`${API}/queries`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: queryForm.name, phone: queryForm.phone, city: form.city, requirement: queryForm.requirement })
       })
-      const data = await res.json()
-      if (data.success) { setQueryDone(true) }
-      else setQueryError(data.message || 'Something went wrong.')
+      if (res.ok) { setQueryDone(true) }
+      else {
+        const data = await res.json()
+        setQueryError(data.message || 'Something went wrong.')
+      }
     } catch {
       setQueryError('Server error. Please try again.')
     } finally {
@@ -98,7 +100,7 @@ export default function SolarCalculator() {
                   type="number"
                   value={form.bill}
                   onChange={(e) => set('bill', e.target.value)}
-                  placeholder="e.g. 3000"
+                  placeholder="Enter monthly electricity bill"
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-navy font-inter focus:outline-none focus:border-orange transition-colors"
                 />
               </div>
@@ -129,7 +131,7 @@ export default function SolarCalculator() {
                   type="number"
                   value={form.roof}
                   onChange={(e) => set('roof', e.target.value)}
-                  placeholder="e.g. 500"
+                  placeholder="Enter available roof area"
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-navy font-inter focus:outline-none focus:border-orange transition-colors"
                 />
               </div>
@@ -267,13 +269,13 @@ export default function SolarCalculator() {
           <input
             value={queryForm.name}
             onChange={e => setQueryForm(f => ({ ...f, name: e.target.value }))}
-            placeholder="Your Name *"
+            placeholder="Enter your name"
             className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-xl text-navy text-sm focus:outline-none focus:border-orange transition-colors"
           />
           <input
             value={queryForm.phone}
             onChange={e => setQueryForm(f => ({ ...f, phone: e.target.value }))}
-            placeholder="Phone Number *"
+            placeholder="Enter phone number"
             type="tel"
             className="w-full px-4 py-2.5 border-2 border-gray-200 rounded-xl text-navy text-sm focus:outline-none focus:border-orange transition-colors"
           />

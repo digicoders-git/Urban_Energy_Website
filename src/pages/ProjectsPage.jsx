@@ -42,8 +42,8 @@ export default function ProjectsPage() {
           <h3 className="font-outfit text-2xl md:text-3xl font-black text-white mb-3">Your Project Could Be Next </h3>
           <p className="text-white/60 mb-7">Take the definitive next step towards reliable, affordable renewable power.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn-primary">Start My Project</Link>
-            <Link to="/calculator" className="btn-outline">Calculate Savings</Link>
+            <Link to="/contact" className="btn-primary" style={{ background: 'linear-gradient(135deg, #FFB800, #FF7A00)', boxShadow: '0 4px 20px rgba(255,122,0,0.4)' }}>Start My Project</Link>
+            <Link to="/calculator" className="inline-block text-center font-space font-semibold px-7 py-4 rounded-xl transition-all duration-300 hover:-translate-y-1 border-2 border-white/40 hover:border-white text-white hover:bg-white/10">Calculate Savings</Link>
           </div>
         </motion.div>
       </section>

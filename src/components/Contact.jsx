@@ -40,24 +40,24 @@ export default function Contact() {
     setError('')
     setLoading(true)
     try {
-      const res = await fetch(`${API}/contact/add`, {
+      const res = await fetch(`${API}/contacts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          fullName: form.name,
-          phoneNumber: form.phone,
+          name: form.name,
+          phone: form.phone,
           email: form.email,
           city: form.city,
-          monthlyBill: Number(form.bill),
+          bill: Number(form.bill),
           message: form.message
         })
       })
-      const data = await res.json()
-      if (data.success) {
+      if (res.ok) {
         setSubmitted(true)
         setForm({ name: '', phone: '', email: '', city: '', bill: '', message: '' })
         setTimeout(() => setSubmitted(false), 5000)
       } else {
+        const data = await res.json()
         setError(data.message || 'Something went wrong.')
       }
     } catch {
@@ -116,7 +116,7 @@ export default function Contact() {
                 <input
                   value={form.name}
                   onChange={(e) => set('name', e.target.value)}
-                  placeholder="Rajesh Kumar"
+                  placeholder="Enter your full name"
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-navy text-sm focus:outline-none focus:border-orange transition-colors"
                 />
               </div>
@@ -125,7 +125,7 @@ export default function Contact() {
                 <input
                   value={form.phone}
                   onChange={(e) => set('phone', e.target.value)}
-                  placeholder="+91 98000 00000"
+                  placeholder="Enter phone number"
                   type="tel"
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-navy text-sm focus:outline-none focus:border-orange transition-colors"
                 />
@@ -136,7 +136,7 @@ export default function Contact() {
               <input
                 value={form.email}
                 onChange={(e) => set('email', e.target.value)}
-                placeholder="you@email.com"
+                placeholder="Enter email address"
                 type="email"
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-navy text-sm focus:outline-none focus:border-orange transition-colors"
               />
@@ -147,7 +147,7 @@ export default function Contact() {
                 <input
                   value={form.city}
                   onChange={(e) => set('city', e.target.value)}
-                  placeholder="Lucknow"
+                  placeholder="Enter your city"
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-navy text-sm focus:outline-none focus:border-orange transition-colors"
                 />
               </div>
@@ -156,7 +156,7 @@ export default function Contact() {
                 <input
                   value={form.bill}
                   onChange={(e) => set('bill', e.target.value)}
-                  placeholder="3000"
+                  placeholder="Enter monthly bill amount"
                   type="number"
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-navy text-sm focus:outline-none focus:border-orange transition-colors"
                 />
@@ -167,7 +167,7 @@ export default function Contact() {
               <textarea
                 value={form.message}
                 onChange={(e) => set('message', e.target.value)}
-                placeholder="Tell us about your requirements..."
+                placeholder="Write your message here..."
                 rows={3}
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-navy text-sm focus:outline-none focus:border-orange transition-colors resize-none"
               />
