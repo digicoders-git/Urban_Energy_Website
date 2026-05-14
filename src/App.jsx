@@ -24,6 +24,7 @@ import ProjectsPage from './pages/ProjectsPage'
 import FAQPage from './pages/FAQPage'
 import ReviewPage from './pages/ReviewPage'
 import NotFound from './pages/NotFound'
+import AfterInstallationServicePage from './pages/AfterInstallationServicePage'
 
 export default function App() {
   return (
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/review" element={<ReviewPage />} />
+          <Route path="/services/after-installation" element={<AfterInstallationServicePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
