@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import {
   Wrench, ShieldCheck, Activity, Droplets, Zap, PhoneCall,
-  ClipboardList, Star, CheckCircle2, AlertTriangle, Clock, ArrowRight
+  ClipboardList, Star, CheckCircle2, AlertTriangle, Clock, ArrowRight,
+  Sun, BatteryWarning, FileText, IndianRupee, ShieldAlert
 } from 'lucide-react'
 import { useModal } from '../context/ModalContext'
 
@@ -357,12 +358,12 @@ export default function AfterInstallationServicePage() {
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { icon: '☀️', title: 'Dust reduces output by 25–30%', desc: 'Unclean panels lose significant generation every month. Regular cleaning pays for itself.' },
-              { icon: '⚡', title: 'Inverter faults go undetected', desc: 'Without monitoring, a faulty inverter can silently waste weeks of generation.' },
-              { icon: '🔋', title: 'Battery degradation is preventable', desc: 'Proper servicing extends battery life by 3–5 years, saving ₹50,000+.' },
-              { icon: '📋', title: 'Warranty claims need documentation', desc: 'Regular service records are mandatory for manufacturer warranty claims.' },
-              { icon: '💰', title: 'Net meter errors cost you money', desc: 'Billing discrepancies go unnoticed without periodic DISCOM reconciliation.' },
-              { icon: '🛡️', title: 'Safety risks from loose wiring', desc: 'Thermal imaging and wiring checks prevent fire hazards and system failures.' },
+              { icon: <Sun size={22} />, color: '#FFB800', title: 'Dust reduces output by 25–30%', desc: 'Unclean panels lose significant generation every month. Regular cleaning pays for itself.' },
+              { icon: <Zap size={22} />, color: '#FF7A00', title: 'Inverter faults go undetected', desc: 'Without monitoring, a faulty inverter can silently waste weeks of generation.' },
+              { icon: <BatteryWarning size={22} />, color: '#00C9A7', title: 'Battery degradation is preventable', desc: 'Proper servicing extends battery life by 3–5 years, saving ₹50,000+.' },
+              { icon: <FileText size={22} />, color: '#00A3E0', title: 'Warranty claims need documentation', desc: 'Regular service records are mandatory for manufacturer warranty claims.' },
+              { icon: <IndianRupee size={22} />, color: '#00C9A7', title: 'Net meter errors cost you money', desc: 'Billing discrepancies go unnoticed without periodic DISCOM reconciliation.' },
+              { icon: <ShieldAlert size={22} />, color: '#EF4444', title: 'Safety risks from loose wiring', desc: 'Thermal imaging and wiring checks prevent fire hazards and system failures.' },
             ].map((item, i) => (
               <motion.div
                 key={item.title}
@@ -372,7 +373,9 @@ export default function AfterInstallationServicePage() {
                 transition={{ delay: i * 0.07 }}
                 className="flex gap-4 p-5 rounded-2xl border border-gray-100 bg-gray-50 hover:bg-white hover:shadow-md transition-all"
               >
-                <span className="text-2xl shrink-0">{item.icon}</span>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: `${item.color}15`, border: `1px solid ${item.color}30` }}>
+                  {React.cloneElement(item.icon, { style: { color: item.color } })}
+                </div>
                 <div>
                   <h4 className="font-space font-bold text-sm text-navy mb-1">{item.title}</h4>
                   <p className="text-slate-500 font-space text-xs leading-relaxed">{item.desc}</p>
