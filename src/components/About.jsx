@@ -131,16 +131,16 @@ export default function About() {
           <motion.div {...fadeUp(0)}>
             <span className="section-tag">Our Story</span>
             <h2 className="section-title mb-5">
-              Born From a <span className="glow-text">Mission</span>
+              Powering UP, <span className="glow-text">One Rooftop at a Time</span>
             </h2>
             <p className="text-slate-500 leading-relaxed mb-5">
-              Urban Energy was founded by a team of IIT engineers and clean-energy enthusiasts who saw a massive opportunity — India had one of the world's highest solar irradiance levels, yet solar penetration was less than 1%.
+              Urban Energy was born out of a simple frustration — skyrocketing electricity bills, unreliable power supply, and a rooftop full of untapped potential. We started in Lucknow with a mission to make solar energy accessible, affordable, and genuinely worth it for every home and business in Uttar Pradesh.
             </p>
             <p className="text-slate-500 leading-relaxed mb-5">
-              We focus on precise execution for customized solutions. We're built on the ambition to scale quickly across UP, providing state-of-the-art hardware to prevent future outages and reduce recurring electrical overheads for modern homes.
+              We don't just install panels — we engineer complete energy solutions. From the first site survey to the last wire, every project is handled by our in-house certified team with zero outsourcing and full accountability.
             </p>
             <p className="text-slate-500 leading-relaxed">
-              We are MNRE empanelled, DISCOM certified, and proud partners of India's PM Surya Ghar Yojana — helping families claim up to ₹78,000 in government subsidies.
+              We are MNRE empanelled, DISCOM certified, and proud partners of India's PM Surya Ghar Yojana — helping families across UP claim up to ₹78,000 in government subsidies while cutting their electricity bills by up to 90%.
             </p>
           </motion.div>
           <motion.div {...fadeUp(0.2)} className="grid grid-cols-2 gap-4">
@@ -209,37 +209,6 @@ export default function About() {
     </div>
   </div>
 </section>
-
-      {/* ── Team ── */}
-      <section className="py-8 px-5 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <motion.div {...fadeUp(0)} className="text-center mb-14">
-            <span className="section-tag">Our Team</span>
-            <h2 className="section-title">
-              The Experts <span className="glow-text">Behind the Panels</span>
-            </h2>
-          </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((m, i) => (
-              <motion.div
-                key={m.name}
-                {...fadeUp(i * 0.1)}
-                className="text-center group"
-              >
-                <div
-                  className="w-24 h-24 rounded-full flex items-center justify-center text-5xl mx-auto mb-4 transition-transform duration-300 group-hover:scale-110"
-                  style={{ background: 'linear-gradient(135deg, rgba(255,122,0,0.1), rgba(255,193,7,0.15))', border: '2px solid rgba(255,122,0,0.2)' }}
-                >
-                  {m.emoji}
-                </div>
-                <div className="font-outfit font-bold text-navy text-base">{m.name}</div>
-                <div className="text-orange text-xs font-semibold mt-1">{m.role}</div>
-                <div className="text-slate-400 text-xs mt-1">{m.exp}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── CTA ── */}
       <section className="py-20 px-5 bg-navy relative overflow-hidden">

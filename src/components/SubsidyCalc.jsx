@@ -33,8 +33,8 @@ export default function SubsidyCalc() {
           viewport={{ once: true }}
         >
           <span
-            className="inline-block px-4 py-1.5 rounded-full text-xs font-outfit font-bold uppercase tracking-widest mb-5 text-yellow"
-            style={{ background: 'rgba(255,193,7,0.15)' }}
+            className="inline-block px-4 py-1.5 rounded-full text-xs font-outfit font-bold uppercase tracking-widest mb-5"
+            style={{ background: 'rgba(255,193,7,0.15)', color: '#FFC107' }}
           >
             Govt Scheme
           </span>
@@ -80,13 +80,13 @@ export default function SubsidyCalc() {
                 value={size}
                 onChange={(e) => setSize(e.target.value)}
                 className="w-full px-4 py-3 rounded-xl text-white font-inter focus:outline-none focus:border-orange transition-colors"
-                style={{ background: 'rgba(255,255,255,0.08)', border: '1.5px solid rgba(255,255,255,0.15)' }}
+                style={{ background: '#1a3a6b', border: '1.5px solid rgba(255,255,255,0.25)', color: '#fff' }}
               >
-                <option value="1">1 kW</option>
-                <option value="2">2 kW</option>
-                <option value="3">3 kW</option>
-                <option value="5">5 kW</option>
-                <option value="10">10 kW+</option>
+                <option value="1" style={{ background: '#1a3a6b', color: '#fff' }}>1 kW</option>
+                <option value="2" style={{ background: '#1a3a6b', color: '#fff' }}>2 kW</option>
+                <option value="3" style={{ background: '#1a3a6b', color: '#fff' }}>3 kW</option>
+                <option value="5" style={{ background: '#1a3a6b', color: '#fff' }}>5 kW</option>
+                <option value="10" style={{ background: '#1a3a6b', color: '#fff' }}>10 kW+</option>
               </select>
             </div>
             <div>
@@ -95,10 +95,10 @@ export default function SubsidyCalc() {
                 value={type}
                 onChange={(e) => setType(e.target.value)}
                 className="w-full px-4 py-3 rounded-xl text-white font-inter focus:outline-none transition-colors"
-                style={{ background: 'rgba(255,255,255,0.08)', border: '1.5px solid rgba(255,255,255,0.15)' }}
+                style={{ background: '#1a3a6b', border: '1.5px solid rgba(255,255,255,0.25)', color: '#fff' }}
               >
-                <option value="residential">Residential</option>
-                <option value="commercial">Commercial / Industrial</option>
+                <option value="residential" style={{ background: '#1a3a6b', color: '#fff' }}>Residential</option>
+                <option value="commercial" style={{ background: '#1a3a6b', color: '#fff' }}>Commercial / Industrial</option>
               </select>
             </div>
 
@@ -113,7 +113,7 @@ export default function SubsidyCalc() {
               <div className="text-white/50 text-xs font-outfit font-semibold uppercase tracking-widest mb-2">
                 Your Central Govt Subsidy
               </div>
-              <div className="font-outfit font-black text-5xl text-yellow">
+              <div className="font-outfit font-black text-5xl" style={{ color: '#FFC107' }}>
                 {amount > 0 ? `₹${amount.toLocaleString('en-IN')}` : 'N/A'}
               </div>
               <div className="text-white/40 text-sm mt-2">{note}</div>

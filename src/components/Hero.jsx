@@ -10,13 +10,6 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] },
 })
 
-const stats = [
-  { value: 'Tier 1', label: 'Certified Tech' },
-  { value: 'Premium', label: 'Component Quality' },
-  { value: '90%', label: 'Bill Reduction' },
-  { value: 'MNRE', label: 'Approved Team' },
-]
-
 export default function Hero() {
   return (
     <section className="relative w-full min-h-screen overflow-hidden flex flex-col" style={{ background: 'linear-gradient(160deg, #0B1D51 0%, #0d2460 40%, #0B1D51 100%)' }}>
@@ -86,18 +79,7 @@ export default function Hero() {
           </Link>
         </motion.div>
 
-        {/* Stats row */}
-        <motion.div
-          {...fadeUp(0.4)}
-          className="mt-14 flex flex-wrap justify-center gap-x-10 gap-y-6"
-        >
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <div className="font-orbitron text-3xl md:text-4xl font-black glow-text">{s.value}</div>
-              <div className="text-white/40 text-sm font-space mt-1">{s.label}</div>
-            </div>
-          ))}
-        </motion.div>
+
       </div>
 
       {/* Full-width hero image */}

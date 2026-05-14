@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from '../../public/urbanlogo.png'
 import { useModal } from '../context/ModalContext'
@@ -40,7 +40,15 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
   const location = useLocation()
+  const navigate = useNavigate()
   const { openQuoteModal } = useModal()
+
+  const handleNav = (to) => {
+    setMenuOpen(false)
+    setActiveDropdown(null)
+    window.scrollTo({ top: 0, behavior: 'instant' })
+    navigate(to)
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -49,7 +57,6 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    setMenuOpen(false)
     setActiveDropdown(null)
   }, [location])
 
@@ -166,6 +173,7 @@ export default function Navbar() {
                           <Link
                             key={item.to}
                             to={item.to}
+                            onClick={() => handleNav(item.to)}
                             className="text-sm font-bold text-navy hover:text-orange no-underline"
                           >
                             {item.label}
@@ -178,6 +186,7 @@ export default function Navbar() {
                   <Link
                     key={link.label}
                     to={link.to}
+                    onClick={() => handleNav(link.to)}
                     className={`no-underline text-base font-semibold py-1 transition-colors ${
                       location.pathname === link.to ? 'text-solarsky' : 'text-navy/80 hover:text-navy'
                     }`}

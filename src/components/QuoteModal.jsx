@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Send, Phone, Mail, User, MapPin, IndianRupee, Zap, Home } from 'lucide-react'
+import { X, Send, Phone, User, MapPin, Zap, Home } from 'lucide-react'
 import { useModal } from '../context/ModalContext'
 
 const API = import.meta.env.VITE_API_URL
 
-const EMPTY = { name: '', phone: '', email: '', city: '', bill: '', systemSize: '', type: 'Residential', message: '' }
+const EMPTY = { name: '', phone: '', city: '', systemSize: '', type: 'Residential' }
 
 export default function QuoteModal() {
   const { isQuoteModalOpen, closeQuoteModal } = useModal()
@@ -34,12 +34,9 @@ export default function QuoteModal() {
         body: JSON.stringify({
           name:       form.name.trim(),
           phone:      form.phone.trim(),
-          email:      form.email.trim(),
           city:       form.city.trim(),
-          bill:       form.bill ? `₹${form.bill}/mo` : '',
           systemSize: form.systemSize.trim(),
           type:       form.type,
-          message:    form.message.trim(),
         })
       })
       if (res.ok) {
@@ -108,15 +105,7 @@ export default function QuoteModal() {
                     </div>
                   </div>
 
-                  {/* Email */}
-                  <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-                    <input type="email" placeholder="Enter email address"
-                      value={form.email} onChange={e => set('email', e.target.value)}
-                      className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all" />
-                  </div>
-
-                  {/* City + Monthly Bill */}
+                  {/* City + System Size */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="relative">
                       <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
@@ -125,37 +114,24 @@ export default function QuoteModal() {
                         className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all" />
                     </div>
                     <div className="relative">
-                      <IndianRupee className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-                      <input type="number" placeholder="Monthly bill (₹)"
-                        value={form.bill} onChange={e => set('bill', e.target.value)}
-                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all" />
-                    </div>
-                  </div>
-
-                  {/* System Size + Type */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="relative">
                       <Zap className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
                       <input type="text" placeholder="System size (e.g. 5 kW)"
                         value={form.systemSize} onChange={e => set('systemSize', e.target.value)}
                         className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all" />
                     </div>
-                    <div className="relative">
-                      <Home className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-                      <select value={form.type} onChange={e => set('type', e.target.value)}
-                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all bg-white">
-                        <option>Residential</option>
-                        <option>Commercial</option>
-                        <option>Society</option>
-                        <option>Off-Grid</option>
-                      </select>
-                    </div>
                   </div>
 
-                  {/* Message */}
-                  <textarea placeholder="Write your message here..." rows={3}
-                    value={form.message} onChange={e => set('message', e.target.value)}
-                    className="w-full p-4 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all resize-none" />
+                  {/* Type */}
+                  <div className="relative">
+                    <Home className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                    <select value={form.type} onChange={e => set('type', e.target.value)}
+                      className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all bg-white">
+                      <option>Residential</option>
+                      <option>Commercial</option>
+                      <option>Society</option>
+                      <option>Off-Grid</option>
+                    </select>
+                  </div>
 
                   <button type="submit" disabled={loading || submitted}
                     className={`w-full py-4 rounded-xl font-bold text-white text-base flex items-center justify-center gap-2 shadow-lg transition-all hover:-translate-y-0.5 ${submitted ? 'bg-green-500' : 'bg-gradient-to-r from-[#FF7A00] to-[#ff9500]'} disabled:opacity-70`}>

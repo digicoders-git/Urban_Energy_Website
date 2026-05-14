@@ -101,7 +101,7 @@ export default function Footer() {
                 Urban <span className="glow-text">Energy</span>
               </span>
             </Link>
-            <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(255,255,255,0.45)' }}>
+            <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(255,255,255,0.85)' }}>
               Powering a Brighter Future. India's trusted solar partner for residential and
               commercial installations.
             </p>
@@ -146,7 +146,7 @@ export default function Footer() {
                     <Link
                       to={l.to}
                       className="text-sm no-underline transition-colors duration-200 hover:text-orange"
-                      style={{ color: 'rgba(255,255,255,0.45)' }}
+                      style={{ color: 'rgba(255,255,255,0.85)' }}
                     >
                       {l.label}
                     </Link>
@@ -179,7 +179,7 @@ export default function Footer() {
                 <div>
                   <div
                     className="font-outfit font-bold text-[10px] uppercase tracking-widest"
-                    style={{ color: 'rgba(255,255,255,0.35)' }}
+                    style={{ color: 'rgba(255,255,255,0.65)' }}
                   >
                     {c.label}
                   </div>
@@ -197,7 +197,7 @@ export default function Footer() {
         </div>
         {/* ── Bottom Bar ── */}
         <div className="py-5 flex flex-wrap items-center justify-between gap-3">
-          <span className="text-xs" style={{ color: 'rgba(255,255,255,0.25)' }}>
+          <span className="text-xs" style={{ color: 'rgba(255,255,255,0.65)' }}>
             © 2025 Urban Energy Pvt. Ltd. All rights reserved.
           </span>
 

@@ -1,13 +1,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Sun, ShieldCheck, Zap, Wrench, BadgePercent, Radio } from 'lucide-react'
 
 const reasons = [
-  { num: 'Expert', title: 'Tailored System Design', desc: 'We build customized configurations ensuring the most effective orientation and sizing for your roof.' },
-  { num: 'Pure', title: 'Performance Transparency', desc: 'Honest estimations with zero hidden charges, delivering exactly what is promised every time.' },
-  { num: 'Premium', title: 'Panel Peak Performance', desc: 'Tier-1 panels built with robust structural integrity. Your solar investment is protected by state-of-the-art engineering.' },
-  { num: '48hr', title: 'Lightning-Fast Installation', desc: 'Most residential solar systems fully installed and commissioned within 48 hours of site survey.' },
-  { num: '100%', title: 'Subsidy Assistance', desc: 'We handle all MNRE & PM Surya Ghar Yojana paperwork — you get up to ₹78,000 in government subsidies hassle-free.' },
-  { num: '24/7', title: 'Smart Remote Monitoring', desc: 'Live app dashboard tracks your solar generation, consumption, and savings in real time, every day.' },
+  { icon: Sun, num: 'Expert', title: 'Tailored System Design', desc: 'We build customized configurations ensuring the most effective orientation and sizing for your roof.' },
+  { icon: ShieldCheck, num: 'Pure', title: 'Performance Transparency', desc: 'Honest estimations with zero hidden charges, delivering exactly what is promised every time.' },
+  { icon: Zap, num: 'Premium', title: 'Panel Peak Performance', desc: 'Tier-1 panels built with robust structural integrity. Your solar investment is protected by state-of-the-art engineering.' },
+  { icon: Wrench, num: '48hr', title: 'Lightning-Fast Installation', desc: 'Most residential solar systems fully installed and commissioned within 48 hours of site survey.' },
+  { icon: BadgePercent, num: '100%', title: 'Subsidy Assistance', desc: 'We handle all MNRE & PM Surya Ghar Yojana paperwork — you get up to ₹78,000 in government subsidies hassle-free.' },
+  { icon: Radio, num: '24/7', title: 'Smart Remote Monitoring', desc: 'Live app dashboard tracks your solar generation, consumption, and savings in real time, every day.' },
 ]
 
 export default function WhyUs() {
@@ -49,10 +50,15 @@ export default function WhyUs() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
               whileHover={{ borderColor: 'rgba(255,184,0,0.4)', backgroundColor: 'rgba(255,184,0,0.06)' }}
-              className="rounded-2xl p-7 cursor-default transition-all duration-300"
+              className="rounded-2xl p-7 cursor-default transition-all duration-300 group"
               style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
             >
-              <div className="font-orbitron text-4xl lg:text-5xl font-black mb-2" style={{ background: 'linear-gradient(135deg, #FFB800, #FF7A00)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              {/* Solar icon circle */}
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ background: 'rgba(255,184,0,0.12)', border: '1px solid rgba(255,184,0,0.2)' }}>
+                <r.icon size={22} color="#FFB800" strokeWidth={1.8} />
+              </div>
+              {/* Stat number — use outfit for 24/7 to avoid orbitron slash issue */}
+              <div className="font-outfit text-4xl lg:text-5xl font-black mb-2" style={{ background: 'linear-gradient(135deg, #FFB800, #FF7A00)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 {r.num}
               </div>
               <h3 className="font-space font-bold text-white text-base mb-2">{r.title}</h3>
