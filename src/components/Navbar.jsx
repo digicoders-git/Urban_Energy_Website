@@ -20,6 +20,7 @@ const navLinks = [
     dropdown: [
       { label: 'Off-Grid Solar', to: '/solar/off-grid' },
       { label: 'On Grid Solar', to: '/solar/on-grid' },
+      { label: 'After Installation Services', to: '/services/after-installation' },
     ],
   },
   {
