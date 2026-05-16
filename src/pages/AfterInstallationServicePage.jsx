@@ -150,31 +150,29 @@ export default function AfterInstallationServicePage() {
     <main className="pt-16">
 
       {/* Hero */}
-      <section className="relative py-24 px-5 overflow-hidden" style={{ background: 'linear-gradient(135deg, #0B1D51 0%, #1a3a8f 60%, #0B1D51 100%)' }}>
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 70% 50%, #FFB800 0%, transparent 60%)' }} />
+      <section className="relative py-24 px-5 overflow-hidden bg-slate-50">
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 70% 50%, #FFB800 0%, transparent 60%)' }} />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div {...fadeUp}>
-            <span className="inline-block text-xs font-space font-bold px-4 py-1.5 rounded-full mb-4" style={{ background: '#FFB80020', color: '#FFB800', border: '1px solid #FFB80040' }}>
+            <span className="inline-block text-xs font-space font-bold px-4 py-1.5 rounded-full mb-4" style={{ background: 'rgba(255,184,0,0.12)', color: '#FF8C00', border: '1px solid rgba(255,184,0,0.3)' }}>
               Post-Installation Services
             </span>
-            <h1 className="font-orbitron font-black text-4xl md:text-5xl text-white leading-tight mb-5">
-              Your Solar Journey <br /><span style={{ color: '#FFB800' }}>Doesn't End at Installation</span>
+            <h1 className="font-orbitron font-black text-4xl md:text-5xl text-navy leading-tight mb-5">
+              Your Solar Journey <br /><span className="glow-text">Doesn't End at Installation</span>
             </h1>
-            <p className="text-slate-300 font-space text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+            <p className="text-slate-500 font-space text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
               We provide complete after-sales support — maintenance, AMC, monitoring, emergency repair, and more — to keep your solar system performing at 100% for 25+ years.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <button onClick={openModal} className="flex items-center gap-2 px-7 py-3 rounded-xl font-space font-bold text-navy transition-all hover:scale-105" style={{ background: '#FFB800' }}>
+              <button onClick={openModal} className="flex items-center gap-2 px-7 py-3 rounded-xl font-space font-bold text-white transition-all hover:scale-105 border-none cursor-pointer" style={{ background: '#FF7A00' }}>
                 Book a Service <ArrowRight size={18} />
               </button>
-              <a href="tel:+919999999999" className="flex items-center gap-2 px-7 py-3 rounded-xl font-space font-bold text-white border border-white/30 hover:bg-white/10 transition-all">
+              <a href="tel:+919999999999" className="flex items-center gap-2 px-7 py-3 rounded-xl font-space font-bold text-navy border border-gray-200 hover:bg-slate-50 transition-all">
                 <PhoneCall size={18} /> Call Now
               </a>
             </div>
           </motion.div>
         </div>
-
-        {/* Stats */}
         <motion.div {...fadeUp} transition={{ delay: 0.2 }} className="max-w-4xl mx-auto mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10">
           {[
             { val: '500+', label: 'Systems Maintained' },
@@ -182,8 +180,8 @@ export default function AfterInstallationServicePage() {
             { val: '99.2%', label: 'Uptime Guaranteed' },
             { val: '25 Yr', label: 'Warranty Support' },
           ].map(s => (
-            <div key={s.label} className="text-center p-4 rounded-2xl" style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
-              <div className="font-orbitron font-black text-2xl" style={{ color: '#FFB800' }}>{s.val}</div>
+            <div key={s.label} className="text-center p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
+              <div className="font-orbitron font-black text-2xl text-orange">{s.val}</div>
               <div className="text-slate-400 font-space text-sm mt-1">{s.label}</div>
             </div>
           ))}
@@ -387,22 +385,22 @@ export default function AfterInstallationServicePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-5" style={{ background: 'linear-gradient(135deg, #0B1D51 0%, #1a3a8f 100%)' }}>
+      <section className="py-20 px-5 bg-slate-50">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div {...fadeUp}>
-            <Clock size={40} className="mx-auto mb-4" style={{ color: '#FFB800' }} />
-            <h2 className="font-orbitron font-black text-3xl md:text-4xl text-white mb-4">
-              Book Your Solar Service <span style={{ color: '#FFB800' }}>Today</span>
+            <Clock size={40} className="mx-auto mb-4 text-orange" />
+            <h2 className="font-orbitron font-black text-3xl md:text-4xl text-navy mb-4">
+              Book Your Solar Service <span className="glow-text">Today</span>
             </h2>
-            <p className="text-slate-300 font-space text-base mb-8 max-w-xl mx-auto">
+            <p className="text-slate-500 font-space text-base mb-8 max-w-xl mx-auto">
               Don't wait for a breakdown. Schedule a free health check for your solar system and keep it running at peak performance.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <button onClick={openModal} className="flex items-center gap-2 px-8 py-3.5 rounded-xl font-space font-bold text-navy hover:scale-105 transition-all" style={{ background: '#FFB800' }}>
+              <button onClick={openModal} className="flex items-center gap-2 px-8 py-3.5 rounded-xl font-space font-bold text-white hover:scale-105 transition-all border-none cursor-pointer" style={{ background: '#FF7A00' }}>
                 Book Free Health Check <ArrowRight size={18} />
               </button>
               <a href="https://wa.me/919999999999" target="_blank" rel="noreferrer"
-                className="flex items-center gap-2 px-8 py-3.5 rounded-xl font-space font-bold text-white border border-white/30 hover:bg-white/10 transition-all">
+                className="flex items-center gap-2 px-8 py-3.5 rounded-xl font-space font-bold text-navy border border-gray-200 hover:bg-white transition-all">
                 WhatsApp Us
               </a>
             </div>

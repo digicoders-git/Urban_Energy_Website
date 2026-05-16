@@ -72,32 +72,31 @@ export default function CommercialPage() {
     <main className="pt-20 bg-white">
 
       {/* ── HERO ── */}
-      <section className="relative w-full min-h-[88vh] flex items-center overflow-hidden bg-gradient-to-br from-[#0a1a5c] via-navy to-[#112378]">
+      <section className="relative w-full min-h-[88vh] flex items-center overflow-hidden bg-slate-50">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-orange/10 rounded-full blur-[140px] translate-x-1/3 -translate-y-1/3" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-solarsky/10 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3" />
-          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+          <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-orange/6 rounded-full blur-[140px] translate-x-1/3 -translate-y-1/3" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-solarsky/6 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full">
           <div className="max-w-3xl">
             <motion.div {...fw(0)} className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-orange/20 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-orange/15 flex items-center justify-center">
                 <Factory className="w-5 h-5 text-orange" />
               </div>
               <span className="text-orange font-bold text-sm uppercase tracking-widest">Commercial Solar</span>
             </motion.div>
-            <motion.h1 {...fw(0.1)} className="font-outfit text-5xl md:text-7xl font-black text-white leading-[1.05] mb-6">
+            <motion.h1 {...fw(0.1)} className="font-outfit text-5xl md:text-7xl font-black text-navy leading-[1.05] mb-6">
               Solar That Works<br />
-              <span className="text-orange">As Hard As You Do.</span>
+              <span className="glow-text">As Hard As You Do.</span>
             </motion.h1>
-            <motion.p {...fw(0.2)} className="text-white/65 text-xl leading-relaxed mb-10 max-w-2xl">
+            <motion.p {...fw(0.2)} className="text-slate-500 text-xl leading-relaxed mb-10 max-w-2xl">
               Large-scale commercial solar with guaranteed performance, full EPC delivery, and 40% accelerated depreciation benefits. Built for businesses that demand results.
             </motion.p>
             <motion.div {...fw(0.3)} className="flex flex-wrap gap-4">
-              <Link to="/contact" className="bg-orange hover:bg-orange/90 text-white font-outfit font-bold px-10 py-4 rounded-full flex items-center gap-2 group transition-all shadow-xl shadow-orange/30 no-underline">
+              <Link to="/contact" className="bg-orange hover:bg-orange/90 text-white font-outfit font-bold px-10 py-4 rounded-full flex items-center gap-2 group transition-all shadow-xl shadow-orange/20 no-underline">
                 Request a Proposal <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/contact" className="bg-white/10 hover:bg-white/20 text-white font-outfit font-bold px-10 py-4 rounded-full transition-all no-underline border border-white/20">
+              <Link to="/contact" className="bg-white hover:bg-slate-50 text-navy font-outfit font-bold px-10 py-4 rounded-full transition-all no-underline border border-gray-200">
                 Talk to an Expert
               </Link>
             </motion.div>
@@ -148,29 +147,29 @@ export default function CommercialPage() {
       </section>
 
       {/* ── ROI TABLE ── */}
-      <section className="py-24 px-6 bg-navy">
+      <section className="py-24 px-6 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fw(0)} className="text-center mb-16">
-            <h2 className="font-outfit text-4xl md:text-5xl font-black text-white">Commercial Solar <span className="text-orange">ROI Calculator</span></h2>
-            <p className="text-white/55 text-lg mt-4 max-w-2xl mx-auto">Indicative returns based on average commercial tariff of ₹7/unit and 300 sunny days per year.</p>
+            <h2 className="font-outfit text-4xl md:text-5xl font-black text-navy">Commercial Solar <span className="text-orange">ROI Calculator</span></h2>
+            <p className="text-slate-500 text-lg mt-4 max-w-2xl mx-auto">Indicative returns based on average commercial tariff of ₹7/unit and 300 sunny days per year.</p>
           </motion.div>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[700px]">
               <thead>
-                <tr className="border-b border-white/10">
+                <tr className="border-b border-gray-200">
                   {['Plant Size', 'Approx. Cost', 'Annual Savings', 'Payback Period', 'Annual Generation'].map(h => (
-                    <th key={h} className="text-left py-4 px-4 text-white/50 text-sm font-semibold uppercase tracking-wider">{h}</th>
+                    <th key={h} className="text-left py-4 px-4 text-slate-400 text-sm font-semibold uppercase tracking-wider">{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {roiData.map((row, i) => (
-                  <motion.tr key={row.size} {...fw(i * 0.08)} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                  <motion.tr key={row.size} {...fw(i * 0.08)} className="border-b border-gray-100 hover:bg-white transition-colors">
                     <td className="py-5 px-4 font-outfit font-black text-orange text-lg">{row.size}</td>
-                    <td className="py-5 px-4 text-white/80 font-medium">{row.cost}</td>
-                    <td className="py-5 px-4 text-green-400 font-bold">{row.saving}</td>
+                    <td className="py-5 px-4 text-slate-600 font-medium">{row.cost}</td>
+                    <td className="py-5 px-4 text-green-600 font-bold">{row.saving}</td>
                     <td className="py-5 px-4 text-solarsky font-bold">{row.payback}</td>
-                    <td className="py-5 px-4 text-white/80 font-medium">{row.units}</td>
+                    <td className="py-5 px-4 text-slate-600 font-medium">{row.units}</td>
                   </motion.tr>
                 ))}
               </tbody>
@@ -221,12 +220,12 @@ export default function CommercialPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-24 px-6 bg-gradient-to-r from-navy to-[#0a1a5c] text-white text-center">
+      <section className="py-24 px-6 bg-slate-50 text-center">
         <motion.div {...fw(0)} className="max-w-3xl mx-auto">
-          <Sun className="w-14 h-14 text-white/30 mx-auto mb-6" />
-          <h2 className="font-outfit text-4xl md:text-5xl font-black mb-6">Let's Power Your Business</h2>
-          <p className="text-white/70 text-xl mb-10">Get a detailed project proposal with ROI analysis, system design, and subsidy breakdown — completely free.</p>
-          <Link to="/contact" className="bg-orange hover:bg-orange/90 text-white font-outfit font-black px-14 py-5 rounded-full text-lg transition-all shadow-2xl shadow-orange/30 no-underline inline-block">
+          <Sun className="w-14 h-14 text-orange/30 mx-auto mb-6" />
+          <h2 className="font-outfit text-4xl md:text-5xl font-black text-navy mb-6">Let's Power Your Business</h2>
+          <p className="text-slate-500 text-xl mb-10">Get a detailed project proposal with ROI analysis, system design, and subsidy breakdown — completely free.</p>
+          <Link to="/contact" className="bg-orange hover:bg-orange/90 text-white font-outfit font-black px-14 py-5 rounded-full text-lg transition-all shadow-xl shadow-orange/20 no-underline inline-block">
             Get Free Commercial Proposal
           </Link>
         </motion.div>

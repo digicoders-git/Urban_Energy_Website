@@ -74,46 +74,45 @@ export default function OnGridSolarPage() {
     <main className="pt-20 bg-white">
 
       {/* ── HERO ── */}
-      <section className="relative w-full min-h-[88vh] flex items-center overflow-hidden bg-gradient-to-br from-[#FF7A00] via-[#e06500] to-[#112378]">
+      <section className="relative w-full min-h-[88vh] flex items-center overflow-hidden bg-slate-50">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-[700px] h-[700px] bg-yellow-400/15 rounded-full blur-[140px] -translate-x-1/3 -translate-y-1/3" />
-          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-navy/30 rounded-full blur-[100px] translate-x-1/3 translate-y-1/3" />
-          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+          <div className="absolute top-0 left-0 w-[700px] h-[700px] bg-orange/6 rounded-full blur-[140px] -translate-x-1/3 -translate-y-1/3" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-solarsky/6 rounded-full blur-[100px] translate-x-1/3 translate-y-1/3" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center w-full">
           <div>
             <motion.div {...fw(0)} className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
-                <Zap className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 rounded-xl bg-orange/15 flex items-center justify-center">
+                <Zap className="w-5 h-5 text-orange" />
               </div>
-              <span className="text-white/80 font-bold text-sm uppercase tracking-widest">On-Grid Solar</span>
+              <span className="text-orange font-bold text-sm uppercase tracking-widest">On-Grid Solar</span>
             </motion.div>
-            <motion.h1 {...fw(0.1)} className="font-outfit text-5xl md:text-6xl font-black text-white leading-[1.05] mb-6">
+            <motion.h1 {...fw(0.1)} className="font-outfit text-5xl md:text-6xl font-black text-navy leading-[1.05] mb-6">
               Cut Your Bill.<br />
-              <span className="text-yellow-300">Earn from Solar.</span>
+              <span className="glow-text">Earn from Solar.</span>
             </motion.h1>
-            <motion.p {...fw(0.2)} className="text-white/75 text-xl leading-relaxed mb-10 max-w-lg">
+            <motion.p {...fw(0.2)} className="text-slate-500 text-xl leading-relaxed mb-10 max-w-lg">
               The most popular and cost-effective solar solution. Connect to the grid, use solar during the day, export surplus power, and watch your electricity bill drop to near zero.
             </motion.p>
             <motion.div {...fw(0.3)} className="flex flex-wrap gap-4">
-              <button onClick={openQuoteModal} className="bg-white text-orange font-outfit font-black px-10 py-4 rounded-full flex items-center gap-2 group transition-all shadow-xl border-none cursor-pointer hover:bg-white/90">
+              <button onClick={openQuoteModal} className="bg-orange hover:bg-orange/90 text-white font-outfit font-black px-10 py-4 rounded-full flex items-center gap-2 group transition-all shadow-xl shadow-orange/20 border-none cursor-pointer">
                 Get Free Quote <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <Link to="/solar/off-grid" className="bg-white/15 hover:bg-white/25 text-white font-outfit font-bold px-10 py-4 rounded-full transition-all no-underline border border-white/30">
+              <Link to="/solar/off-grid" className="bg-white hover:bg-slate-50 text-navy font-outfit font-bold px-10 py-4 rounded-full transition-all no-underline border border-gray-200">
                 Compare Off-Grid
               </Link>
             </motion.div>
           </div>
           <motion.div {...fw(0.3)} className="grid grid-cols-2 gap-4">
             {[
-              { val: '₹0', label: 'Upfront (EMI Plans)', color: 'bg-white/20' },
-              { val: '3 Yrs', label: 'Avg. Payback', color: 'bg-white/20' },
-              { val: '₹78K', label: 'Max Govt. Subsidy', color: 'bg-white/20' },
-              { val: 'Top-Tier', label: 'Premium Modules', color: 'bg-white/20' },
+              { val: '₹0', label: 'Upfront (EMI Plans)' },
+              { val: '3 Yrs', label: 'Avg. Payback' },
+              { val: '₹78K', label: 'Max Govt. Subsidy' },
+              { val: 'Top-Tier', label: 'Premium Modules' },
             ].map((item, i) => (
-              <motion.div key={item.label} {...fw(0.3 + i * 0.1)} className="bg-white/15 backdrop-blur border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-colors">
-                <div className="font-outfit font-black text-white text-3xl">{item.val}</div>
-                <div className="text-white/60 text-sm mt-1">{item.label}</div>
+              <motion.div key={item.label} {...fw(0.3 + i * 0.1)} className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-lg transition-all">
+                <div className="font-outfit font-black text-navy text-3xl">{item.val}</div>
+                <div className="text-slate-400 text-sm mt-1">{item.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -142,18 +141,18 @@ export default function OnGridSolarPage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section className="py-24 px-6 bg-navy">
+      <section className="py-24 px-6 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fw(0)} className="text-center mb-16">
-            <h2 className="font-outfit text-4xl md:text-5xl font-black text-white">How On-Grid Solar <span className="text-orange">Works</span></h2>
-            <p className="text-white/55 text-lg mt-4 max-w-2xl mx-auto">Simple, automatic, and completely seamless. Here's what happens every sunny day.</p>
+            <h2 className="font-outfit text-4xl md:text-5xl font-black text-navy">How On-Grid Solar <span className="text-orange">Works</span></h2>
+            <p className="text-slate-500 text-lg mt-4 max-w-2xl mx-auto">Simple, automatic, and completely seamless. Here's what happens every sunny day.</p>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((s, i) => (
-              <motion.div key={s.num} {...fw(i * 0.1)} className="bg-white/8 border border-white/10 rounded-2xl p-7 hover:bg-white/12 transition-colors">
+              <motion.div key={s.num} {...fw(i * 0.1)} className="bg-white border border-gray-100 rounded-2xl p-7 hover:shadow-lg transition-all">
                 <div className="w-14 h-14 rounded-2xl bg-orange text-white font-outfit font-black text-2xl flex items-center justify-center mb-6">{s.num}</div>
-                <h3 className="font-outfit font-bold text-white text-xl mb-3">{s.title}</h3>
-                <p className="text-white/55 text-sm leading-relaxed">{s.desc}</p>
+                <h3 className="font-outfit font-bold text-navy text-xl mb-3">{s.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -257,16 +256,16 @@ export default function OnGridSolarPage() {
       </section>
 
       {/* ── TESTIMONIAL ── */}
-      <section className="py-24 px-6 bg-orange">
+      <section className="py-24 px-6 bg-orange/5 border-y border-orange/10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div {...fw(0)}>
             <div className="flex justify-center gap-1 mb-6">
-              {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 text-white fill-white" />)}
+              {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 text-orange fill-orange" />)}
             </div>
-            <blockquote className="font-outfit text-2xl md:text-3xl font-bold text-white leading-relaxed mb-8">
-              "I installed a 3 kW on-grid system in March. My April bill was ₹0 variable charges — just ₹150 fixed. Urban Energy handled the subsidy and net meter application. I got ₹78,000 subsidy directly in my account."
+            <blockquote className="font-outfit text-2xl md:text-3xl font-bold text-navy leading-relaxed mb-8">
+              "I installed a 3 kW on-grid system in March. My April bill was ₹0 variable charges — just ₹150 fixed. Vaulix Solar handled the subsidy and net meter application. I got ₹78,000 subsidy directly in my account."
             </blockquote>
-            <div className="text-white/70 font-medium">— Anita Desai, Homeowner | Nagpur | 3 kW On-Grid System</div>
+            <div className="text-slate-400 font-medium">— Anita Desai, Homeowner | Nagpur | 3 kW On-Grid System</div>
           </motion.div>
         </div>
       </section>
@@ -292,12 +291,12 @@ export default function OnGridSolarPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-24 px-6 bg-gradient-to-r from-orange to-[#e06500] text-white text-center">
+      <section className="py-24 px-6 bg-slate-50 text-center">
         <motion.div {...fw(0)} className="max-w-3xl mx-auto">
-          <Sun className="w-14 h-14 text-white/30 mx-auto mb-6" />
-          <h2 className="font-outfit text-4xl md:text-5xl font-black mb-6">Start Saving with On-Grid Solar</h2>
-          <p className="text-white/80 text-xl mb-10">Get a free site assessment, custom system design, and detailed savings report. We'll also handle your PM Surya Ghar subsidy application.</p>
-          <button onClick={openQuoteModal} className="bg-white text-orange font-outfit font-black px-14 py-5 rounded-full text-lg hover:bg-white/90 transition-all shadow-2xl border-none cursor-pointer inline-block">
+          <Sun className="w-14 h-14 text-orange/30 mx-auto mb-6" />
+          <h2 className="font-outfit text-4xl md:text-5xl font-black text-navy mb-6">Start Saving with On-Grid Solar</h2>
+          <p className="text-slate-500 text-xl mb-10">Get a free site assessment, custom system design, and detailed savings report. We'll also handle your PM Surya Ghar subsidy application.</p>
+          <button onClick={openQuoteModal} className="bg-orange hover:bg-orange/90 text-white font-outfit font-black px-14 py-5 rounded-full text-lg transition-all shadow-xl shadow-orange/20 border-none cursor-pointer inline-block">
             Book Free Site Assessment
           </button>
         </motion.div>

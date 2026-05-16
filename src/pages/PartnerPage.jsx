@@ -66,18 +66,18 @@ export default function PartnerPage() {
   return (
     <main className="pt-16 bg-slate-50">
       {/* ── HERO ── */}
-      <section className="relative py-24 px-6 overflow-hidden bg-navy text-white">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, #FF7A00 0%, transparent 40%), radial-gradient(circle at 20% 80%, #00A3E0 0%, transparent 50%)' }} />
+      <section className="relative py-24 px-6 overflow-hidden bg-slate-50">
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, #FF7A00 0%, transparent 40%), radial-gradient(circle at 20% 80%, #00A3E0 0%, transparent 50%)' }} />
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
-        
+
         {/* Animated Glass Glows */}
-        <motion.div 
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} 
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 right-1/4 w-64 h-64 bg-orange/30 rounded-full blur-[100px] pointer-events-none"
         />
-        <motion.div 
-          animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }} 
+        <motion.div
+          animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
           className="absolute bottom-20 left-1/4 w-80 h-80 bg-solarsky/20 rounded-full blur-[100px] pointer-events-none"
         />
@@ -89,43 +89,43 @@ export default function PartnerPage() {
                 Partner Network
               </span>
             </motion.div>
-            <motion.h1 {...fadeUp(0.1)} className="font-orbitron text-5xl md:text-6xl font-black leading-tight mb-6">
+            <motion.h1 {...fadeUp(0.1)} className="font-orbitron text-5xl md:text-6xl font-black leading-tight mb-6 text-navy">
               Scale Your Business with{' '}
               <span style={{ background: 'linear-gradient(90deg,#FF7A00,#FFC107)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                Urban Energy
+                Vaulix Solar
               </span>
             </motion.h1>
-            <motion.p {...fadeUp(0.2)} className="text-white/70 text-lg md:text-xl mb-8 leading-relaxed max-w-lg">
+            <motion.p {...fadeUp(0.2)} className="text-slate-500 text-lg md:text-xl mb-8 leading-relaxed max-w-lg">
               Join Uttar Pradesh's most progressive solar network. Leverage our industry-certified standards and dedicated support structure to deliver world-class residential solutions.
             </motion.p>
-            
+
             <motion.div {...fadeUp(0.3)} className="grid grid-cols-2 gap-6 max-w-md">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-orange/10 flex items-center justify-center text-orange"><ArrowRight size={18} /></div>
-                <span className="font-medium text-white/90">Dedicated Support</span>
+                <span className="font-medium text-slate-700">Dedicated Support</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-orange/10 flex items-center justify-center text-orange"><ArrowRight size={18} /></div>
-                <span className="font-medium text-white/90">Direct Lead Flow</span>
+                <span className="font-medium text-slate-700">Direct Lead Flow</span>
               </div>
             </motion.div>
           </div>
 
           {/* Contact Card side banner decorative or simplified */}
-          <motion.div 
-            initial={{ opacity: 0, x: 40 }} 
-            whileInView={{ opacity: 1, x: 0 }} 
-            viewport={{ once: true }} 
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="hidden lg:block relative"
           >
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
-               <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=800&q=80" alt="Business Handshake" className="w-full h-full object-cover opacity-80" />
-               <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent" />
-               <div className="absolute bottom-8 left-8">
-                 <div className="font-orbitron text-2xl font-black text-white">Mutual Growth.</div>
-                 <div className="font-outfit text-sm text-orange mt-1 uppercase tracking-widest">Shared Responsibility</div>
-               </div>
+              <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=800&q=80" alt="Business Handshake" className="w-full h-full object-cover opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent" />
+              <div className="absolute bottom-8 left-8">
+                <div className="font-orbitron text-2xl font-black text-white">Mutual Growth.</div>
+                <div className="font-outfit text-sm text-orange mt-1 uppercase tracking-widest">Shared Responsibility</div>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -143,8 +143,8 @@ export default function PartnerPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {partnerBenefits.map((b, i) => (
-              <motion.div 
-                key={b.title} 
+              <motion.div
+                key={b.title}
                 {...fadeUp(i * 0.1)}
                 className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 hover:border-orange/30 transition-all group duration-300 hover:-translate-y-2"
               >
@@ -170,7 +170,7 @@ export default function PartnerPage() {
           </motion.div>
 
           <div className="grid md:grid-cols-4 gap-8 relative">
-             {/* Connector line only visible on desktop */}
+            {/* Connector line only visible on desktop */}
             <div className="hidden md:block absolute top-1/4 left-0 right-0 h-0.5 bg-dashed border-t-2 border-dashed border-gray-200 -z-0 translate-y-3" />
 
             {[
@@ -179,8 +179,8 @@ export default function PartnerPage() {
               { num: '03', title: 'Sign MOU', desc: 'Finalize regional territory boundaries and sign official partnership.', icon: Handshake },
               { num: '04', title: 'Activation', desc: 'Get access to resources, portals, and sales collaterals.', icon: Rocket },
             ].map((step, idx) => (
-              <motion.div 
-                key={idx} 
+              <motion.div
+                key={idx}
                 {...fadeUp(0.1 * idx)}
                 className="relative text-center group z-10"
               >
@@ -198,17 +198,17 @@ export default function PartnerPage() {
       <section className="py-20 px-6 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at center, #FF7A00, transparent)' }} />
         <div className="max-w-4xl mx-auto bg-white rounded-[40px] shadow-2xl overflow-hidden relative z-10 flex flex-col md:flex-row border border-white/10">
-          
+
           {/* Form Intro Info Panel */}
           <div className="w-full md:w-2/5 bg-gradient-to-br from-navy to-[#0a1a5c] p-10 text-white flex flex-col justify-between">
             <div>
               <h3 className="font-orbitron text-3xl font-bold mb-4">Let's Connect.</h3>
               <p className="text-white/60 text-sm leading-relaxed mb-8">Fill out our short partnership onboarding intent form and an executive will reach out within 24 business hours.</p>
-              
+
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <Mail className="text-orange" size={20} />
-                  <span className="text-sm">partners@urbanenergy.in</span>
+                  <span className="text-sm">partners@vaulixsolar.in</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <Phone className="text-orange" size={20} />
@@ -223,7 +223,7 @@ export default function PartnerPage() {
 
             <div className="mt-12 pt-8 border-t border-white/10">
               <div className="text-xs text-white/40 uppercase tracking-widest mb-2">Authorized Verification</div>
-              <div className="font-bold text-white">Urban Energy Group</div>
+              <div className="font-bold text-white">Vaulix Solar Group</div>
             </div>
           </div>
 
@@ -235,13 +235,13 @@ export default function PartnerPage() {
                   <div>
                     <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Name</label>
                     <div className="relative">
-                      <input required type="text" value={formData.name} onChange={(e)=>setFormData({...formData, name: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter your full name" />
+                      <input required type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter your full name" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Organization</label>
                     <div className="relative">
-                      <input type="text" value={formData.company} onChange={(e)=>setFormData({...formData, company: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter organization name" />
+                      <input type="text" value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter organization name" />
                     </div>
                   </div>
                 </div>
@@ -249,22 +249,22 @@ export default function PartnerPage() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Email ID</label>
-                    <input required type="email" value={formData.email} onChange={(e)=>setFormData({...formData, email: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter email address" />
+                    <input required type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter email address" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Mobile Number</label>
-                    <input required type="tel" value={formData.phone} onChange={(e)=>setFormData({...formData, phone: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter mobile number" />
+                    <input required type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter mobile number" />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Location (City)</label>
-                    <input required type="text" value={formData.city} onChange={(e)=>setFormData({...formData, city: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter your city" />
+                    <input required type="text" value={formData.city} onChange={(e) => setFormData({ ...formData, city: e.target.value })} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all" placeholder="Enter your city" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Applicant Type</label>
-                    <select value={formData.type} onChange={(e)=>setFormData({...formData, type: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all bg-white cursor-pointer">
+                    <select value={formData.type} onChange={(e) => setFormData({ ...formData, type: e.target.value })} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all bg-white cursor-pointer">
                       <option value="Dealer">Dealer</option>
                       <option value="Installer">Installer</option>
                       <option value="Distributor">Distributor</option>
@@ -274,7 +274,7 @@ export default function PartnerPage() {
 
                 <div>
                   <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Write something about your background</label>
-                  <textarea rows={3} value={formData.message} onChange={(e)=>setFormData({...formData, message: e.target.value})} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all resize-none" placeholder="Write about your business background..." />
+                  <textarea rows={3} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all resize-none" placeholder="Write about your business background..." />
                 </div>
 
                 <button type="submit" disabled={loading} className="w-full bg-orange hover:bg-orange/90 text-white font-outfit font-bold py-4 rounded-xl transition-all duration-300 hover:shadow-lg shadow-orange/30 flex items-center justify-center gap-2 disabled:opacity-60">
@@ -283,7 +283,7 @@ export default function PartnerPage() {
                 {error && <p className="text-center text-red-500 text-xs font-medium bg-red-50 py-2 rounded-lg">{error}</p>}
               </form>
             ) : (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="h-full flex flex-col items-center justify-center text-center py-12"

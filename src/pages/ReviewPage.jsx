@@ -5,17 +5,17 @@ import { Star, Send, User, Briefcase, MessageSquare } from 'lucide-react'
 const API = import.meta.env.VITE_API_URL
 
 export default function ReviewPage() {
-  const [form, setForm]         = useState({ name: '', role: '', stars: 5, review: '' })
-  const [loading, setLoading]   = useState(false)
+  const [form, setForm] = useState({ name: '', role: '', stars: 5, review: '' })
+  const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
-  const [error, setError]       = useState('')
-  const [hovered, setHovered]   = useState(0)
+  const [error, setError] = useState('')
+  const [hovered, setHovered] = useState(0)
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!form.name.trim())   return setError('Please enter your name.')
+    if (!form.name.trim()) return setError('Please enter your name.')
     if (!form.review.trim()) return setError('Please write your review.')
     setError('')
     setLoading(true)
@@ -24,11 +24,11 @@ export default function ReviewPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name:     form.name.trim(),
-          role:     form.role.trim(),
+          name: form.name.trim(),
+          role: form.role.trim(),
           initials: form.name.trim().split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2),
-          stars:    form.stars,
-          review:   form.review.trim(),
+          stars: form.stars,
+          review: form.review.trim(),
         })
       })
       if (res.ok) {
@@ -49,21 +49,21 @@ export default function ReviewPage() {
     <main className="pt-16 bg-slate-50 min-h-screen">
 
       {/* Hero */}
-      <section className="relative py-20 px-5 overflow-hidden bg-navy">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 60% 40%, #FF7A00 0%, transparent 55%), radial-gradient(circle at 20% 80%, #FFC107 0%, transparent 40%)' }} />
+      <section className="relative py-20 px-5 overflow-hidden bg-slate-50">
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 60% 40%, #FF7A00 0%, transparent 55%), radial-gradient(circle at 20% 80%, #FFC107 0%, transparent 40%)' }} />
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="inline-flex items-center gap-2 bg-orange/15 border border-orange/30 text-orange px-4 py-1.5 rounded-full text-xs font-outfit font-bold uppercase tracking-widest mb-5">
+            <span className="inline-flex items-center gap-2 bg-orange/10 border border-orange/25 text-orange px-4 py-1.5 rounded-full text-xs font-outfit font-bold uppercase tracking-widest mb-5">
               <Star size={13} fill="#FF7A00" /> Share Your Experience
             </span>
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-            className="font-outfit text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+            className="font-outfit text-4xl md:text-5xl font-black text-navy leading-tight mb-4">
             How Was Your <span style={{ background: 'linear-gradient(90deg,#FF7A00,#FFC107)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Solar Experience?</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="text-white/60 text-base leading-relaxed max-w-xl mx-auto">
-            Your feedback helps others make the right decision. Share your honest experience with Urban Energy.
+            className="text-slate-500 text-base leading-relaxed max-w-xl mx-auto">
+            Your feedback helps others make the right decision. Share your honest experience with Vaulix Solar.
           </motion.p>
         </div>
       </section>

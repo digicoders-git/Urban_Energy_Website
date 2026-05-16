@@ -179,24 +179,24 @@ export default function SolarCalculator() {
         animate={{ scale: 1, opacity: 1 }}
         className={`rounded-2xl p-1 sm:p-4 text-center border ${
           r.highlight
-            ? 'bg-navy border-navy text-white'
+            ? 'bg-orange/5 border-orange/20'
             : 'bg-white border-gray-100'
         }`}
       >
         <div className={`text-[10px] sm:text-xs font-outfit font-semibold uppercase tracking-widest mb-1 sm:mb-2 ${
-          r.highlight ? 'text-white/50' : 'text-slate-400'
+          r.highlight ? 'text-orange/60' : 'text-slate-400'
         }`}>
           {r.label}
         </div>
 
         <div className={`font-outfit text-xl sm:text-2xl md:text-3xl font-black ${
-          r.highlight ? 'text-yellow' : 'text-orange'
+          r.highlight ? 'text-orange' : 'text-orange'
         }`}>
           {r.val}
         </div>
 
         <div className={`text-[10px] sm:text-xs mt-1 ${
-          r.highlight ? 'text-white/40' : 'text-slate-400'
+          r.highlight ? 'text-slate-400' : 'text-slate-400'
         }`}>
           {r.sub}
         </div>

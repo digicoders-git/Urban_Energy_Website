@@ -65,33 +65,31 @@ export default function HomesPage() {
     <main className="pt-20 bg-white">
 
       {/* ── HERO ── */}
-      <section className="relative w-full min-h-[88vh] flex items-center overflow-hidden bg-gradient-to-br from-navy via-navy/95 to-[#0a1a5c]">
+      <section className="relative w-full min-h-[88vh] flex items-center overflow-hidden bg-slate-50">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-solarsky/15 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-orange/10 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3" />
-          {/* Grid pattern */}
-          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-orange/8 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-solarsky/8 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center w-full">
           <div>
             <motion.div {...fw(0)} className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-solarsky/20 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-solarsky/15 flex items-center justify-center">
                 <Home className="w-5 h-5 text-solarsky" />
               </div>
               <span className="text-solarsky font-bold text-sm uppercase tracking-widest">Residential Solar</span>
             </motion.div>
-            <motion.h1 {...fw(0.1)} className="font-outfit text-5xl md:text-6xl font-black text-white leading-[1.05] mb-6">
+            <motion.h1 {...fw(0.1)} className="font-outfit text-5xl md:text-6xl font-black text-navy leading-[1.05] mb-6">
               Power Your Home.<br />
-              <span className="text-solarsky">Own Your Energy.</span>
+              <span className="glow-text">Own Your Energy.</span>
             </motion.h1>
-            <motion.p {...fw(0.2)} className="text-white/65 text-xl leading-relaxed mb-10 max-w-lg">
+            <motion.p {...fw(0.2)} className="text-slate-500 text-xl leading-relaxed mb-10 max-w-lg">
               Custom rooftop solar for Indian homes. Save up to 90% on electricity bills, earn from surplus power, and achieve complete energy independence.
             </motion.p>
             <motion.div {...fw(0.3)} className="flex flex-wrap gap-4">
-              <Link to="/contact" className="bg-solarsky hover:bg-solarsky/90 text-white font-outfit font-bold px-10 py-4 rounded-full flex items-center gap-2 group transition-all shadow-xl shadow-solarsky/30 no-underline">
+              <Link to="/contact" className="bg-solarsky hover:bg-solarsky/90 text-white font-outfit font-bold px-10 py-4 rounded-full flex items-center gap-2 group transition-all shadow-xl shadow-solarsky/20 no-underline">
                 Get Free Survey <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/solar/on-grid" className="bg-white/10 hover:bg-white/20 text-white font-outfit font-bold px-10 py-4 rounded-full transition-all no-underline border border-white/20">
+              <Link to="/solar/on-grid" className="bg-white hover:bg-slate-50 text-navy font-outfit font-bold px-10 py-4 rounded-full transition-all no-underline border border-gray-200">
                 On-Grid Solar
               </Link>
             </motion.div>
@@ -103,12 +101,12 @@ export default function HomesPage() {
               { icon: ShieldCheck, val: 'High Rank', label: 'Performance', color: 'bg-orange' },
               { icon: Award, val: '₹78,000', label: 'Max Subsidy', color: 'bg-purple-500' },
             ].map((item, i) => (
-              <motion.div key={item.label} {...fw(0.3 + i * 0.1)} className="bg-white/8 backdrop-blur border border-white/10 rounded-2xl p-6 hover:bg-white/12 transition-colors">
+              <motion.div key={item.label} {...fw(0.3 + i * 0.1)} className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-lg transition-all">
                 <div className={`w-10 h-10 ${item.color} rounded-xl flex items-center justify-center mb-4`}>
                   <item.icon className="w-5 h-5 text-white" />
                 </div>
-                <div className="font-outfit font-black text-white text-2xl">{item.val}</div>
-                <div className="text-white/50 text-sm mt-1">{item.label}</div>
+                <div className="font-outfit font-black text-navy text-2xl">{item.val}</div>
+                <div className="text-slate-400 text-sm mt-1">{item.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -137,35 +135,35 @@ export default function HomesPage() {
       </section>
 
       {/* ── SYSTEM SIZES ── */}
-      <section className="py-24 px-6 bg-navy">
+      <section className="py-24 px-6 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fw(0)} className="text-center mb-16">
-            <h2 className="font-outfit text-4xl md:text-5xl font-black text-white">Choose Your <span className="text-solarsky">System Size</span></h2>
-            <p className="text-white/55 text-lg mt-4 max-w-2xl mx-auto">Every home is different. Pick the system that matches your consumption and roof space.</p>
+            <h2 className="font-outfit text-4xl md:text-5xl font-black text-navy">Choose Your <span className="text-solarsky">System Size</span></h2>
+            <p className="text-slate-500 text-lg mt-4 max-w-2xl mx-auto">Every home is different. Pick the system that matches your consumption and roof space.</p>
           </motion.div>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[640px]">
               <thead>
-                <tr className="border-b border-white/10">
+                <tr className="border-b border-gray-200">
                   {['System Size', 'Roof Area Needed', 'Monthly Savings', 'Approx. Cost', 'Govt. Subsidy'].map(h => (
-                    <th key={h} className="text-left py-4 px-4 text-white/50 text-sm font-semibold uppercase tracking-wider">{h}</th>
+                    <th key={h} className="text-left py-4 px-4 text-slate-400 text-sm font-semibold uppercase tracking-wider">{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {systemSizes.map((row, i) => (
-                  <motion.tr key={row.kw} {...fw(i * 0.08)} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                  <motion.tr key={row.kw} {...fw(i * 0.08)} className="border-b border-gray-100 hover:bg-white transition-colors">
                     <td className="py-5 px-4 font-outfit font-black text-solarsky text-lg">{row.kw}</td>
-                    <td className="py-5 px-4 text-white/80 font-medium">{row.area}</td>
-                    <td className="py-5 px-4 text-green-400 font-bold">{row.saving}</td>
-                    <td className="py-5 px-4 text-white/80 font-medium">{row.cost}</td>
+                    <td className="py-5 px-4 text-slate-600 font-medium">{row.area}</td>
+                    <td className="py-5 px-4 text-green-600 font-bold">{row.saving}</td>
+                    <td className="py-5 px-4 text-slate-600 font-medium">{row.cost}</td>
                     <td className="py-5 px-4 text-orange font-bold">{row.subsidy}</td>
                   </motion.tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <motion.p {...fw(0.3)} className="text-white/30 text-sm mt-6 text-center">* Prices are indicative and vary by location, roof type, and panel brand. Contact us for an exact quote.</motion.p>
+          <motion.p {...fw(0.3)} className="text-slate-400 text-sm mt-6 text-center">* Prices are indicative and vary by location, roof type, and panel brand. Contact us for an exact quote.</motion.p>
         </div>
       </section>
 
@@ -198,7 +196,7 @@ export default function HomesPage() {
         <div className="max-w-5xl mx-auto">
           <motion.div {...fw(0)} className="text-center mb-16">
             <h2 className="font-outfit text-4xl md:text-5xl font-black text-navy">Everything <span className="text-solarsky">Included</span></h2>
-            <p className="text-navy/55 text-lg mt-4">No hidden costs. No surprises. This is what you get with every Urban Energy home installation.</p>
+            <p className="text-navy/55 text-lg mt-4">No hidden costs. No surprises. This is what you get with every Vaulix Solar home installation.</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 gap-4">
             {included.map((item, i) => (
@@ -237,15 +235,12 @@ export default function HomesPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section 
-        className="py-24 px-6 text-white text-center"
-        style={{ background: 'linear-gradient(to right, #00A3E0, #0B1D51)' }}
-      >
+      <section className="py-24 px-6 bg-slate-50 text-center">
         <motion.div {...fw(0)} className="max-w-3xl mx-auto">
-          <Sun className="w-14 h-14 text-white/40 mx-auto mb-6" />
-          <h2 className="font-outfit text-4xl md:text-5xl font-black mb-6">Ready to Go Solar?</h2>
-          <p className="text-white/70 text-xl mb-10">Book a free home survey today. Our expert will visit, assess your roof, and give you a detailed savings report — completely free, no obligation.</p>
-          <Link to="/contact" className="bg-white text-navy font-outfit font-black px-14 py-5 rounded-full text-lg hover:bg-white/90 transition-all shadow-2xl no-underline inline-block">
+          <Sun className="w-14 h-14 text-orange/40 mx-auto mb-6" />
+          <h2 className="font-outfit text-4xl md:text-5xl font-black text-navy mb-6">Ready to Go Solar?</h2>
+          <p className="text-slate-500 text-xl mb-10">Book a free home survey today. Our expert will visit, assess your roof, and give you a detailed savings report — completely free, no obligation.</p>
+          <Link to="/contact" className="bg-orange hover:bg-orange/90 text-white font-outfit font-black px-14 py-5 rounded-full text-lg transition-all shadow-xl shadow-orange/20 no-underline inline-block">
             Book Free Home Survey
           </Link>
         </motion.div>

@@ -65,15 +65,14 @@ export default function Navbar() {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-lg shadow-navy/10' : 'bg-white/95 backdrop-blur-md border-b border-gray-100'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg shadow-navy/10' : 'bg-white/95 backdrop-blur-md border-b border-gray-100'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 no-underline group">
-          <img src={Logo} className="w-12 object-contain group-hover:scale-105 transition-transform" alt="" />
-          <span className="font-orbitron font-black text-navy text-lg tracking-tight">
-            Urban <span className="glow-text">Energy</span>
+        <Link to="/" className="flex items-center gap-2.5 no-underline group">
+          <img src={Logo} className="w-28 h-28 object-contain group-hover:scale-105 transition-transform" alt="Vaulix Solar" />
+          <span className="font-orbitron font-black text-navy text-lg tracking-tight leading-tight">
+            Vaulix <span className="glow-text">Solar</span>
           </span>
         </Link>
 
@@ -116,9 +115,8 @@ export default function Navbar() {
               <li key={link.label}>
                 <Link
                   to={link.to}
-                  className={`no-underline text-sm font-space font-bold transition-colors duration-200 ${
-                    location.pathname === link.to ? 'text-orange' : 'text-navy hover:text-orange'
-                  }`}
+                  className={`no-underline text-sm font-space font-bold transition-colors duration-200 ${location.pathname === link.to ? 'text-orange' : 'text-navy hover:text-orange'
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -187,15 +185,14 @@ export default function Navbar() {
                     key={link.label}
                     to={link.to}
                     onClick={() => handleNav(link.to)}
-                    className={`no-underline text-base font-semibold py-1 transition-colors ${
-                      location.pathname === link.to ? 'text-solarsky' : 'text-navy/80 hover:text-navy'
-                    }`}
+                    className={`no-underline text-base font-semibold py-1 transition-colors ${location.pathname === link.to ? 'text-solarsky' : 'text-navy/80 hover:text-navy'
+                      }`}
                   >
                     {link.label}
                   </Link>
                 )
               )}
-              <button 
+              <button
                 onClick={() => {
                   setMenuOpen(false);
                   openQuoteModal();

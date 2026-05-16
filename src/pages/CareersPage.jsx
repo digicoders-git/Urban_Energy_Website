@@ -24,7 +24,7 @@ export default function CareersPage() {
           <Briefcase className="w-12 h-12 text-slate-300 mx-auto mb-4" />
           <h3 className="font-outfit font-bold text-navy text-xl mb-2">Don't see a relevant position?</h3>
           <p className="text-slate-500 mb-6 text-sm">Drop your resume and a short cover letter anyway. We're always tracking exceptional talent.</p>
-          <a href="mailto:careers@urbanenergy.in" className="font-bold text-orange hover:underline">careers@urbanenergy.in</a>
+          <a href="mailto:careers@vaulixsolar.in" className="font-bold text-orange hover:underline">careers@vaulixsolar.in</a>
         </div>
       </section>
     </main>

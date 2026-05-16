@@ -25,7 +25,7 @@ function mapBlog(b) {
 // ── Toast ──────────────────────────────────────────────────────────────────
 function Toast({ msg, visible }) {
   return (
-    <div className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#112378] text-white px-5 py-3 rounded-xl border-l-4 border-[#FF7A00] text-sm font-semibold shadow-2xl transition-all duration-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
+    <div className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-white text-navy px-5 py-3 rounded-xl border-l-4 border-orange text-sm font-semibold shadow-2xl transition-all duration-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
       ✓ {msg}
     </div>
   )
@@ -187,16 +187,15 @@ function Sidebar({ posts, onOpen, onSearch, showToast }) {
   return (
     <aside className="flex flex-col gap-5">
       {/* Newsletter */}
-      <div className="relative bg-gradient-to-br from-[#0B1F3A] to-[#1a3a6b] rounded-2xl p-6 overflow-hidden text-center">
-        <div className="absolute -top-16 -right-10 w-40 h-40 rounded-full bg-[#FF7A00]/10 blur-2xl pointer-events-none" />
+      <div className="relative bg-white border border-slate-200 rounded-2xl p-6 overflow-hidden text-center">
         <div className="relative z-10">
           <div className="text-2xl mb-2">☀</div>
-          <h4 className="text-white font-black text-base mb-2">Solar Weekly</h4>
-          <p className="text-white/55 text-xs leading-relaxed mb-4">Get latest solar tips, subsidy updates & savings guides.</p>
+          <h4 className="text-navy font-black text-base mb-2">Solar Weekly</h4>
+          <p className="text-slate-400 text-xs leading-relaxed mb-4">Get latest solar tips, subsidy updates & savings guides.</p>
           <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter email address"
-            className="w-full bg-white/[0.08] border border-white/20 rounded-lg px-3 py-2.5 text-white text-sm placeholder-white/40 outline-none focus:border-[#FF7A00] mb-2.5 transition-colors" />
+            className="w-full bg-slate-50 border border-gray-200 rounded-lg px-3 py-2.5 text-navy text-sm placeholder-slate-400 outline-none focus:border-orange mb-2.5 transition-colors" />
           <button onClick={() => { showToast('Subscribed! Welcome to Solar Weekly.'); setEmail('') }}
-            className="w-full bg-[#FF7A00] hover:bg-[#e86e00] text-white font-bold text-sm py-2.5 rounded-lg transition-colors">
+            className="w-full bg-orange hover:bg-orange/90 text-white font-bold text-sm py-2.5 rounded-lg transition-colors">
             Subscribe Free →
           </button>
         </div>
@@ -328,7 +327,7 @@ export default function BlogPage() {
   )
 
   return (
-    <div className="min-h-screen bg-[#F7F9FC]" style={{ fontFamily: "'Outfit', sans-serif" }}>
+    <div className="min-h-screen bg-slate-50" style={{ fontFamily: "'Outfit', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
         .prose-custom h2{font-size:1.25rem;font-weight:800;color:#0B1F3A;margin:1.8rem 0 0.7rem}
@@ -346,23 +345,23 @@ export default function BlogPage() {
       `}</style>
 
       {/* Hero */}
-      <div className="relative bg-gradient-to-br from-[#112378] to-[#1a3a6b] overflow-hidden">
-        <div className="absolute -top-40 right-0 w-[500px] h-[500px] rounded-full bg-[#FF7A00]/10 blur-3xl pointer-events-none" />
+      <div className="relative bg-slate-50 overflow-hidden border-b border-gray-200">
+        <div className="absolute -top-40 right-0 w-[500px] h-[500px] rounded-full bg-orange/5 blur-3xl pointer-events-none" />
         <div className="relative z-10 max-w-7xl mx-auto px-5 py-10 md:py-14 flex justify-center">
           <div className="max-w-2xl flex flex-col items-center text-center">
-            <span className="inline-flex items-center gap-2 bg-[#FF7A00]/15 border border-[#FF7A00]/30 text-[#FF7A00] text-xs font-bold px-4 py-1.5 rounded-full mb-5">☀ Solar Knowledge Hub</span>
-            <h1 className="text-5xl md:text-6xl font-black text-white leading-[1.08] tracking-tighter mb-4">
+            <span className="inline-flex items-center gap-2 bg-orange/10 border border-orange/25 text-orange text-xs font-bold px-4 py-1.5 rounded-full mb-5">☀ Solar Knowledge Hub</span>
+            <h1 className="text-5xl md:text-6xl font-black text-navy leading-[1.08] tracking-tighter mb-4">
               Learn. Save.<br />
-              <span className="bg-gradient-to-r from-[#FF7A00] to-[#FFC107] bg-clip-text text-transparent">Go Solar.</span>
+              <span className="glow-text">Go Solar.</span>
             </h1>
-            <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-lg mb-8">
+            <p className="text-slate-500 text-base md:text-lg leading-relaxed max-w-lg mb-8">
               Expert guides, government scheme updates, and real solar savings stories.
             </p>
-            <div className="flex gap-8 pt-6 border-t border-white/10 w-full justify-center">
+            <div className="flex gap-8 pt-6 border-t border-gray-200 w-full justify-center">
               {[{ n: posts.length, l: 'Articles' }, { n: '24.8K', l: 'Monthly Readers' }, { n: CATEGORIES.length - 1, l: 'Categories' }].map(s => (
                 <div key={s.l} className="text-center">
-                  <div className="text-2xl font-black text-[#FF7A00]">{s.n}</div>
-                  <div className="text-[11px] text-white/45 mt-0.5 uppercase tracking-wider">{s.l}</div>
+                  <div className="text-2xl font-black text-orange">{s.n}</div>
+                  <div className="text-[11px] text-slate-400 mt-0.5 uppercase tracking-wider">{s.l}</div>
                 </div>
               ))}
             </div>
