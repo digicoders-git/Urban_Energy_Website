@@ -28,7 +28,7 @@ const footerLinks = {
 }
 
 const contactInfo = [
-  { icon: <FaMapMarkerAlt size={16} />, label: 'Address', val: 'Lucknow, Uttar Pradesh – 226001' },
+  { icon: <FaMapMarkerAlt size={16} />, label: 'Address', val: 'KH-3/283/124, Vistarit Area Part-2, Khargapur, Gomti Nagar Extension, Sector-6, Lucknow' },
   { icon: <FaPhoneAlt size={16} />, label: 'Phone', val: '+91 98000 12345' },
   { icon: <FaEnvelope size={16} />, label: 'Email', val: 'hello@vaulixsolar.in' },
   { icon: <FaClock size={16} />, label: 'Hours', val: 'Mon – Sat: 9 AM – 7 PM' },
@@ -52,10 +52,10 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-3 mb-4 no-underline">
-              <img src={Logo} className="w-28 h-28 object-contain" alt="Vaulix Solar" />
-              <span className="font-orbitron font-black text-navy text-lg">
+              <img src={Logo} className="w-28 h-28 md:-ml-6 object-contain" alt="Vaulix Solar" />
+              {/* <span className="font-orbitron font-black text-navy text-lg">
                 Vaulix <span className="glow-text">Solar</span>
-              </span>
+              </span> */}
             </Link>
             <p className="text-sm leading-relaxed mb-5 text-slate-500">
               Powering a Brighter Future. India's trusted solar partner for residential and

@@ -51,10 +51,10 @@ const comparison = [
 
 const systemSizes = [
   { kw: '1 kW', units: '120 units/mo', saving: '₹840–₹1,200/mo', cost: '~₹65,000', subsidy: '₹30,000', payback: '4–5 yrs' },
-  { kw: '2 kW', units: '240 units/mo', saving: '₹1,680–₹2,400/mo', cost: '~₹1,20,000', subsidy: '₹60,000', payback: '3–4 yrs' },
-  { kw: '3 kW', units: '360 units/mo', saving: '₹2,520–₹3,600/mo', cost: '~₹1,75,000', subsidy: '₹78,000', payback: '3 yrs' },
-  { kw: '5 kW', units: '600 units/mo', saving: '₹4,200–₹6,000/mo', cost: '~₹2,80,000', subsidy: '₹78,000', payback: '3–4 yrs' },
-  { kw: '10 kW', units: '1,200 units/mo', saving: '₹8,400–₹12,000/mo', cost: '~₹5,20,000', subsidy: '₹78,000', payback: '3–4 yrs' },
+  { kw: '2 kW', units: '240 units/mo', saving: '₹1,680–₹2,400/mo', cost: '~₹1,30,000', subsidy: '₹60,000', payback: '3–4 yrs' },
+  { kw: '3 kW', units: '360 units/mo', saving: '₹2,520–₹3,600/mo', cost: '~₹1,95,000', subsidy: '₹78,000', payback: '3 yrs' },
+  { kw: '5 kW', units: '600 units/mo', saving: '₹4,200–₹6,000/mo', cost: '~₹3,25,000', subsidy: '₹78,000', payback: '3–4 yrs' },
+  { kw: '10 kW', units: '1,200 units/mo', saving: '₹8,400–₹12,000/mo', cost: '~₹6,50,000', subsidy: '₹78,000', payback: '3–4 yrs' },
 ]
 
 const faqs = [
@@ -263,7 +263,7 @@ export default function OnGridSolarPage() {
               {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 text-orange fill-orange" />)}
             </div>
             <blockquote className="font-outfit text-2xl md:text-3xl font-bold text-navy leading-relaxed mb-8">
-              "I installed a 3 kW on-grid system in March. My April bill was ₹0 variable charges — just ₹150 fixed. Vaulix Solar handled the subsidy and net meter application. I got ₹78,000 subsidy directly in my account."
+              "I installed a 3 kW on-grid system in March. My April bill was ₹0 variable charges — just ₹150 fixed. The team handled the subsidy and net meter application end-to-end. I got ₹78,000 subsidy directly in my account."
             </blockquote>
             <div className="text-slate-400 font-medium">— Anita Desai, Homeowner | Nagpur | 3 kW On-Grid System</div>
           </motion.div>

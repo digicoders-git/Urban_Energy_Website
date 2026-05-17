@@ -213,7 +213,7 @@ export default function OffGridSolarPage() {
               {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 text-green-500 fill-green-500" />)}
             </div>
             <blockquote className="font-outfit text-2xl md:text-3xl font-bold text-navy leading-relaxed mb-8">
-              "Our farmhouse in Mahabaleshwar had no grid connection. Vaulix Solar installed a 5 kW off-grid system with lithium batteries. We now have 24/7 power — lights, fans, fridge, everything. No more generator noise or diesel costs."
+              "Our farmhouse in Mahabaleshwar had no grid connection. A 5 kW off-grid system with lithium batteries was installed. We now have 24/7 power — lights, fans, fridge, everything. No more generator noise or diesel costs."
             </blockquote>
             <div className="text-slate-400 font-medium">— Suresh Patil, Farmer | Mahabaleshwar, Maharashtra | 5 kW Off-Grid System</div>
           </motion.div>

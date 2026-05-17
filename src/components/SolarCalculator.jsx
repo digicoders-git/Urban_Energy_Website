@@ -28,7 +28,7 @@ export default function SolarCalculator() {
     const sizeByRoof = roof / 100
     let size = Math.min(sizeByBill, sizeByRoof)
     size = Math.max(1, Math.round(size * 2) / 2)
-    const costPerKw = form.type === 'hybrid' ? 75000 : form.type === 'off' ? 90000 : 55000
+    const costPerKw = form.type === 'hybrid' ? 75000 : form.type === 'off' ? 90000 : 65000
     const sysCost = Math.round(size * costPerKw)
     const subsidyRate = size <= 3 ? 0.4 : size <= 10 ? 0.2 : 0
     const subsidy = Math.round(sysCost * subsidyRate)

@@ -216,7 +216,7 @@ export default function PartnerPage() {
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="text-orange" size={20} />
-                  <span className="text-sm">Lucknow Head Office</span>
+                  <span className="text-sm">KH-3/283/124, Vistarit Area Part-2, Khargapur, Gomti Nagar Extension, Sector-6, Lucknow</span>
                 </div>
               </div>
             </div>

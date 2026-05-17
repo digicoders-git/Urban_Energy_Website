@@ -28,10 +28,10 @@ const navLinks = [
     dropdown: [
       { label: 'Solar Calculator', to: '/calculator' },
       { label: 'Careers', to: '/careers' },
+      { label: 'Blog', to: '/blog' },
+      { label: 'Partner With Us', to: '/become-a-partner' },
     ],
   },
-  { label: 'Blog', to: '/blog' },
-  { label: 'Partner', to: '/become-a-partner' },
   { label: 'Contact Us', to: '/contact' },
 ]
 
@@ -69,11 +69,8 @@ export default function Navbar() {
         }`}
     >
       <div className="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5 no-underline group">
+        <Link to="/" className="flex items-center no-underline group">
           <img src={Logo} className="w-28 h-28 object-contain group-hover:scale-105 transition-transform" alt="Vaulix Solar" />
-          <span className="font-orbitron font-black text-navy text-lg tracking-tight leading-tight">
-            Vaulix <span className="glow-text">Solar</span>
-          </span>
         </Link>
 
         {/* Desktop Links */}

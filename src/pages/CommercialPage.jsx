@@ -46,7 +46,7 @@ const epcSteps = [
   { num: '03', title: 'Procurement & Supply', desc: 'Tier-1 panels, commercial-grade inverters, mounting structures, and all BOS components sourced and quality-checked.' },
   { num: '04', title: 'Civil & Electrical Works', desc: 'Foundation work, mounting installation, cable laying, earthing, lightning protection, and panel commissioning.' },
   { num: '05', title: 'DISCOM & Net Metering', desc: 'Complete handling of DISCOM approvals, net metering application, synchronisation, and grid commissioning.' },
-  { num: '06', title: 'O&M & Performance Guarantee', desc: 'Annual O&M contract with performance guarantee, SCADA monitoring, and quarterly performance reports.' },
+  { num: '06', title: 'O&M & Long-Term Support', desc: 'Annual O&M contract with SCADA monitoring, quarterly performance reports, and dedicated technical support.' },
 ]
 
 const roiData = [
@@ -61,7 +61,7 @@ const faqs = [
   { q: 'What is the minimum system size for commercial solar?', a: 'We typically work with commercial systems starting from 10 kW. However, for optimal ROI, we recommend a minimum of 50 kW for commercial properties.' },
   { q: 'Can we install solar on a rented/leased property?', a: 'Yes, with the landlord\'s written consent. We can structure the agreement to benefit both parties, and the system can be transferred or removed if needed.' },
   { q: 'What is accelerated depreciation and how does it benefit us?', a: 'Under Section 32 of the Income Tax Act, businesses can claim 40% depreciation on solar assets in Year 1. For a ₹1 Cr system, this means ₹40 L in tax deductions — significantly improving your effective ROI.' },
-  { q: 'Do you provide performance guarantees?', a: 'Yes. We provide a Performance Ratio (PR) guarantee of minimum 75% and a generation guarantee based on your location\'s solar irradiance data. Any shortfall is compensated.' },
+  { q: 'Do you provide performance assurance?', a: 'Yes. We design systems targeting a Performance Ratio (PR) of minimum 75% based on your location\'s solar irradiance data. Our team monitors output and addresses any shortfall proactively.' },
   { q: 'How long does a commercial installation take?', a: 'A 100 kW system typically takes 3–4 weeks from order to commissioning. Larger MW-scale projects are planned with detailed project timelines agreed upfront.' },
 ]
 
@@ -90,7 +90,7 @@ export default function CommercialPage() {
               <span className="glow-text">As Hard As You Do.</span>
             </motion.h1>
             <motion.p {...fw(0.2)} className="text-slate-500 text-xl leading-relaxed mb-10 max-w-2xl">
-              Large-scale commercial solar with guaranteed performance, full EPC delivery, and 40% accelerated depreciation benefits. Built for businesses that demand results.
+              Large-scale commercial solar with proven performance, full EPC delivery, and 40% accelerated depreciation benefits. Built for businesses that demand results.
             </motion.p>
             <motion.div {...fw(0.3)} className="flex flex-wrap gap-4">
               <Link to="/contact" className="bg-orange hover:bg-orange/90 text-white font-outfit font-bold px-10 py-4 rounded-full flex items-center gap-2 group transition-all shadow-xl shadow-orange/20 no-underline">

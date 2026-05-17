@@ -15,7 +15,7 @@ const fw = (delay = 0) => ({
 
 const benefits = [
   { icon: IndianRupee, color: 'text-green-600', bg: 'bg-green-50', title: 'Save Up to 90% on Bills', desc: 'A 3 kW system can save ₹2,000–₹4,000 every month. Your system pays for itself in under 4 years.' },
-  { icon: ShieldCheck, color: 'text-solarsky', bg: 'bg-solarsky/10', title: 'Reliable Performance', desc: 'Industry-leading long-term performance guarantee with high output stability.' },
+  { icon: ShieldCheck, color: 'text-solarsky', bg: 'bg-solarsky/10', title: 'Reliable Performance', desc: 'Industry-leading long-term output stability with high-efficiency Tier-1 components.' },
   { icon: Zap, color: 'text-orange', bg: 'bg-orange/10', title: 'Net Metering Earnings', desc: 'Sell surplus solar power back to the grid. Your DISCOM credits you — reducing future bills to near zero.' },
   { icon: Leaf, color: 'text-emerald-600', bg: 'bg-emerald-50', title: 'Zero Carbon Footprint', desc: 'A 3 kW home system offsets ~4 tonnes of CO₂ per year — equivalent to planting 180 trees annually.' },
   { icon: Award, color: 'text-purple-600', bg: 'bg-purple-50', title: 'PM Surya Ghar Subsidy', desc: 'Get up to ₹78,000 government subsidy on your residential solar installation. We handle all paperwork.' },
@@ -44,10 +44,10 @@ const included = [
 
 const systemSizes = [
   { kw: '1 kW', area: '60 sq ft', saving: '₹800–₹1,200/mo', cost: '~₹65,000', subsidy: '₹30,000' },
-  { kw: '2 kW', area: '120 sq ft', saving: '₹1,600–₹2,400/mo', cost: '~₹1,20,000', subsidy: '₹60,000' },
-  { kw: '3 kW', area: '180 sq ft', saving: '₹2,400–₹3,600/mo', cost: '~₹1,75,000', subsidy: '₹78,000' },
-  { kw: '5 kW', area: '300 sq ft', saving: '₹4,000–₹6,000/mo', cost: '~₹2,80,000', subsidy: '₹78,000' },
-  { kw: '10 kW', area: '600 sq ft', saving: '₹8,000–₹12,000/mo', cost: '~₹5,20,000', subsidy: '₹78,000' },
+  { kw: '2 kW', area: '120 sq ft', saving: '₹1,600–₹2,400/mo', cost: '~₹1,30,000', subsidy: '₹60,000' },
+  { kw: '3 kW', area: '180 sq ft', saving: '₹2,400–₹3,600/mo', cost: '~₹1,95,000', subsidy: '₹78,000' },
+  { kw: '5 kW', area: '300 sq ft', saving: '₹4,000–₹6,000/mo', cost: '~₹3,25,000', subsidy: '₹78,000' },
+  { kw: '10 kW', area: '600 sq ft', saving: '₹8,000–₹12,000/mo', cost: '~₹6,50,000', subsidy: '₹78,000' },
 ]
 
 const faqs = [
@@ -55,7 +55,7 @@ const faqs = [
   { q: 'How much roof space do I need?', a: 'A 1 kW system needs approximately 60 sq ft of shadow-free roof area. Most homes with a 100–200 sq ft terrace can install a 2–3 kW system comfortably.' },
   { q: 'What happens on cloudy or rainy days?', a: 'Solar panels still generate power on cloudy days — typically 10–25% of peak output. Your system is designed to account for seasonal variation in your area.' },
   { q: 'How do I claim the PM Surya Ghar subsidy?', a: 'We handle the entire subsidy process for you — from registration on the national portal to DISCOM inspection and subsidy disbursement directly to your bank account.' },
-  { q: 'Is there any maintenance required?', a: 'Solar systems require minimal maintenance. We recommend a panel cleaning every 2–3 months. Our 5-year AMC covers all inspections, cleaning, and any component issues.' },
+  { q: 'Is there any maintenance required?', a: 'Solar systems require minimal maintenance. Our 5-year AMC covers all inspections and any component issues.' },
 ]
 
 export default function HomesPage() {

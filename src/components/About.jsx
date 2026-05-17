@@ -13,8 +13,8 @@ import Logo from '../../public/urbanlogo.png'
 const stats = [
   { num: '24/7', label: 'Expert Support', icon: <Headphones size={28} /> },
   { num: '100%', label: 'Client Commitment', icon: <Sprout size={28} /> },
-  { num: 'Premium', label: 'Tech Integration', icon: <FlaskConical size={28} /> },
-  { num: 'MNRE', label: 'Standards Met', icon: <Award size={28} /> },
+  { num: 'Tier-1', label: 'Panel Brands', icon: <FlaskConical size={28} /> },
+  { num: 'UP-Wide', label: 'Service Network', icon: <Award size={28} /> },
 ];
 
 const team = [
@@ -42,8 +42,8 @@ const values = [
   },
   {
     icon: <Trophy size={28} />,
-    title: 'Certified Excellence',
-    desc: 'MNRE empanelled, DISCOM certified installers. We meet every government standard for quality and safety.'
+    title: 'Empanelled Vendors',
+    desc: 'We work with MNRE-empanelled installation vendors across Uttar Pradesh — ensuring every project meets government quality standards.'
   },
 ];
 
@@ -70,8 +70,8 @@ export default function About() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div {...fadeUp(0)}>
             <span className="inline-flex items-center gap-2 bg-orange/15 border border-orange/30 text-orange px-5 py-2 rounded-full text-xs font-space font-bold uppercase tracking-widest mb-5">
-              <img src={Logo} alt="Vaulix Solar" className="w-4 h-4 object-contain" />
-              Vaulix Solar Corporate
+              <img src={Logo} alt="Urban Energy" className="w-4 h-4 object-contain" />
+              About Us
             </span>
           </motion.div>
           <motion.h1
@@ -131,24 +131,24 @@ export default function About() {
           <motion.div {...fadeUp(0)}>
             <span className="section-tag">Our Story</span>
             <h2 className="section-title mb-5">
-              Powering UP, <span className="glow-text">One Rooftop at a Time</span>
+              Your Trusted Solar <span className="glow-text">Partner in UP</span>
             </h2>
             <p className="text-slate-500 leading-relaxed mb-5">
-              Vaulix Solar was born out of a simple frustration — skyrocketing electricity bills, unreliable power supply, and a rooftop full of untapped potential. We started in Lucknow with a mission to make solar energy accessible, affordable, and genuinely worth it for every home and business in Uttar Pradesh.
+              We started with a simple goal — make solar energy accessible, affordable, and genuinely worth it for every home and business in Uttar Pradesh. Rising electricity bills and unreliable power supply pushed us to build a platform that connects customers with the right solar solutions.
             </p>
             <p className="text-slate-500 leading-relaxed mb-5">
-              We don't just install panels — we engineer complete energy solutions. From the first site survey to the last wire, every project is handled by our in-house certified team with zero outsourcing and full accountability.
+              We work with a carefully selected network of experienced installation vendors — all empanelled under government solar programmes — so every project is handled by professionals who know what they're doing.
             </p>
             <p className="text-slate-500 leading-relaxed">
-              We are MNRE empanelled, DISCOM certified, and proud partners of India's PM Surya Ghar Yojana — helping families across UP claim up to ₹78,000 in government subsidies while cutting their electricity bills by up to 90%.
+              Our focus is simple: help you get the right system at the right price, assist with PM Surya Ghar subsidy paperwork, and make sure you're supported long after installation.
             </p>
           </motion.div>
           <motion.div {...fadeUp(0.2)} className="grid grid-cols-2 gap-4">
             {[
-              { icon: <Award size={26} />, title: 'MNRE Empanelled', sub: 'Certified by Ministry of New & Renewable Energy' },
-              { icon: <ShieldCheck size={26} />, title: 'DISCOM Certified', sub: 'Approved by State Electricity Distribution Companies' },
-              { icon: <Leaf size={26} />, title: 'PM Surya Ghar Partner', sub: 'Official partner for government subsidy processing' },
-              { icon: <Lock size={26} />, title: 'Premium Quality', sub: 'Industry-best performance guarantee on every system' },
+              { icon: <Award size={26} />, title: 'Empanelled Vendors', sub: 'Our installation partners are empanelled under govt solar programmes' },
+              { icon: <ShieldCheck size={26} />, title: 'Quality Assured', sub: 'Only Tier-1 panels and certified inverters used in every project' },
+              { icon: <Leaf size={26} />, title: 'PM Surya Ghar', sub: 'We assist with subsidy applications and DISCOM paperwork' },
+              { icon: <Lock size={26} />, title: 'Transparent Pricing', sub: 'No hidden costs — clear quotes before any work begins' },
             ].map((item, i) => (
               <div key={item.title} className="card">
                 <div className="text-3xl mb-3">{React.cloneElement(item.icon, {
@@ -225,7 +225,7 @@ export default function About() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact" className="bg-orange hover:bg-orange/90 text-white font-outfit font-bold px-10 py-4 rounded-full shadow-xl shadow-orange/30 transition-all duration-300 hover:-translate-y-1 no-underline text-center">Book Free Home Survey</Link>
-            <Link to="/calculator" className="border-2 border-white/30 hover:border-white text-white font-outfit font-bold px-10 py-4 rounded-full transition-all duration-300 hover:bg-white/10 no-underline text-center">Calculate Savings</Link>
+            <Link to="/calculator" className="border-2 border-orange text-orange hover:bg-orange hover:text-white font-outfit font-bold px-10 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 no-underline text-center">Calculate Savings</Link>
           </div>
         </motion.div>
       </section>

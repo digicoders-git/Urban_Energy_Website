@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import {
   Wrench, ShieldCheck, Activity, Droplets, Zap, PhoneCall,
   ClipboardList, Star, CheckCircle2, AlertTriangle, Clock, ArrowRight,
-  Sun, BatteryWarning, FileText, IndianRupee, ShieldAlert
+  Sun, BatteryWarning, FileText, IndianRupee, ShieldAlert, TrendingUp
 } from 'lucide-react'
 import { useModal } from '../context/ModalContext'
 
@@ -46,7 +46,7 @@ const services = [
     desc: 'Specialized servicing of string inverters, microinverters, and lithium/lead-acid battery banks for optimal performance.',
     tag: 'Inverter & Storage',
     color: '#FF7A00',
-    points: ['Firmware updates', 'Efficiency calibration', 'Battery health test (SOH)', 'Replacement & warranty claims'],
+    points: ['Firmware updates', 'Efficiency calibration', 'Battery health test (SOH)', 'Spare parts sourcing & replacement'],
   },
   {
     icon: <ClipboardList size={28} />,
@@ -65,12 +65,12 @@ const services = [
     points: ['Panel damage repair', 'Inverter replacement', 'Wiring fault rectification', 'Storm/lightning damage fix'],
   },
   {
-    icon: <Star size={28} />,
-    title: 'Warranty Management',
-    desc: 'We track and manage all product warranties on your behalf — panels (25 yr), inverters (5–10 yr), and batteries.',
-    tag: 'Warranty Support',
+    icon: <TrendingUp size={28} />,
+    title: 'System Upgrade & Expansion',
+    desc: 'Scale up your existing solar system with additional panels, battery storage, or a newer inverter to meet growing energy needs.',
+    tag: 'Upgrades & Expansion',
     color: '#00C9A7',
-    points: ['Warranty claim filing', 'Manufacturer coordination', 'Replacement logistics', 'Extended warranty options'],
+    points: ['Capacity addition (panels/kW)', 'Battery storage integration', 'Inverter upgrade & replacement', 'System re-audit & optimisation'],
   },
 ]
 
@@ -143,7 +143,7 @@ export default function AfterInstallationServicePage() {
   const filtered = activeTab === 'all' ? services : services.filter(s =>
     activeTab === 'amc' ? ['AMC (Annual Maintenance Contract)', 'Preventive Maintenance'].includes(s.title) :
     activeTab === 'repair' ? ['Emergency Repair', 'Inverter & Battery Service'].includes(s.title) :
-    ['Performance Monitoring', 'Panel Cleaning', 'Net Meter & DISCOM Support', 'Warranty Management'].includes(s.title)
+    ['Performance Monitoring', 'Panel Cleaning', 'Net Meter & DISCOM Support', 'System Upgrade & Expansion'].includes(s.title)
   )
 
   return (
@@ -177,8 +177,8 @@ export default function AfterInstallationServicePage() {
           {[
             { val: '500+', label: 'Systems Maintained' },
             { val: '24 Hr', label: 'Emergency Response' },
-            { val: '99.2%', label: 'Uptime Guaranteed' },
-            { val: '25 Yr', label: 'Warranty Support' },
+            { val: '99.2%', label: 'System Uptime' },
+            { val: '25 Yr', label: 'System Lifespan' },
           ].map(s => (
             <div key={s.label} className="text-center p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
               <div className="font-orbitron font-black text-2xl text-orange">{s.val}</div>
@@ -359,7 +359,7 @@ export default function AfterInstallationServicePage() {
               { icon: <Sun size={22} />, color: '#FFB800', title: 'Dust reduces output by 25–30%', desc: 'Unclean panels lose significant generation every month. Regular cleaning pays for itself.' },
               { icon: <Zap size={22} />, color: '#FF7A00', title: 'Inverter faults go undetected', desc: 'Without monitoring, a faulty inverter can silently waste weeks of generation.' },
               { icon: <BatteryWarning size={22} />, color: '#00C9A7', title: 'Battery degradation is preventable', desc: 'Proper servicing extends battery life by 3–5 years, saving ₹50,000+.' },
-              { icon: <FileText size={22} />, color: '#00A3E0', title: 'Warranty claims need documentation', desc: 'Regular service records are mandatory for manufacturer warranty claims.' },
+              { icon: <FileText size={22} />, color: '#00A3E0', title: 'Service records improve resale value', desc: 'Well-documented maintenance history increases property and system resale value significantly.' },
               { icon: <IndianRupee size={22} />, color: '#00C9A7', title: 'Net meter errors cost you money', desc: 'Billing discrepancies go unnoticed without periodic DISCOM reconciliation.' },
               { icon: <ShieldAlert size={22} />, color: '#EF4444', title: 'Safety risks from loose wiring', desc: 'Thermal imaging and wiring checks prevent fire hazards and system failures.' },
             ].map((item, i) => (

@@ -27,7 +27,7 @@ const services = [
   {
     icon: <Wrench size={26} />,
     title: 'AMC & O&M',
-    desc: 'Protect your solar investment with our Annual Maintenance Contracts. Real-time monitoring, preventive servicing, and guaranteed peak performance.',
+    desc: 'Protect your solar investment with our Annual Maintenance Contracts. Real-time monitoring, preventive servicing, and consistent peak performance.',
     tag: '24/7 Monitoring',
     color: '#00C9A7',
   },

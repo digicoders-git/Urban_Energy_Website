@@ -5,12 +5,17 @@ import { motion } from 'framer-motion'
 const subsidyMap = {
   1: 30000, 2: 60000, 3: 78000, 5: 78000, 10: 78000,
 }
+const costMap = {
+  1: 65000, 2: 130000, 3: 195000, 5: 325000, 10: 650000,
+}
 
 export default function SubsidyCalc() {
   const [size, setSize] = useState('3')
   const [type, setType] = useState('residential')
 
   const amount = type === 'residential' ? (subsidyMap[parseInt(size)] || 78000) : 0
+  const sysCost = costMap[parseInt(size)] || 650000
+  const netCost = type === 'residential' ? sysCost - amount : sysCost
   const note = type !== 'residential'
     ? 'Commercial systems are not eligible for central subsidy.'
     : `For ${size} kW residential system under PM Surya Ghar Yojana`
@@ -113,6 +118,23 @@ export default function SubsidyCalc() {
                 {amount > 0 ? `₹${amount.toLocaleString('en-IN')}` : 'N/A'}
               </div>
               <div className="text-slate-400 text-sm mt-2">{note}</div>
+
+              {type === 'residential' && (
+                <div className="mt-4 pt-4 border-t border-yellow-200 space-y-2 text-sm text-left">
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">System Cost</span>
+                    <span className="font-semibold text-navy">₹{sysCost.toLocaleString('en-IN')}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Govt Subsidy</span>
+                    <span className="font-semibold text-green-600">-₹{amount.toLocaleString('en-IN')}</span>
+                  </div>
+                  <div className="flex justify-between pt-2 border-t border-yellow-200">
+                    <span className="font-outfit font-bold text-navy">Your Net Cost</span>
+                    <span className="font-outfit font-black text-orange">₹{netCost.toLocaleString('en-IN')}</span>
+                  </div>
+                </div>
+              )}
             </motion.div>
 
             <Link to="/contact" className="btn-primary block text-center">

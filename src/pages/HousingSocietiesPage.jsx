@@ -230,21 +230,6 @@ export default function HousingSocietiesPage() {
         </div>
       </section>
 
-      {/* ── TESTIMONIAL ── */}
-      <section className="py-24 px-6 bg-slate-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div {...fw(0)}>
-            <div className="flex justify-center gap-1 mb-6">
-              {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 text-solarsky fill-solarsky" />)}
-            </div>
-            <blockquote className="font-outfit text-2xl md:text-3xl font-bold text-navy leading-relaxed mb-8">
-              "Our society's maintenance charge dropped by ₹350 per flat per month after Vaulix Solar installed our 60 kW system. The RWA approval process was smooth and they handled everything."
-            </blockquote>
-            <div className="text-slate-400 font-medium">— Priya Nair, RWA Secretary | Greenview Apartments, Pune | 60 kW System</div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* ── FAQ ── */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
