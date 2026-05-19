@@ -24,7 +24,7 @@ const benefits = [
 ]
 
 const components = [
-  { num: '01', title: 'Solar Panels', desc: 'High-efficiency monocrystalline panels (400W–550W) capture maximum sunlight and convert it to DC electricity. Tier-1 brands built for extreme longevity.', detail: '400W–550W per panel' },
+  { num: '01', title: 'Solar Panels', desc: 'High-efficiency monocrystalline panels capture maximum sunlight and convert it to DC electricity. Premium quality built for long-term performance.', detail: '400W–550W per panel' },
   { num: '02', title: 'MPPT Charge Controller', desc: 'Maximum Power Point Tracking controllers optimise energy harvest from panels and regulate charging to protect battery health and maximise lifespan.', detail: 'Up to 98% efficiency' },
   { num: '03', title: 'Battery Bank', desc: 'Lithium Iron Phosphate (LiFePO4) or lead-acid batteries store energy for use when the sun isn\'t shining. Lithium batteries offer 3,000–6,000 charge cycles.', detail: 'LiFePO4 recommended' },
   { num: '04', title: 'Off-Grid Inverter', desc: 'Pure sine wave inverters convert stored DC battery power to 230V AC electricity — compatible with all household and commercial appliances.', detail: 'Pure sine wave output' },

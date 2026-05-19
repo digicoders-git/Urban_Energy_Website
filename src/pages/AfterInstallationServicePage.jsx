@@ -30,7 +30,7 @@ const services = [
     desc: 'Real-time remote monitoring of your solar system — generation, consumption, grid export, and fault alerts 24/7.',
     tag: '24/7 Live Monitoring',
     color: '#00C9A7',
-    points: ['Live generation dashboard', 'Daily/monthly reports via app', 'Instant fault SMS/email alerts', 'Performance ratio tracking'],
+    points: ['Live generation dashboard', 'Daily/monthly reports via app', 'Instant fault SMS/email alerts', 'Output tracking'],
   },
   {
     icon: <ShieldCheck size={28} />,
@@ -50,11 +50,11 @@ const services = [
   },
   {
     icon: <ClipboardList size={28} />,
-    title: 'Net Meter & DISCOM Support',
+    title: 'Net Meter & Billing Support',
     desc: 'We handle all paperwork, inspections, and follow-ups with your electricity board for net metering and billing issues.',
     tag: 'Grid & Billing',
     color: '#00A3E0',
-    points: ['Net meter reading verification', 'DISCOM complaint filing', 'Export credit reconciliation', 'Tariff change assistance'],
+    points: ['Net meter reading verification', 'Billing complaint filing', 'Export credit reconciliation', 'Tariff change assistance'],
   },
   {
     icon: <AlertTriangle size={28} />,
@@ -120,7 +120,7 @@ const amcPlans = [
       'Same-day emergency response',
       'Real-time monitoring app',
       'All parts replacement (free)',
-      'DISCOM & net meter support',
+      'Net meter & billing support',
       'Annual performance audit',
     ],
     notIncluded: [],
@@ -143,7 +143,7 @@ export default function AfterInstallationServicePage() {
   const filtered = activeTab === 'all' ? services : services.filter(s =>
     activeTab === 'amc' ? ['AMC (Annual Maintenance Contract)', 'Preventive Maintenance'].includes(s.title) :
     activeTab === 'repair' ? ['Emergency Repair', 'Inverter & Battery Service'].includes(s.title) :
-    ['Performance Monitoring', 'Panel Cleaning', 'Net Meter & DISCOM Support', 'System Upgrade & Expansion'].includes(s.title)
+    ['Performance Monitoring', 'Panel Cleaning', 'Net Meter & Billing Support', 'Warranty Management'].includes(s.title)
   )
 
   return (
@@ -360,7 +360,7 @@ export default function AfterInstallationServicePage() {
               { icon: <Zap size={22} />, color: '#FF7A00', title: 'Inverter faults go undetected', desc: 'Without monitoring, a faulty inverter can silently waste weeks of generation.' },
               { icon: <BatteryWarning size={22} />, color: '#00C9A7', title: 'Battery degradation is preventable', desc: 'Proper servicing extends battery life by 3–5 years, saving ₹50,000+.' },
               { icon: <FileText size={22} />, color: '#00A3E0', title: 'Service records improve resale value', desc: 'Well-documented maintenance history increases property and system resale value significantly.' },
-              { icon: <IndianRupee size={22} />, color: '#00C9A7', title: 'Net meter errors cost you money', desc: 'Billing discrepancies go unnoticed without periodic DISCOM reconciliation.' },
+              { icon: <IndianRupee size={22} />, color: '#00C9A7', title: 'Net meter errors cost you money', desc: 'Billing discrepancies go unnoticed without periodic meter reconciliation.' },
               { icon: <ShieldAlert size={22} />, color: '#EF4444', title: 'Safety risks from loose wiring', desc: 'Thermal imaging and wiring checks prevent fire hazards and system failures.' },
             ].map((item, i) => (
               <motion.div

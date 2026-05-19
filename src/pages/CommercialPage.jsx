@@ -17,15 +17,15 @@ const stats = [
   { val: '10 kW', label: 'Minimum System' },
   { val: '5 MW+', label: 'Largest Project' },
   { val: '3–5 Yrs', label: 'Payback Period' },
-  { val: '40%', label: 'Tax Depreciation' },
+  { val: '40%', label: 'Tax Benefit' },
 ]
 
 const benefits = [
-  { icon: TrendingUp, color: 'text-green-600', bg: 'bg-green-50', title: 'Fastest ROI in Industry', desc: 'Commercial solar delivers 20–30% IRR with payback in 3–5 years. After that, 20+ years of near-free electricity.' },
-  { icon: IndianRupee, color: 'text-orange', bg: 'bg-orange/10', title: '40% Accelerated Depreciation', desc: 'Claim 40% accelerated depreciation in Year 1 under the Income Tax Act — a massive tax benefit for businesses.' },
-  { icon: Leaf, color: 'text-emerald-600', bg: 'bg-emerald-50', title: 'ESG & CSR Compliance', desc: 'Meet your corporate sustainability targets, reduce Scope 2 emissions, and strengthen your ESG reporting.' },
-  { icon: ShieldCheck, color: 'text-solarsky', bg: 'bg-solarsky/10', title: 'Hedge Against Tariff Hikes', desc: 'Lock in your energy cost at near-zero for 25 years. No more worrying about annual electricity tariff increases.' },
-  { icon: BarChart3, color: 'text-purple-600', bg: 'bg-purple-50', title: 'SCADA Monitoring', desc: 'Real-time plant performance monitoring via SCADA dashboard — track generation, PR ratio, and savings 24/7.' },
+  { icon: TrendingUp, color: 'text-green-600', bg: 'bg-green-50', title: 'Strong ROI', desc: 'Commercial solar delivers strong returns with payback in 3–5 years. After that, 20+ years of near-free electricity.' },
+  { icon: IndianRupee, color: 'text-orange', bg: 'bg-orange/10', title: 'Tax Depreciation Benefit', desc: 'Businesses can claim accelerated depreciation on solar assets under the Income Tax Act — a significant tax benefit. Consult your CA for details.' },
+  { icon: Leaf, color: 'text-emerald-600', bg: 'bg-emerald-50', title: 'Sustainability Goals', desc: 'Meet your corporate sustainability targets, reduce carbon emissions, and strengthen your environmental reporting.' },
+  { icon: ShieldCheck, color: 'text-solarsky', bg: 'bg-solarsky/10', title: 'Hedge Against Tariff Hikes', desc: 'Lock in your energy cost at near-zero for years. No more worrying about annual electricity tariff increases.' },
+  { icon: BarChart3, color: 'text-purple-600', bg: 'bg-purple-50', title: 'Remote Monitoring', desc: 'Real-time plant performance monitoring via dashboard — track generation and savings 24/7.' },
   { icon: Zap, color: 'text-navy', bg: 'bg-navy/10', title: 'Grid Independence', desc: 'Reduce peak demand charges and dependency on the grid. Pair with battery storage for complete energy security.' },
 ]
 
@@ -42,11 +42,11 @@ const industries = [
 
 const epcSteps = [
   { num: '01', title: 'Site Feasibility Study', desc: 'Shadow analysis, structural load assessment, grid connectivity check, and detailed energy audit of your facility.' },
-  { num: '02', title: 'System Design & Engineering', desc: 'Single-line diagrams, 3D layout, string sizing, inverter selection, and yield simulation using PVsyst software.' },
-  { num: '03', title: 'Procurement & Supply', desc: 'Tier-1 panels, commercial-grade inverters, mounting structures, and all BOS components sourced and quality-checked.' },
+  { num: '02', title: 'System Design & Engineering', desc: 'Single-line diagrams, 3D layout, string sizing, inverter selection, and yield simulation.' },
+  { num: '03', title: 'Procurement & Supply', desc: 'Premium panels, commercial-grade inverters, mounting structures, and all components sourced and quality-checked.' },
   { num: '04', title: 'Civil & Electrical Works', desc: 'Foundation work, mounting installation, cable laying, earthing, lightning protection, and panel commissioning.' },
-  { num: '05', title: 'DISCOM & Net Metering', desc: 'Complete handling of DISCOM approvals, net metering application, synchronisation, and grid commissioning.' },
-  { num: '06', title: 'O&M & Long-Term Support', desc: 'Annual O&M contract with SCADA monitoring, quarterly performance reports, and dedicated technical support.' },
+  { num: '05', title: 'Grid & Net Metering', desc: 'Complete handling of net metering application, synchronisation, and grid commissioning.' },
+  { num: '06', title: 'O&M Support', desc: 'Annual maintenance with remote monitoring and periodic performance reports.' },
 ]
 
 const roiData = [
@@ -60,9 +60,8 @@ const roiData = [
 const faqs = [
   { q: 'What is the minimum system size for commercial solar?', a: 'We typically work with commercial systems starting from 10 kW. However, for optimal ROI, we recommend a minimum of 50 kW for commercial properties.' },
   { q: 'Can we install solar on a rented/leased property?', a: 'Yes, with the landlord\'s written consent. We can structure the agreement to benefit both parties, and the system can be transferred or removed if needed.' },
-  { q: 'What is accelerated depreciation and how does it benefit us?', a: 'Under Section 32 of the Income Tax Act, businesses can claim 40% depreciation on solar assets in Year 1. For a ₹1 Cr system, this means ₹40 L in tax deductions — significantly improving your effective ROI.' },
-  { q: 'Do you provide performance assurance?', a: 'Yes. We design systems targeting a Performance Ratio (PR) of minimum 75% based on your location\'s solar irradiance data. Our team monitors output and addresses any shortfall proactively.' },
-  { q: 'How long does a commercial installation take?', a: 'A 100 kW system typically takes 3–4 weeks from order to commissioning. Larger MW-scale projects are planned with detailed project timelines agreed upfront.' },
+  { q: 'What is accelerated depreciation and how does it benefit us?', a: 'Businesses can claim accelerated depreciation on solar assets under the Income Tax Act. This can significantly improve your effective ROI. Consult your CA for exact figures applicable to your business.' },
+  { q: 'How long does a commercial installation take?', a: 'A 100 kW system typically takes 3–4 weeks from order to commissioning. Larger projects are planned with detailed timelines agreed upfront.' },
 ]
 
 export default function CommercialPage() {
@@ -90,7 +89,7 @@ export default function CommercialPage() {
               <span className="glow-text">As Hard As You Do.</span>
             </motion.h1>
             <motion.p {...fw(0.2)} className="text-slate-500 text-xl leading-relaxed mb-10 max-w-2xl">
-              Large-scale commercial solar with proven performance, full EPC delivery, and 40% accelerated depreciation benefits. Built for businesses that demand results.
+              Large-scale commercial solar with proven performance, full EPC delivery, and significant tax depreciation benefits. Built for businesses that demand results.
             </motion.p>
             <motion.div {...fw(0.3)} className="flex flex-wrap gap-4">
               <Link to="/contact" className="bg-orange hover:bg-orange/90 text-white font-outfit font-bold px-10 py-4 rounded-full flex items-center gap-2 group transition-all shadow-xl shadow-orange/20 no-underline">

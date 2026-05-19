@@ -15,28 +15,28 @@ const fw = (delay = 0) => ({
 
 const benefits = [
   { icon: IndianRupee, color: 'text-green-600', bg: 'bg-green-50', title: 'Save Up to 90% on Bills', desc: 'A 3 kW system can save ₹2,000–₹4,000 every month. Your system pays for itself in under 4 years.' },
-  { icon: ShieldCheck, color: 'text-solarsky', bg: 'bg-solarsky/10', title: 'Reliable Performance', desc: 'Industry-leading long-term output stability with high-efficiency Tier-1 components.' },
+  { icon: ShieldCheck, color: 'text-solarsky', bg: 'bg-solarsky/10', title: 'Reliable Performance', desc: 'Long-term output stability with high-efficiency premium components.' },
   { icon: Zap, color: 'text-orange', bg: 'bg-orange/10', title: 'Net Metering Earnings', desc: 'Sell surplus solar power back to the grid. Your DISCOM credits you — reducing future bills to near zero.' },
   { icon: Leaf, color: 'text-emerald-600', bg: 'bg-emerald-50', title: 'Zero Carbon Footprint', desc: 'A 3 kW home system offsets ~4 tonnes of CO₂ per year — equivalent to planting 180 trees annually.' },
-  { icon: Award, color: 'text-purple-600', bg: 'bg-purple-50', title: 'PM Surya Ghar Subsidy', desc: 'Get up to ₹78,000 government subsidy on your residential solar installation. We handle all paperwork.' },
+  { icon: Award, color: 'text-purple-600', bg: 'bg-purple-50', title: 'Government Subsidy', desc: 'Government subsidies available for residential solar installations. We help you with the paperwork.' },
   { icon: Clock, color: 'text-navy', bg: 'bg-navy/10', title: 'Installed in 2–3 Days', desc: 'Our certified teams complete most home installations within 2–3 working days with zero roof damage.' },
 ]
 
 const steps = [
   { num: '01', title: 'Free Home Survey', desc: 'Our solar expert visits your home, analyses your roof area, shadow patterns, and monthly electricity consumption to design the perfect system.' },
   { num: '02', title: 'Custom System Design', desc: 'We create a tailored solar layout — panel placement, inverter sizing, wiring plan — optimised for maximum generation at your specific location.' },
-  { num: '03', title: 'Professional Installation', desc: 'Our MNRE-certified technicians install your system in 2–3 days using premium mounting structures that cause zero damage to your roof.' },
-  { num: '04', title: 'Grid Connection & Net Meter', desc: 'We handle all DISCOM paperwork, net meter application, and grid synchronisation so you start earning credits from day one.' },
+  { num: '03', title: 'Professional Installation', desc: 'Our certified technicians install your system in 2–3 days using premium mounting structures that cause zero damage to your roof.' },
+  { num: '04', title: 'Grid Connection & Net Meter', desc: 'We handle all paperwork, net meter application, and grid synchronisation so you start saving from day one.' },
 ]
 
 const included = [
-  'High-efficiency monocrystalline panels (Tier-1)',
-  'Grid-tie string inverter with WiFi monitoring',
-  'Hot-dip galvanised mounting structure',
+  'High-efficiency solar panels',
+  'Grid-tie inverter with WiFi monitoring',
+  'Mounting structure',
   'AC/DC cables, MCBs & surge protection',
-  'Net meter application & DISCOM approval',
-  'PM Surya Ghar subsidy processing',
-  '5-year comprehensive AMC included',
+  'Net meter application assistance',
+  'Government subsidy application support',
+  'Post-installation support included',
   'Real-time generation monitoring app',
   'Premium high-efficiency design',
   'Dedicated post-installation support',
@@ -54,8 +54,8 @@ const faqs = [
   { q: 'Will solar work during power cuts?', a: 'Standard on-grid systems shut down during power cuts for safety. If you need backup, we offer hybrid systems with battery storage that keep your home powered 24/7.' },
   { q: 'How much roof space do I need?', a: 'A 1 kW system needs approximately 60 sq ft of shadow-free roof area. Most homes with a 100–200 sq ft terrace can install a 2–3 kW system comfortably.' },
   { q: 'What happens on cloudy or rainy days?', a: 'Solar panels still generate power on cloudy days — typically 10–25% of peak output. Your system is designed to account for seasonal variation in your area.' },
-  { q: 'How do I claim the PM Surya Ghar subsidy?', a: 'We handle the entire subsidy process for you — from registration on the national portal to DISCOM inspection and subsidy disbursement directly to your bank account.' },
-  { q: 'Is there any maintenance required?', a: 'Solar systems require minimal maintenance. Our 5-year AMC covers all inspections and any component issues.' },
+  { q: 'How do I apply for government subsidy?', a: 'We guide you through the entire subsidy application process. Our team helps with documentation and coordinates with the relevant authorities on your behalf.' },
+  { q: 'Is there any maintenance required?', a: 'Solar systems require minimal maintenance. We recommend a panel cleaning every 2–3 months and an annual health check-up to keep your system running at peak performance.' },
 ]
 
 export default function HomesPage() {

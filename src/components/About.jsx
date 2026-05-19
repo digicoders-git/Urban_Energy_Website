@@ -13,13 +13,13 @@ import Logo from '../../public/urbanlogo.png'
 const stats = [
   { num: '24/7', label: 'Expert Support', icon: <Headphones size={28} /> },
   { num: '100%', label: 'Client Commitment', icon: <Sprout size={28} /> },
-  { num: 'Tier-1', label: 'Panel Brands', icon: <FlaskConical size={28} /> },
+  { num: 'Premium', label: 'Quality Panels', icon: <FlaskConical size={28} /> },
   { num: 'UP-Wide', label: 'Service Network', icon: <Award size={28} /> },
 ];
 
 const team = [
   { name: 'Arjun Mehta', role: 'Founder & CEO', emoji: <User size={40} />, exp: 'Renewable Energy Specialist' },
-  { name: 'Priya Sharma', role: 'Head of Engineering', emoji: <UserCog size={40} />, exp: 'IIT Kanpur Tech Background' },
+  { name: 'Priya Sharma', role: 'Head of Engineering', emoji: <UserCog size={40} />, exp: 'Solar Engineering Expert' },
   { name: 'Rohit Verma', role: 'Operations Lead', emoji: <UserCheck size={40} />, exp: 'Scalability Operations Expert' },
   { name: 'Neha Singh', role: 'Customer Success', emoji: <Headphones size={40} />, exp: 'Support & Client Relations' },
 ];
@@ -33,17 +33,17 @@ const values = [
   {
     icon: <FlaskConical size={28} />,
     title: 'Quality Engineering',
-    desc: 'We use only Tier-1 panels and certified inverters. Every system is engineered for maximum output and 25+ year life.'
+    desc: 'We use only premium panels and quality inverters. Every system is engineered for maximum output and long-term performance.'
   },
   {
     icon: <Handshake size={28} />,
     title: 'Customer Trust',
-    desc: 'Transparent pricing, no hidden fees, and lifetime support. We build relationships, not just installations.'
+    desc: 'Transparent pricing, no hidden fees, and ongoing support. We build relationships, not just installations.'
   },
   {
     icon: <Trophy size={28} />,
-    title: 'Empanelled Vendors',
-    desc: 'We work with MNRE-empanelled installation vendors across Uttar Pradesh — ensuring every project meets government quality standards.'
+    title: 'Experienced Team',
+    desc: 'We work with a carefully selected network of experienced solar installation professionals across Uttar Pradesh.'
   },
 ];
 
@@ -137,17 +137,17 @@ export default function About() {
               We started with a simple goal — make solar energy accessible, affordable, and genuinely worth it for every home and business in Uttar Pradesh. Rising electricity bills and unreliable power supply pushed us to build a platform that connects customers with the right solar solutions.
             </p>
             <p className="text-slate-500 leading-relaxed mb-5">
-              We work with a carefully selected network of experienced installation vendors — all empanelled under government solar programmes — so every project is handled by professionals who know what they're doing.
+              We work with a carefully selected network of experienced solar installation professionals — so every project is handled by people who know what they're doing.
             </p>
             <p className="text-slate-500 leading-relaxed">
-              Our focus is simple: help you get the right system at the right price, assist with PM Surya Ghar subsidy paperwork, and make sure you're supported long after installation.
+              Our focus is simple: help you get the right system at the right price, guide you through available government subsidy options, and make sure you're supported long after installation.
             </p>
           </motion.div>
           <motion.div {...fadeUp(0.2)} className="grid grid-cols-2 gap-4">
             {[
-              { icon: <Award size={26} />, title: 'Empanelled Vendors', sub: 'Our installation partners are empanelled under govt solar programmes' },
-              { icon: <ShieldCheck size={26} />, title: 'Quality Assured', sub: 'Only Tier-1 panels and certified inverters used in every project' },
-              { icon: <Leaf size={26} />, title: 'PM Surya Ghar', sub: 'We assist with subsidy applications and DISCOM paperwork' },
+              { icon: <Award size={26} />, title: 'Experienced Team', sub: 'Our installation professionals have hands-on solar project experience' },
+              { icon: <ShieldCheck size={26} />, title: 'Quality Assured', sub: 'Only premium panels and quality inverters used in every project' },
+              { icon: <Leaf size={26} />, title: 'Subsidy Guidance', sub: 'We help you understand and apply for available government subsidies' },
               { icon: <Lock size={26} />, title: 'Transparent Pricing', sub: 'No hidden costs — clear quotes before any work begins' },
             ].map((item, i) => (
               <div key={item.title} className="card">

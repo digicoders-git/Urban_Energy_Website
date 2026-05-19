@@ -7,7 +7,7 @@ const facts = [
   { icon: <Zap size={14} />, text: '1 kW solar saves ₹1,500/month on average' },
   { icon: <Leaf size={14} />, text: '1 kW solar = 1.5 tonnes CO₂ saved annually' },
   { icon: <TrendingDown size={14} />, text: 'Solar panel costs dropped 90% in 10 years' },
-  { icon: <Award size={14} />, text: 'PM Surya Ghar: Up to ₹78,000 subsidy available' },
+  { icon: <Award size={14} />, text: 'Government subsidies available for residential solar' },
   { icon: <Globe size={14} />, text: 'India targets 500 GW renewable energy by 2030' },
   { icon: <Sun size={14} />, text: 'Solar ROI achieved in just 3–5 years' },
   { icon: <Zap size={14} />, text: 'Net metering lets you sell power back to grid' },

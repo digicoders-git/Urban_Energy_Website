@@ -126,7 +126,7 @@ export default function Footer() {
         {/* ── Bottom Bar ── */}
         <div className="py-5 flex flex-wrap items-center justify-between gap-3">
           <span className="text-xs text-slate-400">
-            © 2025 Vaulix Solar Pvt. Ltd. All rights reserved.
+            © 2025 Vaulix Solar. All rights reserved.
           </span>
           <a
             href="https://digicoders.in"

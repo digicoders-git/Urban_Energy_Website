@@ -16,8 +16,8 @@ const fw = (delay = 0) => ({
 
 const benefits = [
   { icon: IndianRupee, color: 'text-green-600', bg: 'bg-green-50', title: 'Lowest System Cost', desc: 'No batteries needed — on-grid systems cost 40–50% less than off-grid. Most affordable way to go solar.' },
-  { icon: Zap, color: 'text-solarsky', bg: 'bg-solarsky/10', title: 'Net Metering Credits', desc: 'Export surplus solar power to the grid. Your DISCOM credits you at the applicable rate — reducing future bills.' },
-  { icon: Award, color: 'text-orange', bg: 'bg-orange/10', title: 'PM Surya Ghar Subsidy', desc: 'Get up to ₹78,000 government subsidy. We handle the entire application process from registration to disbursement.' },
+  { icon: Zap, color: 'text-solarsky', bg: 'bg-solarsky/10', title: 'Net Metering Credits', desc: 'Export surplus solar power to the grid and get credits on your electricity bill — reducing future bills.' },
+  { icon: Award, color: 'text-orange', bg: 'bg-orange/10', title: 'Government Subsidy', desc: 'Government subsidies available for residential solar. We help with the entire application process.' },
   { icon: BarChart3, color: 'text-purple-600', bg: 'bg-purple-50', title: 'Real-Time Monitoring', desc: 'Track live generation, consumption, export, and savings via our mobile app. Know exactly how much you\'re saving.' },
   { icon: TrendingUp, color: 'text-navy', bg: 'bg-navy/10', title: 'Best ROI in Solar', desc: 'On-grid systems deliver the highest return on investment — payback in 3–4 years, then 20+ years of free power.' },
   { icon: Clock, color: 'text-emerald-600', bg: 'bg-emerald-50', title: 'Quick Installation', desc: 'Most on-grid systems are installed and commissioned within 2–3 days. Start saving from day one.' },
@@ -41,7 +41,7 @@ const comparison = [
   { feature: 'Works During Power Cut', onGrid: false, offGrid: true },
   { feature: 'Lower Installation Cost', onGrid: true, offGrid: false },
   { feature: 'Net Metering / Bill Credits', onGrid: true, offGrid: false },
-  { feature: 'PM Surya Ghar Subsidy', onGrid: true, offGrid: false },
+  { feature: 'Government Subsidy Available', onGrid: true, offGrid: false },
   { feature: 'Best for Urban Areas', onGrid: true, offGrid: false },
   { feature: 'Best for Remote Areas', onGrid: false, offGrid: true },
   { feature: 'Fastest Payback Period', onGrid: true, offGrid: false },
@@ -60,10 +60,10 @@ const systemSizes = [
 const faqs = [
   { q: 'Will my on-grid system work during a power cut?', a: 'Standard on-grid systems shut down during power cuts for safety (anti-islanding protection). If you need backup power, we offer hybrid systems that combine on-grid solar with battery storage for uninterrupted supply.' },
   { q: 'What is net metering and how does it work?', a: 'Net metering allows you to export surplus solar power to the grid. Your electricity meter records both import (from grid) and export (to grid). At billing time, you pay only for the net units consumed. If you export more than you import, you get credits carried forward.' },
-  { q: 'How do I apply for the PM Surya Ghar subsidy?', a: 'We handle the entire process — registration on the PM Surya Ghar portal, DISCOM inspection coordination, net meter application, and subsidy disbursement directly to your bank account. You don\'t need to do anything.' },
+  { q: 'How do I apply for government subsidy?', a: 'We guide you through the entire subsidy application process. Our team helps with documentation and coordinates with the relevant authorities on your behalf.' },
   { q: 'What is the minimum bill I can achieve with on-grid solar?', a: 'With a properly sized system, your bill can drop to just the fixed charges (₹100–₹200/month) — essentially zero units consumed from the grid. Many of our customers have achieved ₹0 variable charges.' },
   { q: 'How much roof space do I need for a 3 kW system?', a: 'A 3 kW system requires approximately 180–200 sq ft of shadow-free roof area. This is typically available on most Indian homes with a terrace or flat roof.' },
-  { q: 'What happens to my solar system after 25 years?', a: 'Solar panels degrade at about 0.5% per year. After 25 years, they still produce ~87% of original output. You can continue using them or upgrade to newer, more efficient panels. The inverter may need replacement after 10–15 years.' },
+  { q: 'What happens to my solar system after many years?', a: 'Solar panels degrade slowly over time — typically around 0.5% per year. After 25 years, they still produce a significant portion of original output. The inverter may need servicing or replacement over time.' },
 ]
 
 export default function OnGridSolarPage() {
@@ -108,7 +108,7 @@ export default function OnGridSolarPage() {
               { val: '₹0', label: 'Upfront (EMI Plans)' },
               { val: '3 Yrs', label: 'Avg. Payback' },
               { val: '₹78K', label: 'Max Govt. Subsidy' },
-              { val: 'Top-Tier', label: 'Premium Modules' },
+              { val: 'Premium', label: 'Quality Modules' },
             ].map((item, i) => (
               <motion.div key={item.label} {...fw(0.3 + i * 0.1)} className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-lg transition-all">
                 <div className="font-outfit font-black text-navy text-3xl">{item.val}</div>
@@ -196,7 +196,7 @@ export default function OnGridSolarPage() {
       <section className="py-24 px-6 bg-gradient-to-br from-solarsky/5 to-white">
         <div className="max-w-5xl mx-auto">
           <motion.div {...fw(0)} className="text-center mb-16">
-            <h2 className="font-outfit text-4xl md:text-5xl font-black text-navy">PM Surya Ghar <span className="text-solarsky">Subsidy Guide</span></h2>
+            <h2 className="font-outfit text-4xl md:text-5xl font-black text-navy">Government Solar <span className="text-solarsky">Subsidy Guide</span></h2>
             <p className="text-navy/55 text-lg mt-4">The Government of India offers substantial subsidies for residential on-grid solar installations.</p>
           </motion.div>
           <div className="overflow-x-auto mb-8">
@@ -222,7 +222,7 @@ export default function OnGridSolarPage() {
           </div>
           <motion.div {...fw(0.2)} className="bg-solarsky/10 border border-solarsky/20 rounded-2xl p-6 flex gap-4">
             <CheckCircle2 className="w-6 h-6 text-solarsky shrink-0 mt-0.5" />
-            <p className="text-navy font-medium">We handle the entire PM Surya Ghar subsidy process — from portal registration to DISCOM inspection and direct bank disbursement. You don't need to visit any office.</p>
+            <p className="text-navy font-medium">We help you navigate the government subsidy application process — from documentation to coordination with relevant authorities. Our team guides you through every step.</p>
           </motion.div>
         </div>
       </section>
@@ -295,7 +295,7 @@ export default function OnGridSolarPage() {
         <motion.div {...fw(0)} className="max-w-3xl mx-auto">
           <Sun className="w-14 h-14 text-orange/30 mx-auto mb-6" />
           <h2 className="font-outfit text-4xl md:text-5xl font-black text-navy mb-6">Start Saving with On-Grid Solar</h2>
-          <p className="text-slate-500 text-xl mb-10">Get a free site assessment, custom system design, and detailed savings report. We'll also handle your PM Surya Ghar subsidy application.</p>
+          <p className="text-slate-500 text-xl mb-10">Get a free site assessment, custom system design, and detailed savings report. We'll also help you with government subsidy applications.</p>
           <button onClick={openQuoteModal} className="bg-orange hover:bg-orange/90 text-white font-outfit font-black px-14 py-5 rounded-full text-lg transition-all shadow-xl shadow-orange/20 border-none cursor-pointer inline-block">
             Book Free Site Assessment
           </button>

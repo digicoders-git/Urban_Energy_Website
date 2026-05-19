@@ -5,11 +5,11 @@ import { FiPlus, FiMinus } from "react-icons/fi";
 const faqs = [
   {
     q: 'How much does a solar system cost in India?',
-    a: 'A typical 3 kW on-grid system costs between ₹1.2–1.8 lakhs before subsidy. After the PM Surya Ghar subsidy of up to ₹78,000, your net cost can be as low as ₹42,000–1 lakh depending on your city and system type.',
+    a: 'A typical 3 kW on-grid system costs between ₹1.2–1.8 lakhs before subsidy. After applicable government subsidies, your net cost can be significantly lower depending on your city and system type.',
   },
   {
     q: 'How long does installation take?',
-    a: 'Most residential installations are completed within 1–2 working days after site survey and design approval. The net metering connection from DISCOM may take an additional 2–4 weeks depending on your utility provider.',
+    a: 'Most residential installations are completed within 1–2 working days after site survey and design approval. The net metering connection may take an additional 2–4 weeks depending on your utility provider.',
   },
   {
     q: 'What is net metering and how does it benefit me?',

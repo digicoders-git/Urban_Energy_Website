@@ -18,7 +18,7 @@ const benefits = [
   { icon: Users, color: 'text-solarsky', bg: 'bg-solarsky/10', title: 'Shared Savings for All', desc: 'Solar credits are distributed proportionally across all flats, reducing individual maintenance charges for every resident.' },
   { icon: Zap, color: 'text-orange', bg: 'bg-orange/10', title: 'Backup for Critical Loads', desc: 'Optional battery backup ensures lifts, water pumps, and security systems stay on even during grid power cuts.' },
   { icon: Building2, color: 'text-purple-600', bg: 'bg-purple-50', title: 'Increased Property Value', desc: 'Solar-powered societies command 5–10% higher resale and rental premiums. A green society is a premium society.' },
-  { icon: Leaf, color: 'text-emerald-600', bg: 'bg-emerald-50', title: 'Green Society Certification', desc: 'Qualify for IGBC Green Homes certification and market your society as an eco-friendly, sustainable community.' },
+  { icon: Leaf, color: 'text-emerald-600', bg: 'bg-emerald-50', title: 'Eco-Friendly Society', desc: 'Position your society as an eco-friendly, sustainable community and attract premium buyers and tenants.' },
   { icon: BarChart3, color: 'text-navy', bg: 'bg-navy/10', title: 'Transparent Monitoring', desc: 'Real-time generation dashboard accessible to the RWA committee. Full transparency on savings and system performance.' },
 ]
 
@@ -40,16 +40,16 @@ const savingsData = [
 
 const process = [
   { num: '01', title: 'RWA Consultation', desc: 'We present a detailed savings report to your RWA committee — no obligation, completely free.' },
-  { num: '02', title: 'Society NOC & Approvals', desc: 'We handle all paperwork — society NOC, DISCOM application, net metering, and structural approvals.' },
+  { num: '02', title: 'Society NOC & Approvals', desc: 'We handle all paperwork — society NOC, net metering application, and structural approvals.' },
   { num: '03', title: 'Installation', desc: 'Our team installs the system on common rooftop areas with zero disruption to residents.' },
   { num: '04', title: 'Savings Distribution', desc: 'Monthly solar credits are applied to the society\'s electricity bill, reducing maintenance charges for all.' },
 ]
 
 const included = [
   'Free RWA presentation & savings report',
-  'Society NOC & DISCOM approval handling',
+  'Society NOC & approval handling',
   'Structural rooftop assessment',
-  'High-efficiency Tier-1 solar panels',
+  'High-efficiency solar panels',
   'Central inverter with WiFi monitoring',
   'Net metering application & commissioning',
   'Monthly savings report for RWA',

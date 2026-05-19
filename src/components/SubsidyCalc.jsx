@@ -18,7 +18,7 @@ export default function SubsidyCalc() {
   const netCost = type === 'residential' ? sysCost - amount : sysCost
   const note = type !== 'residential'
     ? 'Commercial systems are not eligible for central subsidy.'
-    : `For ${size} kW residential system under PM Surya Ghar Yojana`
+    : `For ${size} kW residential system — subsidy eligibility may apply`
 
   return (
     <section
@@ -43,10 +43,10 @@ export default function SubsidyCalc() {
             Govt Scheme
           </span>
           <h2 className="font-outfit text-4xl font-black text-navy leading-tight mb-5">
-            PM Surya Ghar<br />Subsidy Calculator
+            Government Solar<br />Subsidy Calculator
           </h2>
           <p className="text-slate-500 text-base leading-relaxed mb-7">
-            Under PM Surya Ghar Muft Bijli Yojana, residential consumers get up to 40%
+            Under government solar schemes, residential consumers may get up to 40%
             subsidy on solar installation. Check your eligibility instantly and let us handle
             all the paperwork.
           </p>
@@ -54,7 +54,7 @@ export default function SubsidyCalc() {
             {[
               'Up to ₹78,000 subsidy for 3 kW systems',
               'Additional state-level subsidies also available',
-              'We handle all paperwork & MNRE portal registration',
+              'We help with subsidy applications and documentation',
               'Direct bank transfer from Ministry of New & Renewable Energy',
               'Applicable to all residential electricity consumers',
             ].map((item) => (
