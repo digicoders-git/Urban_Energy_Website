@@ -73,10 +73,27 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── DESKTOP: text left, image right / stacked ── */}
+      {/* ── DESKTOP: image top, content below ── */}
       <div className="hidden md:flex flex-col w-full">
+        {/* Hero image */}
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="relative z-10 w-full px-4 md:px-10 pt-24"
+        >
+          <div className="relative w-full rounded-3xl md:rounded-[40px] overflow-hidden" style={{ boxShadow: '0 40px 80px -20px rgba(255,122,0,0.15), 0 0 0 1px rgba(255,184,0,0.08)' }}>
+            <img
+              src={HeroImage}
+              alt="Vaulix Solar Installation"
+              className="w-full h-[320px] sm:h-[440px] md:h-[580px] lg:h-[640px] object-cover object-center"
+            />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(255,255,255,0.15) 0%, transparent 50%)' }} />
+          </div>
+        </motion.div>
+
         {/* Text content */}
-        <div className="relative z-10 w-full pt-40 pb-16 px-5 text-center">
+        <div className="relative z-10 w-full pt-16 pb-16 px-5 text-center">
           <motion.div {...fadeUp(0)} className="mb-6">
             <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-space font-bold uppercase tracking-widest" style={{ background: 'rgba(255,184,0,0.12)', border: '1px solid rgba(255,184,0,0.35)', color: '#FF8C00' }}>
               <Sun size={14} className="animate-spin" style={{ animationDuration: '8s' }} />
@@ -116,23 +133,6 @@ export default function Hero() {
             </Link>
           </motion.div>
         </div>
-
-        {/* Hero image */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-10 w-full px-4 md:px-10 pb-10"
-        >
-          <div className="relative w-full rounded-3xl md:rounded-[40px] overflow-hidden" style={{ boxShadow: '0 40px 80px -20px rgba(255,122,0,0.15), 0 0 0 1px rgba(255,184,0,0.08)' }}>
-            <img
-              src={HeroImage}
-              alt="Vaulix Solar Installation"
-              className="w-full h-[320px] sm:h-[440px] md:h-[580px] lg:h-[640px] object-cover object-center"
-            />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(255,255,255,0.15) 0%, transparent 50%)' }} />
-          </div>
-        </motion.div>
       </div>
 
     </section>

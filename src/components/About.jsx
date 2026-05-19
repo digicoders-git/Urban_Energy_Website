@@ -2,19 +2,16 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import {
-  Building2, Zap, Sun, IndianRupee,
   Award, ShieldCheck, Leaf, Lock,
   Sprout, FlaskConical, Handshake, Trophy,
-  User, UserCog, UserCheck, Headphones
+  Headphones, User, UserCog, UserCheck
 } from "lucide-react";
-import { FaUser } from "react-icons/fa";
 import Logo from '../../public/urbanlogo.png'
 
 const stats = [
   { num: '24/7', label: 'Expert Support', icon: <Headphones size={28} /> },
   { num: '100%', label: 'Client Commitment', icon: <Sprout size={28} /> },
   { num: 'Premium', label: 'Quality Panels', icon: <FlaskConical size={28} /> },
-  { num: 'UP-Wide', label: 'Service Network', icon: <Award size={28} /> },
 ];
 
 const team = [
@@ -43,7 +40,7 @@ const values = [
   {
     icon: <Trophy size={28} />,
     title: 'Experienced Team',
-    desc: 'We work with a carefully selected network of experienced solar installation professionals across Uttar Pradesh.'
+    desc: 'We work with a carefully selected network of experienced solar installation professionals across India.'
   },
 ];
 
@@ -84,14 +81,14 @@ export default function About() {
             </span>
           </motion.h1>
           <motion.p {...fadeUp(0.2)} className="text-slate-500 text-lg leading-relaxed max-w-2xl mx-auto">
-            Vaulix Solar has been at the forefront of India's solar revolution — delivering clean, affordable energy to homes and businesses across Uttar Pradesh and beyond.
+            Vaulix Solar has been at the forefront of India's solar revolution — delivering clean, affordable energy to homes and businesses across the country.
           </motion.p>
         </div>
       </section>
 
       {/* ── Stats ── */}
       <section className="py-14 px-5 bg-white border-b border-gray-100">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
 
           {stats.map((s, i) => (
             <motion.div
@@ -131,10 +128,10 @@ export default function About() {
           <motion.div {...fadeUp(0)}>
             <span className="section-tag">Our Story</span>
             <h2 className="section-title mb-5">
-              Your Trusted Solar <span className="glow-text">Partner in UP</span>
+              Your Trusted Solar <span className="glow-text">Partner Across India</span>
             </h2>
             <p className="text-slate-500 leading-relaxed mb-5">
-              We started with a simple goal — make solar energy accessible, affordable, and genuinely worth it for every home and business in Uttar Pradesh. Rising electricity bills and unreliable power supply pushed us to build a platform that connects customers with the right solar solutions.
+              We started with a simple goal — make solar energy accessible, affordable, and genuinely worth it for every home and business across India. Rising electricity bills and unreliable power supply pushed us to build a platform that connects customers with the right solar solutions.
             </p>
             <p className="text-slate-500 leading-relaxed mb-5">
               We work with a carefully selected network of experienced solar installation professionals — so every project is handled by people who know what they're doing.

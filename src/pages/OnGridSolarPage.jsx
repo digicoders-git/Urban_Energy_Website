@@ -256,20 +256,7 @@ export default function OnGridSolarPage() {
       </section>
 
       {/* ── TESTIMONIAL ── */}
-      <section className="py-24 px-6 bg-orange/5 border-y border-orange/10">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div {...fw(0)}>
-            <div className="flex justify-center gap-1 mb-6">
-              {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 text-orange fill-orange" />)}
-            </div>
-            <blockquote className="font-outfit text-2xl md:text-3xl font-bold text-navy leading-relaxed mb-8">
-              "I installed a 3 kW on-grid system in March. My April bill was ₹0 variable charges — just ₹150 fixed. The team handled the subsidy and net meter application end-to-end. I got ₹78,000 subsidy directly in my account."
-            </blockquote>
-            <div className="text-slate-400 font-medium">— Anita Desai, Homeowner | Nagpur | 3 kW On-Grid System</div>
-          </motion.div>
-        </div>
-      </section>
-
+     c
       {/* ── FAQ ── */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-3xl mx-auto">

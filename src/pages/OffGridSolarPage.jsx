@@ -39,12 +39,6 @@ const applications = [
   { title: 'Eco Lodges & Glamping Sites', desc: 'Sustainable tourism properties use off-grid solar as a premium feature. Guests love the eco-friendly experience and zero noise from generators.' },
 ]
 
-const batteryTypes = [
-  { type: 'Lithium Iron Phosphate (LiFePO4)', cycles: '3,000–6,000', life: '10–15 years', efficiency: '95–98%', cost: 'High', best: 'Best overall choice' },
-  { type: 'Lead-Acid (Tubular)', cycles: '500–1,200', life: '3–5 years', efficiency: '75–85%', cost: 'Low', best: 'Budget option' },
-  { type: 'Gel VRLA', cycles: '500–800', life: '3–5 years', efficiency: '80–85%', cost: 'Medium', best: 'Low maintenance' },
-]
-
 const faqs = [
   { q: 'How many days of backup does an off-grid system provide?', a: 'Typically 1–3 days of backup depending on battery bank size and your daily consumption. We design systems with 2 days of autonomy as standard, which covers most weather scenarios.' },
   { q: 'What happens when batteries are fully discharged?', a: 'Modern off-grid inverters have low-voltage disconnect protection that shuts down loads before batteries are fully discharged, protecting battery health. A diesel generator can be added as a backup.' },
@@ -170,55 +164,8 @@ export default function OffGridSolarPage() {
         </div>
       </section>
 
-      {/* ── BATTERY GUIDE ── */}
-      <section className="py-24 px-6 bg-surface">
-        <div className="max-w-5xl mx-auto">
-          <motion.div {...fw(0)} className="text-center mb-16">
-            <h2 className="font-outfit text-4xl md:text-5xl font-black text-navy">Battery <span className="text-solarsky">Comparison Guide</span></h2>
-            <p className="text-navy/55 text-lg mt-4">Choosing the right battery is critical for off-grid performance and longevity.</p>
-          </motion.div>
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[600px]">
-              <thead>
-                <tr className="border-b border-gray-200">
-                  {['Battery Type', 'Cycle Life', 'Lifespan', 'Efficiency', 'Cost', 'Verdict'].map(h => (
-                    <th key={h} className="text-left py-4 px-4 text-navy/50 text-sm font-semibold uppercase tracking-wider">{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {batteryTypes.map((row, i) => (
-                  <motion.tr key={row.type} {...fw(i * 0.08)} className={`border-b border-gray-100 ${i === 0 ? 'bg-solarsky/5' : ''}`}>
-                    <td className="py-5 px-4 font-semibold text-navy text-sm">{row.type}</td>
-                    <td className="py-5 px-4 text-slate-600 text-sm">{row.cycles}</td>
-                    <td className="py-5 px-4 text-slate-600 text-sm">{row.life}</td>
-                    <td className="py-5 px-4 text-slate-600 text-sm">{row.efficiency}</td>
-                    <td className="py-5 px-4 text-slate-600 text-sm">{row.cost}</td>
-                    <td className="py-5 px-4">
-                      <span className={`text-xs font-bold px-3 py-1 rounded-full ${i === 0 ? 'bg-solarsky/20 text-solarsky' : 'bg-gray-100 text-gray-500'}`}>{row.best}</span>
-                    </td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
       {/* ── TESTIMONIAL ── */}
-      <section className="py-24 px-6 bg-slate-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div {...fw(0)}>
-            <div className="flex justify-center gap-1 mb-6">
-              {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 text-green-500 fill-green-500" />)}
-            </div>
-            <blockquote className="font-outfit text-2xl md:text-3xl font-bold text-navy leading-relaxed mb-8">
-              "Our farmhouse in Mahabaleshwar had no grid connection. A 5 kW off-grid system with lithium batteries was installed. We now have 24/7 power — lights, fans, fridge, everything. No more generator noise or diesel costs."
-            </blockquote>
-            <div className="text-slate-400 font-medium">— Suresh Patil, Farmer | Mahabaleshwar, Maharashtra | 5 kW Off-Grid System</div>
-          </motion.div>
-        </div>
-      </section>
+       
 
       {/* ── FAQ ── */}
       <section className="py-24 px-6 bg-white">

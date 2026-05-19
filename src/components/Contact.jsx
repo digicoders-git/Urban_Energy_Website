@@ -57,10 +57,7 @@ export default function Contact() {
           <span className="section-tag">Contact Us</span>
           <h2 className="section-title mt-2">Get a Free <span className="text-orange">Quote</span></h2>
           <p className="text-slate-500 text-sm mt-2">Fill the form and we'll call you within 24 hours.</p>
-          <div className="mt-4 flex items-start justify-center gap-2 text-slate-500 text-sm">
-            <span className="mt-0.5">📍</span>
-            <span>KH-3/283/124, Vistarit Area Part-2, Khargapur,<br />Gomti Nagar Extension, Sector-6, Lucknow</span>
-          </div>
+          
         </div>
 
         <div className="space-y-4">

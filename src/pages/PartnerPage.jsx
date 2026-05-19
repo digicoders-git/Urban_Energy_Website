@@ -96,7 +96,7 @@ export default function PartnerPage() {
               </span>
             </motion.h1>
             <motion.p {...fadeUp(0.2)} className="text-slate-500 text-lg md:text-xl mb-8 leading-relaxed max-w-lg">
-              Join Uttar Pradesh's most progressive solar network. Leverage our industry-certified standards and dedicated support structure to deliver world-class residential solutions.
+              Join India's most progressive solar network. Leverage our industry-certified standards and dedicated support structure to deliver world-class residential and commercial solutions.
             </motion.p>
 
             <motion.div {...fadeUp(0.3)} className="grid grid-cols-2 gap-6 max-w-md">
@@ -212,7 +212,7 @@ export default function PartnerPage() {
                 </div>
                 <div className="flex items-center gap-4">
                   <Phone className="text-orange" size={20} />
-                  <span className="text-sm">+91 98765 43210</span>
+                  <span className="text-sm">+91 8960-68-6060</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="text-orange" size={20} />

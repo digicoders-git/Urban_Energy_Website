@@ -167,7 +167,7 @@ export default function AfterInstallationServicePage() {
               <button onClick={openModal} className="flex items-center gap-2 px-7 py-3 rounded-xl font-space font-bold text-white transition-all hover:scale-105 border-none cursor-pointer" style={{ background: '#FF7A00' }}>
                 Book a Service <ArrowRight size={18} />
               </button>
-              <a href="tel:+919999999999" className="flex items-center gap-2 px-7 py-3 rounded-xl font-space font-bold text-navy border border-gray-200 hover:bg-slate-50 transition-all">
+              <a href="tel:+918960686060" className="flex items-center gap-2 px-7 py-3 rounded-xl font-space font-bold text-navy border border-gray-200 hover:bg-slate-50 transition-all">
                 <PhoneCall size={18} /> Call Now
               </a>
             </div>
@@ -256,7 +256,7 @@ export default function AfterInstallationServicePage() {
       </section>
 
       {/* AMC Plans */}
-      <section className="py-20 px-5" style={{ background: '#fff' }}>
+      <section id="plans" className="py-20 px-5" style={{ background: '#fff' }}>
         <div className="max-w-5xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-14">
             <span className="section-tag">AMC Plans</span>
@@ -399,7 +399,7 @@ export default function AfterInstallationServicePage() {
               <button onClick={openModal} className="flex items-center gap-2 px-8 py-3.5 rounded-xl font-space font-bold text-white hover:scale-105 transition-all border-none cursor-pointer" style={{ background: '#FF7A00' }}>
                 Book Free Health Check <ArrowRight size={18} />
               </button>
-              <a href="https://wa.me/919999999999" target="_blank" rel="noreferrer"
+              <a href="https://wa.me/918960686060" target="_blank" rel="noreferrer"
                 className="flex items-center gap-2 px-8 py-3.5 rounded-xl font-space font-bold text-navy border border-gray-200 hover:bg-white transition-all">
                 WhatsApp Us
               </a>
