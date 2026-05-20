@@ -20,7 +20,7 @@ const benefits = [
   { icon: Award, color: 'text-orange', bg: 'bg-orange/10', title: 'Government Subsidy', desc: 'Government subsidies available for residential solar. We help with the entire application process.' },
   { icon: BarChart3, color: 'text-purple-600', bg: 'bg-purple-50', title: 'Real-Time Monitoring', desc: 'Track live generation, consumption, export, and savings via our mobile app. Know exactly how much you\'re saving.' },
   { icon: TrendingUp, color: 'text-navy', bg: 'bg-navy/10', title: 'Best ROI in Solar', desc: 'On-grid systems deliver the highest return on investment — payback in 3–4 years, then 20+ years of free power.' },
-  { icon: Clock, color: 'text-emerald-600', bg: 'bg-emerald-50', title: 'Quick Installation', desc: 'Most on-grid systems are installed and commissioned within 2–3 days. Start saving from day one.' },
+  { icon: Clock, color: 'text-emerald-600', bg: 'bg-emerald-50', title: 'Quick Installation', desc: 'Most on-grid systems are installed within 2 days. Start saving from day one.' },
 ]
 
 const steps = [

@@ -92,7 +92,7 @@ export default function PartnerPage() {
             <motion.h1 {...fadeUp(0.1)} className="font-orbitron text-5xl md:text-6xl font-black leading-tight mb-6 text-navy">
               Scale Your Business with{' '}
               <span style={{ background: 'linear-gradient(90deg,#FF7A00,#FFC107)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                Vaulix Solar
+                VAULIX SOLAR ENERGY
               </span>
             </motion.h1>
             <motion.p {...fadeUp(0.2)} className="text-slate-500 text-lg md:text-xl mb-8 leading-relaxed max-w-lg">
@@ -223,7 +223,7 @@ export default function PartnerPage() {
 
             <div className="mt-12 pt-8 border-t border-white/10">
               <div className="text-xs text-white/40 uppercase tracking-widest mb-2">Authorized Verification</div>
-              <div className="font-bold text-white">Vaulix Solar Group</div>
+              <div className="font-bold text-white">VAULIX ENERGIES LLP</div>
             </div>
           </div>
 

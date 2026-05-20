@@ -167,8 +167,8 @@ export default function AfterInstallationServicePage() {
               <button onClick={openModal} className="flex items-center gap-2 px-7 py-3 rounded-xl font-space font-bold text-white transition-all hover:scale-105 border-none cursor-pointer" style={{ background: '#FF7A00' }}>
                 Book a Service <ArrowRight size={18} />
               </button>
-              <a href="tel:+918960686060" className="flex items-center gap-2 px-7 py-3 rounded-xl font-space font-bold text-navy border border-gray-200 hover:bg-slate-50 transition-all">
-                <PhoneCall size={18} /> Call Now
+              <a href="https://wa.me/919452516904" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-7 py-3 rounded-xl font-space font-bold text-white hover:scale-105 transition-all border-none cursor-pointer" style={{ background: '#25D366' }}>
+                <PhoneCall size={18} /> WhatsApp Now
               </a>
             </div>
           </motion.div>
@@ -256,7 +256,7 @@ export default function AfterInstallationServicePage() {
       </section>
 
       {/* AMC Plans */}
-      <section id="plans" className="py-20 px-5" style={{ background: '#fff' }}>
+      <section id="amc-plans" className="py-20 px-5" style={{ background: '#fff' }}>
         <div className="max-w-5xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-14">
             <span className="section-tag">AMC Plans</span>

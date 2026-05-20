@@ -30,8 +30,7 @@ export default function SolarCalculator() {
     size = Math.max(1, Math.round(size * 2) / 2)
     const costPerKw = form.type === 'hybrid' ? 75000 : form.type === 'off' ? 90000 : 65000
     const sysCost = Math.round(size * costPerKw)
-    const subsidyRate = size <= 3 ? 0.4 : size <= 10 ? 0.2 : 0
-    const subsidy = Math.round(sysCost * subsidyRate)
+    const subsidy = form.type === 'grid' ? 78000 : 0
     const net = sysCost - subsidy
     const annual = Math.round(size * sun * 365 * tariff)
     const payback = (net / annual).toFixed(1)
@@ -219,14 +218,14 @@ export default function SolarCalculator() {
       <div className="flex justify-between text-xs sm:text-sm">
         <span className="text-slate-500">Estimated System Cost</span>
         <span className="font-semibold text-navy">
-          ₹{fmt(results?.sysCost || 165000)}
+          ₹{fmt(results?.sysCost || 195000)}
         </span>
       </div>
 
       <div className="flex justify-between text-xs sm:text-sm">
         <span className="text-slate-500">Govt Subsidy</span>
         <span className="font-semibold text-green-600">
-          -₹{fmt(results?.subsidy || 66000)}
+          -₹{fmt(results?.subsidy || 78000)}
         </span>
       </div>
 
@@ -235,7 +234,7 @@ export default function SolarCalculator() {
           Your Net Cost
         </span>
         <span className="font-outfit font-black text-orange text-base sm:text-lg">
-          ₹{fmt(results?.net || 99000)}
+          ₹{fmt(results?.net || 117000)}
         </span>
       </div>
 

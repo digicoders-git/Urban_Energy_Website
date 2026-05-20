@@ -1,5 +1,6 @@
 import React from 'react'
 import Hero from '../components/Hero'
+import SchemeCountdown from '../components/SchemeCountdown'
 import SolarFactsTicker from '../components/SolarFactsTicker'
 import SolarCalculator from '../components/SolarCalculator'
 import Services from '../components/Services'
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <SchemeCountdown />
       <SolarFactsTicker />
       <SolarCalculator />
       <Services />

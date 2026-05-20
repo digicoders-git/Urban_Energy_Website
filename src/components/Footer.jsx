@@ -43,7 +43,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="text-slate-700 relative overflow-hidden pt-16 pb-0 px-5 bg-slate-50 border-t border-gray-200">
+    <footer className="text-slate-700 relative overflow-hidden pt-16 pb-0 px-5 bg-white border-t border-gray-200">
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* ── Top Grid ── */}
@@ -52,7 +52,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-3 mb-4 no-underline">
-              <img src={Logo} className="w-28 h-28 md:-ml-6 object-contain" alt="Vaulix Solar" />
+              <img src={Logo} className="w-28 h-28 md:-ml-6 object-contain" alt="VAULIX SOLAR ENERGY" />
               {/* <span className="font-orbitron font-black text-navy text-lg">
                 Vaulix <span className="glow-text">Solar</span>
               </span> */}
@@ -126,7 +126,7 @@ export default function Footer() {
         {/* ── Bottom Bar ── */}
         <div className="py-5 flex flex-wrap items-center justify-between gap-3">
           <span className="text-xs text-slate-400">
-            © 2025 Vaulix Solar. All rights reserved.
+            © 2025 VAULIX ENERGIES LLP. All rights reserved.
           </span>
           <a
             href="https://digicoders.in"

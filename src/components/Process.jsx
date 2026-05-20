@@ -6,7 +6,7 @@ const steps = [
   { num: 1, title: 'Free Site Survey', desc: 'Our experts visit your location to assess roof area, shadow analysis, and energy requirements.' },
   { num: 2, title: 'Custom Design', desc: 'We design a system tailored to your energy needs with detailed savings projections and ROI.' },
   { num: 3, title: 'Installation', desc: 'Certified technicians install panels and inverter. Grid connection & net metering handled.' },
-  { num: 4, title: 'Go Solar!', desc: 'Start saving from day one. Monitor production live on the Vaulix Solar app 24/7.' },
+  { num: 4, title: 'Go Solar!', desc: 'Start saving from day one.' },
 ]
 
 export default function Process() {

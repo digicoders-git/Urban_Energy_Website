@@ -21,7 +21,7 @@ const navLinks = [
     dropdown: [
       { label: 'Off-Grid Solar', to: '/solar/off-grid' },
       { label: 'On Grid Solar', to: '/solar/on-grid' },
-      { label: 'Service', to: '/services/after-installation' },
+      { label: 'Services', to: '/services/after-installation' },
     ],
   },
   {
@@ -71,7 +71,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center no-underline group">
-          <img src={Logo} className="w-28 h-28 object-contain group-hover:scale-105 transition-transform" alt="Vaulix Solar" />
+          <img src={Logo} className="w-28 h-28 object-contain group-hover:scale-105 transition-transform" alt="VAULIX SOLAR ENERGY" />
         </Link>
 
         {/* Desktop Links */}

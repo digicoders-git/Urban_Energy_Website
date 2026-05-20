@@ -6,7 +6,7 @@ export default function WhatsAppButton() {
 
   return (
     <motion.a
-      href="https://wa.me/918960686060"
+      href="https://wa.me/919452516904"
       target="_blank"
       rel="noopener noreferrer"
       initial={{ scale: 0, opacity: 0 }}
@@ -16,7 +16,7 @@ export default function WhatsAppButton() {
       whileTap={{ scale: 0.95 }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
-      className="fixed bottom-7 right-7 z-50 w-14 h-14 rounded-full flex items-center justify-center text-white text-2xl no-underline"
+      className="fixed bottom-7 right-7 z-50 w-14 h-14 rounded-full flex items-center justify-center text-white text-2xl no-underline hidden md:flex"
       style={{
         background: '#25D366',
         boxShadow: '0 8px 24px rgba(37,211,102,0.4)',
