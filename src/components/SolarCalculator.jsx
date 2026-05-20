@@ -223,22 +223,6 @@ export default function SolarCalculator() {
       </div>
 
       <div className="flex justify-between text-xs sm:text-sm">
-        <span className="text-slate-500">Govt Subsidy</span>
-        <span className="font-semibold text-green-600">
-          -₹{fmt(results?.subsidy || 78000)}
-        </span>
-      </div>
-
-      <div className="flex justify-between pt-2 sm:pt-3 border-t border-gray-100 text-sm sm:text-base">
-        <span className="font-outfit font-semibold text-navy">
-          Your Net Cost
-        </span>
-        <span className="font-outfit font-black text-orange text-base sm:text-lg">
-          ₹{fmt(results?.net || 117000)}
-        </span>
-      </div>
-
-      <div className="flex justify-between text-xs sm:text-sm">
         <span className="text-slate-500">CO₂ Saved / Year</span>
         <span className="font-semibold text-green-600">
           {results?.co2 || 1.6} tonnes
