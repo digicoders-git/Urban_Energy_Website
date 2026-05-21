@@ -30,7 +30,7 @@ export default function Hero() {
           <div className="relative w-full overflow-hidden" style={{ boxShadow: '0 8px 40px rgba(255,122,0,0.12)' }}>
             <img
               src={HeroImage}
-              alt="VAULIX SOLAR ENERGY Installation"
+              alt="VAULIX™ SOLAR ENERGY Installation"
               className="w-full h-[260px] object-cover object-center"
             />
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 60%, rgba(255,255,255,0.6) 100%)' }} />
@@ -42,7 +42,7 @@ export default function Hero() {
           <motion.div {...fadeUp(0)} className="mb-5">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-space font-bold uppercase tracking-widest" style={{ background: 'rgba(255,184,0,0.12)', border: '1px solid rgba(255,184,0,0.35)', color: '#FF8C00' }}>
               <Sun size={13} className="animate-spin" style={{ animationDuration: '8s' }} />
-              VAULIX SOLAR ENERGY — Your Trusted Solar Partner
+              VAULIX™ SOLAR ENERGY — Your Trusted Solar Partner
             </span>
           </motion.div>
 
@@ -54,7 +54,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p {...fadeUp(0.2)} className="mt-5 text-slate-500 text-base font-space max-w-sm mx-auto leading-relaxed">
-            VAULIX SOLAR ENERGY delivers <span className="font-bold text-orange-500">Transparent & Practical</span> solar solutions tailored to your needs.
+            VAULIX™ SOLAR ENERGY delivers <span className="font-bold text-orange-500">Transparent & Practical</span> solar solutions tailored to your needs.
           </motion.p>
 
           <motion.div {...fadeUp(0.3)} className="mt-8 flex flex-col items-center gap-3">
@@ -85,7 +85,7 @@ export default function Hero() {
           <div className="relative w-full rounded-3xl md:rounded-[40px] overflow-hidden" style={{ boxShadow: '0 40px 80px -20px rgba(255,122,0,0.15), 0 0 0 1px rgba(255,184,0,0.08)' }}>
             <img
               src={HeroImage}
-              alt="VAULIX SOLAR ENERGY Installation"
+              alt="VAULIX™ SOLAR ENERGY Installation"
               className="w-full h-[320px] sm:h-[440px] md:h-[580px] lg:h-[640px] object-cover object-center"
             />
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(255,255,255,0.15) 0%, transparent 50%)' }} />
@@ -97,7 +97,7 @@ export default function Hero() {
           <motion.div {...fadeUp(0)} className="mb-6">
             <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-space font-bold uppercase tracking-widest" style={{ background: 'rgba(255,184,0,0.12)', border: '1px solid rgba(255,184,0,0.35)', color: '#FF8C00' }}>
               <Sun size={14} className="animate-spin" style={{ animationDuration: '8s' }} />
-              VAULIX SOLAR ENERGY — Your Trusted Solar Partner
+              VAULIX™ SOLAR ENERGY — Your Trusted Solar Partner
             </span>
           </motion.div>
 
@@ -115,7 +115,7 @@ export default function Hero() {
             {...fadeUp(0.2)}
             className="mt-8 text-slate-500 text-lg md:text-xl font-space max-w-2xl mx-auto leading-relaxed"
           >
-            VAULIX SOLAR ENERGY delivers <span className="font-bold" style={{ color: '#FF8C00' }}>Transparent & Practical</span> solar solutions tailored to your needs.
+            VAULIX™ SOLAR ENERGY delivers <span className="font-bold" style={{ color: '#FF8C00' }}>Transparent & Practical</span> solar solutions tailored to your needs.
             Easy installation · Full maintenance support · MNRE certified expertise.
           </motion.p>
 

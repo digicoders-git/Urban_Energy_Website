@@ -32,14 +32,14 @@ const services = [
     color: '#00C9A7',
     points: ['Live generation dashboard', 'Daily/monthly reports via app', 'Instant fault SMS/email alerts', 'Output tracking'],
   },
-  {
-    icon: <ShieldCheck size={28} />,
-    title: 'AMC (Annual Maintenance Contract)',
-    desc: 'Comprehensive yearly contract covering all scheduled visits, emergency calls, and parts replacement at fixed cost.',
-    tag: 'Annual Contract',
-    color: '#FFB800',
-    points: ['2–4 scheduled visits/year', 'Priority emergency support', 'Inverter & battery check', 'Free minor parts replacement'],
-  },
+  // {
+  //   icon: <ShieldCheck size={28} />,
+  //   title: 'AMC (Annual Maintenance Contract)',
+  //   desc: 'Comprehensive yearly contract covering all scheduled visits, emergency calls, and parts replacement at fixed cost.',
+  //   tag: 'Annual Contract',
+  //   color: '#FFB800',
+  //   points: ['2–4 scheduled visits/year', 'Priority emergency support', 'Inverter & battery check', 'Free minor parts replacement'],
+  // },
   {
     icon: <Zap size={28} />,
     title: 'Inverter & Battery Service',
@@ -77,51 +77,34 @@ const services = [
 const amcPlans = [
   {
     name: 'Basic',
-    price: '₹3,999',
-    period: '/year',
+    price: '₹599',
+    period: ' + GST',
     color: '#00A3E0',
     features: [
-      '2 scheduled visits/year',
-      'Panel cleaning (2x)',
-      'Visual inspection',
-      'Email support',
-      '48-hr emergency response',
-      'Performance report (annual)',
+      '1 Cleaning included',
+      'Jet wash',
+      'Shampoo application',
+      'To Mop',
+      'Shampoo removal',
+      'Dry cleaning',
+      'Service by trained & experienced team',
     ],
-    notIncluded: ['Parts replacement', 'Priority support', 'Real-time monitoring'],
+    notIncluded: [],
   },
   {
     name: 'Standard',
-    price: '₹7,499',
-    period: '/year',
+    price: '₹1,199',
+    period: ' + GST (6 months)',
     color: '#FFB800',
     popular: true,
     features: [
-      '4 scheduled visits/year',
-      'Panel cleaning (4x)',
-      'Inverter diagnostics',
-      'Phone + WhatsApp support',
-      '24-hr emergency response',
-      'Monthly performance reports',
-      'Minor parts replacement (free)',
-    ],
-    notIncluded: ['Real-time monitoring app', 'Battery service'],
-  },
-  {
-    name: 'Premium',
-    price: '₹13,999',
-    period: '/year',
-    color: '#00C9A7',
-    features: [
-      '6 scheduled visits/year',
-      'Panel cleaning (monthly)',
-      'Inverter + battery service',
-      '24/7 dedicated support',
-      'Same-day emergency response',
-      'Real-time monitoring app',
-      'All parts replacement (free)',
-      'Net meter & billing support',
-      'Annual performance audit',
+      '2 Cleanings included',
+      'Jet wash',
+      'Shampoo application',
+      'To Mop',
+      'Shampoo removal',
+      'Dry cleaning',
+      'Service by trained & experienced team',
     ],
     notIncluded: [],
   },
@@ -142,8 +125,8 @@ export default function AfterInstallationServicePage() {
 
   const filtered = activeTab === 'all' ? services : services.filter(s =>
     activeTab === 'amc' ? ['AMC (Annual Maintenance Contract)', 'Preventive Maintenance'].includes(s.title) :
-    activeTab === 'repair' ? ['Emergency Repair', 'Inverter & Battery Service'].includes(s.title) :
-    ['Performance Monitoring', 'Panel Cleaning', 'Net Meter & Billing Support', 'Warranty Management'].includes(s.title)
+      activeTab === 'repair' ? ['Emergency Repair', 'Inverter & Battery Service'].includes(s.title) :
+        ['Performance Monitoring', 'Panel Cleaning', 'Net Meter & Billing Support', 'Warranty Management'].includes(s.title)
   )
 
   return (
@@ -264,7 +247,7 @@ export default function AfterInstallationServicePage() {
             <p className="text-slate-500 font-space text-base mt-4 max-w-xl mx-auto">Transparent pricing. No hidden charges. Cancel anytime.</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {amcPlans.map((plan, i) => (
               <motion.div
                 key={plan.name}
@@ -302,15 +285,17 @@ export default function AfterInstallationServicePage() {
                     </li>
                   ))}
                 </ul>
-                <button
-                  onClick={openModal}
-                  className="w-full py-3 rounded-xl font-space font-bold text-sm transition-all hover:opacity-90"
+                <a
+                  href={`https://wa.me/919452516904?text=Hi,%20I%20am%20interested%20in%20the%20${plan.name}%20Plan`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 rounded-xl font-space font-bold text-sm transition-all hover:opacity-90 text-center block no-underline"
                   style={plan.popular
                     ? { background: plan.color, color: '#fff' }
                     : { background: `${plan.color}15`, color: plan.color, border: `1px solid ${plan.color}40` }}
                 >
                   Get {plan.name} Plan
-                </button>
+                </a>
               </motion.div>
             ))}
           </div>

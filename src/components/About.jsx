@@ -81,7 +81,7 @@ export default function About() {
             </span>
           </motion.h1>
             <p className="text-slate-500 text-lg leading-relaxed max-w-2xl mx-auto">
-              VAULIX SOLAR ENERGY has been at the forefront of India's solar revolution — delivering clean, affordable energy to homes and businesses across the country.
+              VAULIX™ SOLAR ENERGY has been at the forefront of India's solar revolution — delivering clean, affordable energy to homes and businesses across the country.
             </p>
         </div>
       </section>

@@ -52,7 +52,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
-        <WhatsAppButton />
+        {/* <WhatsAppButton /> */}
         <QuoteModal />
       </BrowserRouter>
     </ModalProvider>

@@ -28,7 +28,7 @@ const footerLinks = {
 }
 
 const contactInfo = [
-  { icon: <FaMapMarkerAlt size={16} />, label: 'Address', val: 'KH-3/283/124, Vistarit Area Part-2, Khargapur, Gomti Nagar Extension, Sector-6, Lucknow' },
+  { icon: <FaMapMarkerAlt size={16} />, label: 'Address', val: <>KH-3/283/124, Vistarit Area Part-2, Khargapur,<br />Sector-6, Gomti Nagar Extension,<br />Lucknow</> },
   { icon: <FaPhoneAlt size={16} />, label: 'Phone', val: '+91 8960-68-6060' },
   { icon: <FaEnvelope size={16} />, label: 'Email', val: 'hello@vaulixsolar.in' },
   { icon: <FaClock size={16} />, label: 'Hours', val: 'Mon – Sat: 9 AM – 7 PM' },
@@ -52,7 +52,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-3 mb-4 no-underline">
-              <img src={Logo} className="w-28 h-28 md:-ml-6 object-contain" alt="VAULIX SOLAR ENERGY" />
+              <img src={Logo} className="w-28 h-28 md:-ml-6 object-contain" alt="VAULIX™ SOLAR ENERGY" />
               {/* <span className="font-orbitron font-black text-navy text-lg">
                 Vaulix <span className="glow-text">Solar</span>
               </span> */}
@@ -126,7 +126,7 @@ export default function Footer() {
         {/* ── Bottom Bar ── */}
         <div className="py-5 flex flex-wrap items-center justify-between gap-3">
           <span className="text-xs text-slate-400">
-            © 2025 VAULIX ENERGIES LLP. All rights reserved.
+            © 2025 VAULIX™ ENERGIES LLP. All rights reserved.
           </span>
           <a
             href="https://digicoders.in"
