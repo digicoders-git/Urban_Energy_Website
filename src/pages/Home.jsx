@@ -10,7 +10,7 @@ import ServicePlans from '../components/ServicePlans'
 import SubsidyCalc from '../components/SubsidyCalc'
 import Testimonials from '../components/Testimonials'
 import FAQ from '../components/FAQ'
-import Contact from '../components/Contact'
+import Refer from '../components/Refer'
 
 export default function Home() {
   return (
@@ -27,7 +27,7 @@ export default function Home() {
       <SubsidyCalc />
       <Testimonials />
       <FAQ />
-      <Contact />
+      <Refer />
     </main>
   )
 }

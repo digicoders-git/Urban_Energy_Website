@@ -16,7 +16,7 @@ import HousingSocietiesPage from './pages/HousingSocietiesPage'
 import OffGridSolarPage from './pages/OffGridSolarPage'
 import OnGridSolarPage from './pages/OnGridSolarPage'
 import BlogPage from './pages/BlogPage'
-import ContactPage from './pages/ContactPage'
+import ReferPage from './pages/ReferPage'
 import CalculatorPage from './pages/CalculatorPage'
 import PartnerPage from './pages/PartnerPage'
 import CareersPage from './pages/CareersPage'
@@ -41,7 +41,8 @@ export default function App() {
           <Route path="/solar/off-grid" element={<OffGridSolarPage />} />
           <Route path="/solar/on-grid" element={<OnGridSolarPage />} />
           <Route path="/blog" element={<BlogPage />} />
-          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/refer-now" element={<ReferPage />} />
+          <Route path="/contact" element={<ReferPage />} />
           <Route path="/calculator" element={<CalculatorPage />} />
           <Route path="/become-a-partner" element={<PartnerPage />} />
           <Route path="/careers" element={<CareersPage />} />

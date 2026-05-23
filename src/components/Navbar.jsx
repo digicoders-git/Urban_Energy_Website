@@ -33,7 +33,7 @@ const navLinks = [
       { label: 'Partner With Us', to: '/become-a-partner' },
     ],
   },
-  { label: 'Contact Us', to: '/contact' },
+  { label: 'Refer Now', to: '/refer-now' },
 ]
 
 export default function Navbar() {
@@ -124,13 +124,6 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          <a
-            href="tel:+918960686060"
-            className="flex items-center gap-2 text-navy font-space font-bold text-sm px-4 py-3 rounded-full border border-gray-200 hover:border-orange hover:text-orange transition-all duration-200 no-underline"
-          >
-            <Phone size={15} />
-            +91 8960-68-6060
-          </a>
           <button
             onClick={openQuoteModal}
             className="text-white font-space font-bold text-sm px-6 py-3 rounded-full shadow-md transition-all duration-200 hover:-translate-y-0.5 border-none cursor-pointer"
@@ -199,13 +192,6 @@ export default function Navbar() {
                   </Link>
                 )
               )}
-              <a
-                href="tel:+918960686060"
-                className="flex items-center justify-center gap-2 font-bold text-base py-3 rounded-full no-underline text-orange border border-orange"
-              >
-                <Phone size={16} />
-                +91 8960-68-6060
-              </a>
               <button
                 onClick={() => {
                   setMenuOpen(false);

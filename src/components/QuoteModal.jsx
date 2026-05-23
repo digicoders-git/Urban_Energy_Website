@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Send, Phone, User, MapPin, Zap, Home } from 'lucide-react'
+import { X, Send, Phone, User, MapPin, Mail, IndianRupee, MessageSquare } from 'lucide-react'
 import { useModal } from '../context/ModalContext'
 
 const API = import.meta.env.VITE_API_URL
 
-const EMPTY = { name: '', phone: '', city: '', systemSize: '', type: 'Residential' }
+const EMPTY = { name: '', phone: '', email: '', city: '', bill: '', message: '' }
 
 export default function QuoteModal() {
   const { isQuoteModalOpen, closeQuoteModal } = useModal()
@@ -28,15 +28,16 @@ export default function QuoteModal() {
     setError('')
     setLoading(true)
     try {
-      const res = await fetch(`${API}/quotes`, {
+      const res = await fetch(`${API}/contacts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name:       form.name.trim(),
           phone:      form.phone.trim(),
+          email:      form.email.trim(),
           city:       form.city.trim(),
-          systemSize: form.systemSize.trim(),
-          type:       form.type,
+          bill:       form.bill ? Number(form.bill) : 0,
+          message:    form.message.trim(),
         })
       })
       if (res.ok) {
@@ -84,7 +85,7 @@ export default function QuoteModal() {
                   <h2 className="text-2xl sm:text-3xl font-bold font-outfit text-navy">
                     Get a Free <span className="text-orange">Quote</span>
                   </h2>
-                  <p className="text-slate-500 text-sm mt-1">Fill details and we'll contact you shortly.</p>
+                  <p className="text-slate-500 text-sm mt-1">Fill the details below and we'll call you within 24 hours.</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -93,56 +94,52 @@ export default function QuoteModal() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="relative">
                       <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-                      <input required type="text" placeholder="Enter your full name"
+                      <input required type="text" placeholder="Full Name *"
                         value={form.name} onChange={e => set('name', e.target.value)}
-                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all" />
+                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all text-navy font-outfit" />
                     </div>
                     <div className="relative">
                       <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-                      <input required type="tel" placeholder="Enter phone number"
+                      <input required type="tel" placeholder="Phone Number *"
                         value={form.phone} onChange={e => set('phone', e.target.value)}
-                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all" />
+                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all text-navy font-outfit" />
                     </div>
                   </div>
 
-                  {/* City + System Size */}
-                  <div className="grid grid-cols-2 gap-4">
+                  {/* City + Bill */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="relative">
                       <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-                      <input required type="text" placeholder="Enter your city"
+                      <input required type="text" placeholder="City *"
                         value={form.city} onChange={e => set('city', e.target.value)}
-                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all" />
+                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all text-navy font-outfit" />
                     </div>
                     <div className="relative">
-                      <Zap className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-                      <input type="text" placeholder="System size (e.g. 5 kW)"
-                        value={form.systemSize} onChange={e => set('systemSize', e.target.value)}
-                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all" />
+                      <IndianRupee className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                      <input type="number" placeholder="Monthly Electricity Bill (₹)"
+                        value={form.bill} onChange={e => set('bill', e.target.value)}
+                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all text-navy font-outfit" />
                     </div>
                   </div>
 
-                  {/* Type */}
+                  {/* Message */}
                   <div className="relative">
-                    <Home className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-                    <select value={form.type} onChange={e => set('type', e.target.value)}
-                      className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all bg-white">
-                      <option>Residential</option>
-                      <option>Commercial</option>
-                      <option>Society</option>
-                      <option>Off-Grid</option>
-                    </select>
+                    <MessageSquare className="absolute left-4 top-4 text-slate-400" size={16} />
+                    <textarea placeholder="Message (Optional)" rows={3}
+                      value={form.message} onChange={e => set('message', e.target.value)}
+                      className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all text-navy font-outfit resize-none" />
                   </div>
 
                   <button type="submit" disabled={loading || submitted}
-                    className={`w-full py-4 rounded-xl font-bold text-white text-base flex items-center justify-center gap-2 shadow-lg transition-all hover:-translate-y-0.5 ${submitted ? 'bg-green-500' : 'bg-gradient-to-r from-[#FF7A00] to-[#ff9500]'} disabled:opacity-70`}>
-                    {loading ? 'Sending...' : submitted ? '✓ Request Submitted' : <><Send size={18} /> Request Call Back</>}
+                    className={`w-full py-4 rounded-xl font-bold text-white text-base flex items-center justify-center gap-2 shadow-lg transition-all hover:-translate-y-0.5 ${submitted ? 'bg-green-500' : 'bg-gradient-to-r from-[#FF7A00] to-[#ff9500]'} disabled:opacity-70 cursor-pointer border-none`}>
+                    {loading ? 'Sending...' : submitted ? '✓ Request Submitted' : <><Send size={18} /> Send My Request</>}
                   </button>
 
                   {error && <p className="text-center text-red-500 text-xs font-medium bg-red-50 py-2 rounded-lg">{error}</p>}
                   {submitted && (
                     <motion.p initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }}
                       className="text-center text-green-600 text-xs font-medium">
-                      Thank you! Expect our call within 24 hrs.
+                      Thank you! We'll call you within 24 hours.
                     </motion.p>
                   )}
                 </form>

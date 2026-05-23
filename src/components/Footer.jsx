@@ -16,7 +16,7 @@ const footerLinks = {
     { label: 'Projects', to: '/projects' },
     { label: 'Blog', to: '/blog' },
     { label: 'Careers', to: '/careers' },
-    { label: 'Contact', to: '/contact' },
+    { label: 'Refer Now', to: '/refer-now' },
   ],
   Resources: [
     { label: 'Subsidy Guide', to: '/calculator' },

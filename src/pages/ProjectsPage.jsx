@@ -1,10 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import Projects from '../components/Projects'
+import ProjectShowcase from '../components/ProjectShowcase'
 import Dashboard from '../components/Dashboard'
 import Testimonials from '../components/Testimonials'
 import { Link } from 'react-router-dom'
-import { FaBriefcase } from "react-icons/fa";
+import { FaBriefcase } from "react-icons/fa"
+
 export default function ProjectsPage() {
   return (
     <main className="pt-16">
@@ -24,7 +25,7 @@ export default function ProjectsPage() {
             Specialized configurations across Uttar Pradesh. See how we're transforming energy consumption one rooftop at a time.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="flex flex-wrap justify-center gap-6">
-            {[['MNRE', 'Empanelled'], ['Top-Tier', 'Grade'], ['Premium', 'Builds'], ['4.9★', 'Rating']].map(([val, lbl]) => (
+            {[['500+', 'Systems'], ['Top-Tier', 'Grade'], ['Premium', 'Builds'], ['24/7', 'Support']].map(([val, lbl]) => (
               <div key={lbl} className="text-center">
                 <div className="font-outfit text-2xl font-black text-orange">{val}</div>
                 <div className="text-white/50 text-xs mt-0.5">{lbl}</div>
@@ -34,7 +35,7 @@ export default function ProjectsPage() {
         </div>
       </section>
       <Dashboard />
-      <Projects />
+      <ProjectShowcase />
       <Testimonials />
       <section className="py-12 px-5 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #FF7A00, transparent 60%)' }} />
@@ -42,7 +43,7 @@ export default function ProjectsPage() {
           <h3 className="font-outfit text-2xl md:text-3xl font-black text-white mb-3">Your Project Could Be Next </h3>
           <p className="text-white/60 mb-7">Take the definitive next step towards reliable, affordable renewable power.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn-primary" style={{ background: 'linear-gradient(135deg, #FFB800, #FF7A00)', boxShadow: '0 4px 20px rgba(255,122,0,0.4)' }}>Start My Project</Link>
+            <Link to="/refer-now" className="btn-primary" style={{ background: 'linear-gradient(135deg, #FFB800, #FF7A00)', boxShadow: '0 4px 20px rgba(255,122,0,0.4)' }}>Start My Project</Link>
             <Link to="/calculator" className="inline-block text-center font-space font-semibold px-7 py-4 rounded-xl transition-all duration-300 hover:-translate-y-1 border-2 border-white/40 hover:border-white text-white hover:bg-white/10">Calculate Savings</Link>
           </div>
         </motion.div>
