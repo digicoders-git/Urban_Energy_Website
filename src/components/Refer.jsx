@@ -840,7 +840,7 @@ export default function Refer() {
                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
                         <input
                           type="email"
-                          placeholder="Email Address (Optional)"
+                          placeholder="Email Address *"
                           value={registerForm.email}
                           onChange={(e) => setRegisterForm({ ...registerForm, email: e.target.value })}
                           className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
