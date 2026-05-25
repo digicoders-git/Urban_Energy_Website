@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Users, User, Phone, Mail, MapPin, IndianRupee, MessageSquare, Send, 
-  Award, Gift, ChevronDown, Zap, Lock, LogIn, Sparkles, Check
+  Award, Gift, ChevronDown, Zap, Lock, LogIn, Sparkles, Check, ArrowLeft
 } from 'lucide-react'
 import ReferrerDashboard from './ReferrerDashboard'
 
@@ -41,6 +41,17 @@ export default function Refer() {
   const [refereeSubmitted, setRefereeSubmitted] = useState(false)
   const [refereeLoading, setRefereeLoading] = useState(false)
   const [refereeError, setRefereeError] = useState('')
+
+  // Forgot Password State
+  const [forgotMode, setForgotMode] = useState(false)
+  const [forgotStep, setForgotStep] = useState(1) // 1: Send OTP, 2: Reset Password, 3: Success
+  const [forgotEmail, setForgotEmail] = useState('')
+  const [forgotOtp, setForgotOtp] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [forgotLoading, setForgotLoading] = useState(false)
+  const [forgotError, setForgotError] = useState('')
+  const [forgotSuccessMessage, setForgotSuccessMessage] = useState('')
 
   // Check localStorage on load
   useEffect(() => {
@@ -132,6 +143,79 @@ export default function Refer() {
       setRegisterError('Server connection error. Please try again.')
     } finally {
       setRegisterLoading(false)
+    }
+  }
+
+  // Handle Request Password Reset OTP
+  const handleSendOtp = async (e) => {
+    e.preventDefault()
+    if (!forgotEmail) {
+      return setForgotError('Please enter your registered email address.')
+    }
+    setForgotError('')
+    setForgotLoading(true)
+
+    try {
+      const res = await fetch(`${API}/referrers/forgot-password`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: forgotEmail.trim() })
+      })
+
+      const data = await res.json()
+      if (res.ok) {
+        setForgotSuccessMessage(data.message)
+        setForgotStep(2)
+      } else {
+        setForgotError(data.message || 'Failed to send OTP. Please try again.')
+      }
+    } catch {
+      setForgotError('Server connection error. Please try again.')
+    } finally {
+      setForgotLoading(false)
+    }
+  }
+
+  // Handle Verify OTP & Reset Password
+  const handleResetPassword = async (e) => {
+    e.preventDefault()
+    if (!forgotOtp || !newPassword || !confirmPassword) {
+      return setForgotError('Please fill all fields.')
+    }
+    if (forgotOtp.length !== 6) {
+      return setForgotError('Please enter a valid 6-digit OTP.')
+    }
+    if (newPassword.length < 6) {
+      return setForgotError('Password must be at least 6 characters long.')
+    }
+    if (newPassword !== confirmPassword) {
+      return setForgotError('Passwords do not match.')
+    }
+    setForgotError('')
+    setForgotLoading(true)
+
+    try {
+      const res = await fetch(`${API}/referrers/reset-password`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: forgotEmail.trim(),
+          otp: forgotOtp.trim(),
+          newPassword
+        })
+      })
+
+      const data = await res.json()
+      if (res.ok) {
+        setForgotSuccessMessage(data.message)
+        setForgotStep(3)
+      } else {
+        setForgotError(data.message || 'Verification or password reset failed.')
+      }
+    } catch {
+      setForgotError('Server connection error. Please try again.')
+    } finally {
+      setForgotLoading(false)
     }
   }
 
@@ -434,160 +518,379 @@ export default function Refer() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 border border-slate-100 shadow-xl shadow-slate-200/50"
         >
-          {/* Tabs */}
-          <div className="flex border-b border-slate-100 mb-8 p-1 bg-slate-50 rounded-2xl">
-            <button
-              onClick={() => setAuthMode('login')}
-              className={`flex-1 py-3 text-center rounded-xl font-outfit font-bold text-sm transition-all border-none cursor-pointer ${authMode === 'login' ? 'bg-white text-navy shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
-            >
-              Partner Login
-            </button>
-            <button
-              onClick={() => setAuthMode('register')}
-              className={`flex-1 py-3 text-center rounded-xl font-outfit font-bold text-sm transition-all border-none cursor-pointer ${authMode === 'register' ? 'bg-white text-navy shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
-            >
-              Register as Referrer
-            </button>
-          </div>
-
-          {/* Form Content */}
-          <AnimatePresence mode="wait">
-            {authMode === 'login' ? (
-              <motion.form
-                key="login"
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 10 }}
-                onSubmit={handleLoginSubmit}
-                className="space-y-6"
-              >
-                <div className="relative">
-                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-                  <input
-                    required
-                    type="tel"
-                    placeholder="Registered Mobile Number *"
-                    value={loginForm.phone}
-                    onChange={(e) => setLoginForm({ ...loginForm, phone: e.target.value })}
-                    className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
-                  />
-                </div>
-
-                <div className="relative">
-                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-                  <input
-                    required
-                    type="password"
-                    placeholder="Password *"
-                    value={loginForm.password}
-                    onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
-                    className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={loginLoading}
-                  className="w-full py-4 rounded-xl font-outfit flex items-center justify-center gap-2 font-bold text-lg text-white hover:shadow-xl shadow-orange/30 disabled:opacity-60 border-none cursor-pointer"
-                  style={{ background: 'linear-gradient(135deg, #FF7A00, #ff9500)' }}
+          {forgotMode ? (
+            <AnimatePresence mode="wait">
+              {forgotStep === 1 && (
+                <motion.form
+                  key="forgot-step-1"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 10 }}
+                  onSubmit={handleSendOtp}
+                  className="space-y-6"
                 >
-                  {loginLoading ? 'Signing In...' : <> Sign In <LogIn size={16} /> </>}
-                </button>
+                  <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <button
+                      type="button"
+                      onClick={() => setForgotMode(false)}
+                      className="text-slate-400 hover:text-navy transition-colors bg-transparent border-none cursor-pointer p-1"
+                    >
+                      <ArrowLeft size={20} />
+                    </button>
+                    <h3 className="font-orbitron text-base font-bold text-navy uppercase tracking-wider">
+                      Forgot Password
+                    </h3>
+                  </div>
+                  <p className="text-xs text-slate-500 font-outfit leading-relaxed">
+                    Please enter your registered email address. We will send you a secure 6-digit One-Time Password (OTP) to reset your password.
+                  </p>
 
-                {loginError && (
-                  <div className="text-center py-2.5 px-4 rounded-xl text-red-700 font-semibold text-xs border border-red-200 bg-red-50/50">
-                    ⚠ {loginError}
-                  </div>
-                )}
-              </motion.form>
-            ) : (
-              <motion.form
-                key="register"
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -10 }}
-                onSubmit={handleRegisterSubmit}
-                className="space-y-5"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="relative">
-                    <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-                    <input
-                      required
-                      type="text"
-                      placeholder="Your Full Name *"
-                      value={registerForm.name}
-                      onChange={(e) => setRegisterForm({ ...registerForm, name: e.target.value })}
-                      className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
-                    />
-                  </div>
-                  <div className="relative">
-                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-                    <input
-                      required
-                      type="tel"
-                      placeholder="Mobile Number *"
-                      value={registerForm.phone}
-                      onChange={(e) => setRegisterForm({ ...registerForm, phone: e.target.value })}
-                      className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
                     <input
+                      required
                       type="email"
-                      placeholder="Email Address (Optional)"
-                      value={registerForm.email}
-                      onChange={(e) => setRegisterForm({ ...registerForm, email: e.target.value })}
+                      placeholder="Registered Email Address *"
+                      value={forgotEmail}
+                      onChange={(e) => setForgotEmail(e.target.value)}
                       className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
                     />
                   </div>
+
+                  <button
+                    type="submit"
+                    disabled={forgotLoading}
+                    className="w-full py-4 rounded-xl font-outfit flex items-center justify-center gap-2 font-bold text-lg text-white hover:shadow-xl shadow-orange/30 disabled:opacity-60 border-none cursor-pointer animate-pulse"
+                    style={{ background: 'linear-gradient(135deg, #FF7A00, #ff9500)' }}
+                  >
+                    {forgotLoading ? 'Sending OTP...' : <> Send Reset OTP <Send size={16} /> </>}
+                  </button>
+
+                  {forgotError && (
+                    <div className="text-center py-2.5 px-4 rounded-xl text-red-700 font-semibold text-xs border border-red-200 bg-red-50/50">
+                      ⚠ {forgotError}
+                    </div>
+                  )}
+
+                  <div className="text-center">
+                    <button
+                      type="button"
+                      onClick={() => setForgotMode(false)}
+                      className="text-xs text-slate-400 hover:text-navy font-outfit border-none bg-transparent cursor-pointer transition-colors hover:underline"
+                    >
+                      Back to Login
+                    </button>
+                  </div>
+                </motion.form>
+              )}
+
+              {forgotStep === 2 && (
+                <motion.form
+                  key="forgot-step-2"
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -10 }}
+                  onSubmit={handleResetPassword}
+                  className="space-y-5"
+                >
+                  <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <button
+                      type="button"
+                      onClick={() => setForgotStep(1)}
+                      className="text-slate-400 hover:text-navy transition-colors bg-transparent border-none cursor-pointer p-1"
+                    >
+                      <ArrowLeft size={20} />
+                    </button>
+                    <h3 className="font-orbitron text-base font-bold text-navy uppercase tracking-wider">
+                      Verify & Reset
+                    </h3>
+                  </div>
+
+                  {forgotSuccessMessage && (
+                    <div className="text-center py-2 px-3 rounded-lg text-green-700 font-semibold text-xs border border-green-200 bg-green-50/50 animate-bounce">
+                      ✓ {forgotSuccessMessage}
+                    </div>
+                  )}
+
+                  <p className="text-xs text-slate-500 font-outfit leading-relaxed">
+                    An OTP was sent to <strong>{forgotEmail}</strong>. Enter it below along with your new password.
+                  </p>
+
                   <div className="relative">
-                    <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
                     <input
                       required
                       type="text"
-                      placeholder="City *"
-                      value={registerForm.city}
-                      onChange={(e) => setRegisterForm({ ...registerForm, city: e.target.value })}
+                      maxLength={6}
+                      placeholder="6-Digit OTP *"
+                      value={forgotOtp}
+                      onChange={(e) => setForgotOtp(e.target.value.replace(/\D/g, ''))}
+                      className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit tracking-[8px] font-black text-center"
+                    />
+                  </div>
+
+                  <div className="relative">
+                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                    <input
+                      required
+                      type="password"
+                      placeholder="New Secure Password *"
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                      className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
+                    />
+                    <div className="text-[10px] text-slate-400 mt-1 pl-2">Minimum 6 characters.</div>
+                  </div>
+
+                  <div className="relative">
+                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                    <input
+                      required
+                      type="password"
+                      placeholder="Confirm New Password *"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
                       className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
                     />
                   </div>
-                </div>
 
-                <div className="relative">
-                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
-                  <input
-                    required
-                    type="password"
-                    placeholder="Create Secure Password *"
-                    value={registerForm.password}
-                    onChange={(e) => setRegisterForm({ ...registerForm, password: e.target.value })}
-                    className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
-                  />
-                  <div className="text-[10px] text-slate-400 mt-1 pl-2">Minimum 6 characters. Use alphanumeric password.</div>
-                </div>
+                  <button
+                    type="submit"
+                    disabled={forgotLoading}
+                    className="w-full py-4 rounded-xl font-outfit flex items-center justify-center gap-2 font-bold text-lg text-white hover:shadow-xl shadow-orange/30 disabled:opacity-60 border-none cursor-pointer"
+                    style={{ background: 'linear-gradient(135deg, #FF7A00, #ff9500)' }}
+                  >
+                    {forgotLoading ? 'Resetting Password...' : <> Reset Password <Check size={16} /> </>}
+                  </button>
 
-                <button
-                  type="submit"
-                  disabled={registerLoading}
-                  className="w-full py-4 rounded-xl font-outfit flex items-center justify-center gap-2 font-bold text-lg text-white hover:shadow-xl shadow-orange/30 disabled:opacity-60 border-none cursor-pointer"
-                  style={{ background: 'linear-gradient(135deg, #FF7A00, #ff9500)' }}
-                >
-                  {registerLoading ? 'Creating Account...' : <> Create Account <Check size={16} /> </>}
-                </button>
+                  {forgotError && (
+                    <div className="text-center py-2.5 px-4 rounded-xl text-red-700 font-semibold text-xs border border-red-200 bg-red-50/50">
+                      ⚠ {forgotError}
+                    </div>
+                  )}
 
-                {registerError && (
-                  <div className="text-center py-2.5 px-4 rounded-xl text-red-700 font-semibold text-xs border border-red-200 bg-red-50/50">
-                    ⚠ {registerError}
+                  <div className="text-center">
+                    <button
+                      type="button"
+                      onClick={() => setForgotStep(1)}
+                      className="text-xs text-slate-400 hover:text-navy font-outfit border-none bg-transparent cursor-pointer transition-colors hover:underline"
+                    >
+                      Resend OTP / Back
+                    </button>
                   </div>
+                </motion.form>
+              )}
+
+              {forgotStep === 3 && (
+                <motion.div
+                  key="forgot-step-3"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="text-center py-10 space-y-6"
+                >
+                  <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto shadow-md shadow-green-100/50">
+                    <Check size={32} />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="font-orbitron text-xl font-bold text-navy">Success!</h3>
+                    <p className="text-slate-500 font-outfit text-sm max-w-xs mx-auto">
+                      Your password has been successfully reset. You can now use your new password to sign in.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setForgotMode(false)
+                      setForgotStep(1)
+                      setAuthMode('login')
+                      setForgotEmail('')
+                      setForgotOtp('')
+                      setNewPassword('')
+                      setConfirmPassword('')
+                      setForgotSuccessMessage('')
+                    }}
+                    className="px-8 py-3 rounded-xl font-outfit font-bold text-sm text-white hover:shadow-xl shadow-orange/30 border-none cursor-pointer transition-transform hover:-translate-y-0.5"
+                    style={{ background: 'linear-gradient(135deg, #FF7A00, #ff9500)' }}
+                  >
+                    Back to Login
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          ) : (
+            <>
+              {/* Tabs */}
+              <div className="flex border-b border-slate-100 mb-8 p-1 bg-slate-50 rounded-2xl">
+                <button
+                  onClick={() => setAuthMode('login')}
+                  className={`flex-1 py-3 text-center rounded-xl font-outfit font-bold text-sm transition-all border-none cursor-pointer ${authMode === 'login' ? 'bg-white text-navy shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                >
+                  Partner Login
+                </button>
+                <button
+                  onClick={() => setAuthMode('register')}
+                  className={`flex-1 py-3 text-center rounded-xl font-outfit font-bold text-sm transition-all border-none cursor-pointer ${authMode === 'register' ? 'bg-white text-navy shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                >
+                  Register as Referrer
+                </button>
+              </div>
+
+              {/* Form Content */}
+              <AnimatePresence mode="wait">
+                {authMode === 'login' ? (
+                  <motion.form
+                    key="login"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 10 }}
+                    onSubmit={handleLoginSubmit}
+                    className="space-y-6"
+                  >
+                    <div className="relative">
+                      <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                      <input
+                        required
+                        type="text"
+                        placeholder="Registered Mobile or Email *"
+                        value={loginForm.phone}
+                        onChange={(e) => setLoginForm({ ...loginForm, phone: e.target.value })}
+                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
+                      />
+                    </div>
+
+                    <div className="relative">
+                      <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                      <input
+                        required
+                        type="password"
+                        placeholder="Password *"
+                        value={loginForm.password}
+                        onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
+                      />
+                    </div>
+
+                    <div className="flex justify-end -mt-3">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setForgotMode(true)
+                          setForgotStep(1)
+                          setForgotError('')
+                          setForgotSuccessMessage('')
+                        }}
+                        className="text-xs text-orange hover:text-orange-600 font-bold font-outfit border-none bg-transparent cursor-pointer transition-colors hover:underline"
+                      >
+                        Forgot Password?
+                      </button>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={loginLoading}
+                      className="w-full py-4 rounded-xl font-outfit flex items-center justify-center gap-2 font-bold text-lg text-white hover:shadow-xl shadow-orange/30 disabled:opacity-60 border-none cursor-pointer"
+                      style={{ background: 'linear-gradient(135deg, #FF7A00, #ff9500)' }}
+                    >
+                      {loginLoading ? 'Signing In...' : <> Sign In <LogIn size={16} /> </>}
+                    </button>
+
+                    {loginError && (
+                      <div className="text-center py-2.5 px-4 rounded-xl text-red-700 font-semibold text-xs border border-red-200 bg-red-50/50">
+                        ⚠ {loginError}
+                      </div>
+                    )}
+                  </motion.form>
+                ) : (
+                  <motion.form
+                    key="register"
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    onSubmit={handleRegisterSubmit}
+                    className="space-y-5"
+                  >
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="relative">
+                        <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                        <input
+                          required
+                          type="text"
+                          placeholder="Your Full Name *"
+                          value={registerForm.name}
+                          onChange={(e) => setRegisterForm({ ...registerForm, name: e.target.value })}
+                          className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
+                        />
+                      </div>
+                      <div className="relative">
+                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                        <input
+                          required
+                          type="tel"
+                          placeholder="Mobile Number *"
+                          value={registerForm.phone}
+                          onChange={(e) => setRegisterForm({ ...registerForm, phone: e.target.value })}
+                          className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="relative">
+                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                        <input
+                          type="email"
+                          placeholder="Email Address (Optional)"
+                          value={registerForm.email}
+                          onChange={(e) => setRegisterForm({ ...registerForm, email: e.target.value })}
+                          className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
+                        />
+                      </div>
+                      <div className="relative">
+                        <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                        <input
+                          required
+                          type="text"
+                          placeholder="City *"
+                          value={registerForm.city}
+                          onChange={(e) => setRegisterForm({ ...registerForm, city: e.target.value })}
+                          className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="relative">
+                      <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                      <input
+                        required
+                        type="password"
+                        placeholder="Create Secure Password *"
+                        value={registerForm.password}
+                        onChange={(e) => setRegisterForm({ ...registerForm, password: e.target.value })}
+                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
+                      />
+                      <div className="text-[10px] text-slate-400 mt-1 pl-2">Minimum 6 characters. Use alphanumeric password.</div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={registerLoading}
+                      className="w-full py-4 rounded-xl font-outfit flex items-center justify-center gap-2 font-bold text-lg text-white hover:shadow-xl shadow-orange/30 disabled:opacity-60 border-none cursor-pointer"
+                      style={{ background: 'linear-gradient(135deg, #FF7A00, #ff9500)' }}
+                    >
+                      {registerLoading ? 'Creating Account...' : <> Create Account <Check size={16} /> </>}
+                    </button>
+
+                    {registerError && (
+                      <div className="text-center py-2.5 px-4 rounded-xl text-red-700 font-semibold text-xs border border-red-200 bg-red-50/50">
+                        ⚠ {registerError}
+                      </div>
+                    )}
+                  </motion.form>
                 )}
-              </motion.form>
-            )}
-          </AnimatePresence>
+              </AnimatePresence>
+            </>
+          )}
         </motion.div>
 
       </div>
