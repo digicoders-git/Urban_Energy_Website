@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Handshake, TrendingUp, ShieldCheck, Users, ArrowRight, Send, Building2, Phone, Mail, MapPin, Rocket } from 'lucide-react'
+import { Handshake, TrendingUp, ShieldCheck, Users, ArrowRight, Send, Building2, Phone, Mail, MapPin, Rocket, Megaphone, Headphones } from 'lucide-react'
 
 const API = import.meta.env.VITE_API_URL
 
@@ -23,9 +23,19 @@ const partnerBenefits = [
     desc: 'End-to-end technical, design, and sales training for you and your field team at every step.',
   },
   {
+    icon: Megaphone,
+    title: 'Fully Marketing Support',
+    desc: 'Co-branded promotional material, digital marketing leads, localized campaigns, and local awareness assets.',
+  },
+  {
+    icon: Headphones,
+    title: 'Customer Support',
+    desc: 'Dedicated 24/7 client relations team, escalation handling, and service support to ensure absolute customer satisfaction.',
+  },
+  {
     icon: Handshake,
-    title: 'Joint Marketing Support',
-    desc: 'Co-branded promotional material, digital marketing leads, and local awareness assets.',
+    title: 'Project & Technical Support',
+    desc: 'Dedicated engineering team for layout verification, site feasibility, and compliance assistance.',
   },
   {
     icon: Users,
@@ -141,7 +151,7 @@ export default function PartnerPage() {
             <p className="text-slate-500 mt-4 max-w-xl mx-auto">We empower you with technical resources, commercial leverage, and constant development tracks so you can thrive seamlessly.</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {partnerBenefits.map((b, i) => (
               <motion.div
                 key={b.title}
