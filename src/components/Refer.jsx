@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Users, User, Phone, Mail, MapPin, IndianRupee, MessageSquare, Send, 
-  Award, Gift, ChevronDown, Zap, Lock, LogIn, Sparkles, Check, ArrowLeft
+  Award, Gift, ChevronDown, Zap, Lock, LogIn, Sparkles, Check, ArrowLeft,
+  Upload, QrCode, Trash2, Image
 } from 'lucide-react'
 import ReferrerDashboard from './ReferrerDashboard'
 
@@ -24,7 +25,9 @@ export default function Refer() {
   const [loginLoading, setLoginLoading] = useState(false)
 
   // Register Form
-  const [registerForm, setRegisterForm] = useState({ name: '', phone: '', email: '', city: '', password: '' })
+  const [registerForm, setRegisterForm] = useState({ name: '', phone: '', email: '', city: '', password: '', upiId: '' })
+  const [qrCodeFile, setQrCodeFile] = useState(null)
+  const [qrCodePreview, setQrCodePreview] = useState(null)
   const [registerError, setRegisterError] = useState('')
   const [registerLoading, setRegisterLoading] = useState(false)
 
@@ -118,16 +121,22 @@ export default function Refer() {
     setRegisterLoading(true)
 
     try {
+      const formData = new FormData()
+      formData.append('name', registerForm.name.trim())
+      formData.append('phone', registerForm.phone.trim())
+      formData.append('email', registerForm.email.trim())
+      formData.append('city', registerForm.city.trim())
+      formData.append('password', registerForm.password)
+      if (registerForm.upiId) {
+        formData.append('upiId', registerForm.upiId.trim())
+      }
+      if (qrCodeFile) {
+        formData.append('qrCode', qrCodeFile)
+      }
+
       const res = await fetch(`${API}/referrers/register`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: registerForm.name.trim(),
-          phone: registerForm.phone.trim(),
-          email: registerForm.email.trim(),
-          city: registerForm.city.trim(),
-          password: registerForm.password
-        })
+        body: formData
       })
 
       const data = await res.json()
@@ -486,7 +495,7 @@ export default function Refer() {
             </span>
           </h2>
           <p className="text-slate-500 text-base leading-relaxed">
-            Welcome to the <strong>VAULIX™ Solar Energy Referral Network</strong>. Register as a partner, share clean solar energy, and unlock direct commission rewards of up to ₹5,000 per successful installation!
+            Welcome to the <strong>VAULIX™ Solar Energy Referral Network</strong>. Register as a partner, share clean solar energy, and unlock direct commission rewards of ₹1,999 to ₹4,999 per successful installation!
           </p>
 
           <div className="space-y-4 pt-4 border-t border-slate-100">
@@ -870,6 +879,80 @@ export default function Refer() {
                         className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
                       />
                       <div className="text-[10px] text-slate-400 mt-1 pl-2">Minimum 6 characters. Use alphanumeric password.</div>
+                    </div>
+
+                    <div className="relative">
+                      <IndianRupee className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                      <input
+                        type="text"
+                        placeholder="UPI ID (e.g. name@okaxis) - Recommended"
+                        value={registerForm.upiId}
+                        onChange={(e) => setRegisterForm({ ...registerForm, upiId: e.target.value })}
+                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
+                      />
+                    </div>
+
+                    <div className="space-y-2 text-left">
+                      <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider pl-1">
+                        Upload Payment QR Code (Optional)
+                      </label>
+                      {qrCodePreview ? (
+                        <div className="relative p-4 border border-slate-200 bg-slate-50 rounded-xl flex items-center justify-between gap-4">
+                          <div className="flex items-center gap-3">
+                            <img 
+                              src={qrCodePreview} 
+                              alt="QR Preview" 
+                              className="w-12 h-12 object-cover rounded-lg border border-slate-200" 
+                            />
+                            <div className="text-left">
+                              <div className="text-xs font-bold text-navy truncate max-w-[180px] sm:max-w-[280px]">
+                                {qrCodeFile?.name}
+                              </div>
+                              <div className="text-[10px] text-slate-400">
+                                {(qrCodeFile?.size / 1024).toFixed(1)} KB &bull; Image Loaded
+                              </div>
+                            </div>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setQrCodeFile(null)
+                              setQrCodePreview(null)
+                            }}
+                            className="p-2 text-red-500 hover:bg-red-50 rounded-xl transition-all border-none bg-transparent cursor-pointer"
+                          >
+                            <Trash2 size={16} />
+                          </button>
+                        </div>
+                      ) : (
+                        <div 
+                          className="border border-dashed border-slate-300 hover:border-orange bg-slate-50/50 hover:bg-orange/5 rounded-xl p-5 text-center cursor-pointer transition-all relative"
+                          onClick={() => document.getElementById('qr-upload-input').click()}
+                        >
+                          <input 
+                            id="qr-upload-input"
+                            type="file" 
+                            accept="image/*"
+                            onChange={(e) => {
+                              const file = e.target.files[0]
+                              if (file) {
+                                setQrCodeFile(file)
+                                setQrCodePreview(URL.createObjectURL(file))
+                              }
+                            }}
+                            className="hidden"
+                          />
+                          <div className="flex flex-col items-center gap-2">
+                            <Upload className="text-slate-400" size={24} />
+                            <div className="text-xs font-bold text-navy">
+                              Click to select or upload QR Code image
+                            </div>
+                            <div className="text-[10px] text-slate-400">
+                              Supports JPG, PNG, WEBP (Max 5MB)
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     <button

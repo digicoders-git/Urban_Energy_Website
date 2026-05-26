@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Users, User, Phone, Mail, MapPin, IndianRupee, MessageSquare, Send, 
-  Award, Gift, ChevronDown, Zap, Copy, Check, LogOut, Plus, Search, Filter, Calendar
+  Award, Gift, ChevronDown, Zap, Copy, Check, LogOut, Plus, Search, Filter, Calendar,
+  Wallet, QrCode
 } from 'lucide-react'
 
 export default function ReferrerDashboard({ referrer, token, onLogout, API }) {
@@ -241,10 +242,11 @@ export default function ReferrerDashboard({ referrer, token, onLogout, API }) {
         </div>
 
         {/* ── ACTION COLUMN (Right 4 cols) ── */}
-        <div className="lg:col-span-4 flex flex-col justify-stretch">
+        <div className="lg:col-span-4 flex flex-col justify-stretch gap-6">
           <button
             onClick={() => setShowReferModal(true)}
             className="flex-1 w-full flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-navy to-slate-900 text-white rounded-2xl p-8 hover:shadow-xl shadow-navy/20 border-none cursor-pointer group transition-all relative overflow-hidden"
+            style={{ minHeight: '160px' }}
           >
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange/10 rounded-full blur-3xl pointer-events-none group-hover:bg-orange/20 transition-all duration-300" />
             <div className="w-14 h-14 bg-white/10 text-orange rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -255,6 +257,62 @@ export default function ReferrerDashboard({ referrer, token, onLogout, API }) {
               <p className="text-white/60 text-xs mt-1">Submit friend's installation details directly</p>
             </div>
           </button>
+
+          {/* ── PAYOUT CREDENTIALS CARD ── */}
+          <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm flex flex-col gap-4 relative overflow-hidden text-left">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-green-500/5 rounded-full blur-xl pointer-events-none" />
+            
+            <div className="flex items-center gap-3 pb-2 border-b border-slate-100">
+              <div className="w-8 h-8 rounded-lg bg-green-500/10 text-green-600 flex items-center justify-center">
+                <Wallet size={16} />
+              </div>
+              <div>
+                <h3 className="font-outfit font-black text-sm text-navy uppercase tracking-wider">Payout Credentials</h3>
+                <p className="text-[10px] text-slate-400">Where you receive your rewards</p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {referrer.upiId ? (
+                <div className="space-y-1">
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-space">Linked UPI ID</div>
+                  <div className="flex items-center justify-between bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                    <span className="text-xs font-mono font-bold text-navy truncate pr-2">{referrer.upiId}</span>
+                    <span className="bg-green-500/15 border border-green-500/20 text-green-600 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider">Active</span>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-xs text-slate-400 italic">No UPI ID linked.</div>
+              )}
+
+              {referrer.hasQrCode ? (
+                <div className="space-y-1.5">
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-space">Linked QR Code</div>
+                  <div className="flex items-center gap-3 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                    <div className="w-12 h-12 bg-white rounded-lg border border-slate-200 flex items-center justify-center overflow-hidden flex-shrink-0">
+                      <img 
+                        src={`${API}/referrers/qrcode/${referrer.id || referrer._id}`} 
+                        alt="QR Code" 
+                        className="w-full h-full object-cover" 
+                      />
+                    </div>
+                    <div className="text-left">
+                      <div className="text-xs font-bold text-navy">QR Code Active</div>
+                      <div className="text-[9px] text-slate-400">Available for scan</div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-xs text-slate-400 italic font-outfit">No QR Code uploaded.</div>
+              )}
+
+              {!referrer.upiId && !referrer.hasQrCode && (
+                <div className="text-xs text-slate-500 bg-orange/5 border border-orange/10 p-3 rounded-xl">
+                  ⚠️ No payout details linked. Please contact support to set up your UPI/QR to receive commissions!
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
       </div>
@@ -367,107 +425,138 @@ export default function ReferrerDashboard({ referrer, token, onLogout, API }) {
       {/* ── REFER MODAL ── */}
       <AnimatePresence>
         {showReferModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-navy/60 backdrop-blur-sm p-4">
+          <>
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowReferModal(false)}
+              className="fixed inset-0 z-40 bg-navy/50 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              className="bg-white rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl border border-slate-100 flex flex-col max-h-[90vh]"
+              exit={{ opacity: 0, scale: 0.85, y: 30 }}
+              transition={{ type: 'spring', damping: 20, stiffness: 350 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
             >
-              {/* Modal Header */}
-              <div className="px-6 py-5 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
-                <div className="flex items-center gap-2">
-                  <Gift size={20} className="text-orange" />
-                  <h3 className="font-orbitron font-bold text-base text-navy uppercase tracking-wider">Refer Your Friend</h3>
-                </div>
-                <button
-                  onClick={() => setShowReferModal(false)}
-                  className="text-slate-400 hover:text-slate-600 text-lg border-none bg-none font-bold cursor-pointer"
-                >
-                  &times;
-                </button>
-              </div>
-
-              {/* Modal Body / Scrollable Form */}
-              <div className="flex-1 overflow-y-auto p-6 md:p-8">
-                {submitSuccess ? (
-                  <div className="flex flex-col items-center justify-center text-center py-12 space-y-4">
-                    <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center animate-bounce">
-                      <Check size={32} />
+              <div className="bg-white rounded-3xl w-full max-w-md shadow-2xl border border-slate-100 overflow-hidden pointer-events-auto relative">
+                {/* Decorative gradient background */}
+                <div className="absolute top-0 right-0 w-40 h-40 bg-orange/8 rounded-full blur-3xl pointer-events-none" />
+                
+                {/* Header */}
+                <div className="relative px-8 py-7 border-b border-slate-100 bg-gradient-to-r from-orange/8 via-transparent to-transparent">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <motion.div 
+                        className="w-12 h-12 bg-gradient-to-br from-orange/20 to-orange/10 rounded-xl flex items-center justify-center shadow-sm"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <Gift size={24} className="text-orange" />
+                      </motion.div>
+                      <div>
+                        <h3 className="font-orbitron font-bold text-lg text-navy">Refer a Friend</h3>
+                        <p className="text-xs text-slate-400 mt-0.5">Share the opportunity</p>
+                      </div>
                     </div>
-                    <h4 className="font-orbitron text-xl font-bold text-navy">Referral Submitted Successfully!</h4>
-                    <p className="text-slate-400 text-sm max-w-xs">
-                      We have logged your friend's details. Our executive will reach out to them within 24 hours.
-                    </p>
+                    <button
+                      onClick={() => setShowReferModal(false)}
+                      className="text-slate-300 hover:text-slate-600 text-3xl leading-none border-none bg-none cursor-pointer transition-colors hover:bg-slate-100 w-10 h-10 flex items-center justify-center rounded-lg"
+                    >
+                      ×
+                    </button>
                   </div>
-                ) : (
-                  <form onSubmit={handleFormSubmit} className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="relative">
-                        <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                </div>
+
+                {/* Body */}
+                <div className="p-8 max-h-[calc(90vh-140px)] overflow-y-auto">
+                  {submitSuccess ? (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex flex-col items-center justify-center text-center py-12 space-y-6"
+                    >
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: 'spring', damping: 12, stiffness: 200 }}
+                        className="w-20 h-20 bg-gradient-to-br from-green-100 to-green-50 text-green-600 rounded-full flex items-center justify-center shadow-lg shadow-green-200/50"
+                      >
+                        <Check size={40} className="stroke-[2.5]" />
+                      </motion.div>
+                      <div>
+                        <h4 className="font-orbitron text-xl font-bold text-navy">Success!</h4>
+                        <p className="text-slate-500 text-sm mt-2 leading-relaxed">
+                          Your friend's details have been recorded. Our team will contact them within 24 hours.
+                        </p>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <form onSubmit={handleFormSubmit} className="space-y-5">
+                      <div className="relative group">
+                        <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange transition-colors" size={18} />
                         <input
                           required
                           type="text"
-                          placeholder="Friend's Full Name *"
+                          placeholder="Friend's Name *"
                           value={form.refereeName}
                           onChange={(e) => handleFormChange('refereeName', e.target.value)}
-                          className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
+                          className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 text-navy font-outfit transition-all hover:border-slate-300"
                         />
                       </div>
-                      <div className="relative">
-                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+
+                      <div className="relative group">
+                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange transition-colors" size={18} />
                         <input
                           required
                           type="tel"
-                          placeholder="Friend's Phone Number *"
+                          placeholder="Phone Number *"
                           value={form.refereePhone}
                           onChange={(e) => handleFormChange('refereePhone', e.target.value)}
-                          className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
+                          className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 text-navy font-outfit transition-all hover:border-slate-300"
                         />
                       </div>
-                    </div>
 
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="relative">
-                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                      <div className="relative group">
+                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange transition-colors" size={18} />
                         <input
                           type="email"
-                          placeholder="Friend's Email Address (Optional)"
+                          placeholder="Email (Optional)"
                           value={form.refereeEmail}
                           onChange={(e) => handleFormChange('refereeEmail', e.target.value)}
-                          className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
+                          className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 text-navy font-outfit transition-all hover:border-slate-300"
                         />
                       </div>
-                      <div className="relative">
-                        <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+
+                      <div className="relative group">
+                        <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange transition-colors" size={18} />
                         <input
                           required
                           type="text"
-                          placeholder="Friend's City *"
+                          placeholder="City *"
                           value={form.refereeCity}
                           onChange={(e) => handleFormChange('refereeCity', e.target.value)}
-                          className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
+                          className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 text-navy font-outfit transition-all hover:border-slate-300"
                         />
                       </div>
-                    </div>
 
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="relative">
-                        <IndianRupee className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                      <div className="relative group">
+                        <IndianRupee className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange transition-colors" size={18} />
                         <input
                           type="number"
-                          placeholder="Monthly Electricity Bill (₹)"
+                          placeholder="Monthly Bill (₹)"
                           value={form.refereeBill}
                           onChange={(e) => handleFormChange('refereeBill', e.target.value)}
-                          className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit"
+                          className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 text-navy font-outfit transition-all hover:border-slate-300"
                         />
                       </div>
-                      <div className="relative">
-                        <Zap className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+
+                      <div className="relative group">
+                        <Zap className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange transition-colors" size={18} />
                         <select
                           value={form.refereeType}
                           onChange={(e) => handleFormChange('refereeType', e.target.value)}
-                          className="w-full pl-11 pr-10 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange bg-white text-navy font-outfit cursor-pointer appearance-none"
+                          className="w-full pl-12 pr-10 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 bg-white text-navy font-outfit cursor-pointer appearance-none transition-all hover:border-slate-300"
                         >
                           <option value="residential">Residential</option>
                           <option value="commercial">Commercial</option>
@@ -476,38 +565,42 @@ export default function ReferrerDashboard({ referrer, token, onLogout, API }) {
                         </select>
                         <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
                       </div>
-                    </div>
 
-                    <div className="relative">
-                      <MessageSquare className="absolute left-4 top-4 text-slate-400" size={16} />
-                      <textarea
-                        placeholder="Notes or custom request (Optional)"
-                        rows={3}
-                        value={form.refereeMessage}
-                        onChange={(e) => handleFormChange('refereeMessage', e.target.value)}
-                        className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange text-navy font-outfit resize-none"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={submitLoading}
-                      className="w-full py-4 rounded-xl font-outfit flex items-center justify-center gap-2 font-bold text-base text-white hover:shadow-xl shadow-orange/30 disabled:opacity-60 transition-all border-none cursor-pointer"
-                      style={{ background: 'linear-gradient(135deg, #FF7A00, #ff9500)' }}
-                    >
-                      {submitLoading ? 'Submitting...' : <> Submit Referral <Send size={16} /> </>}
-                    </button>
-
-                    {submitError && (
-                      <div className="text-center py-2.5 px-4 rounded-xl text-red-700 font-semibold text-xs border border-red-200 bg-red-50/50">
-                        ⚠ {submitError}
+                      <div className="relative group">
+                        <MessageSquare className="absolute left-4 top-3.5 text-slate-400 group-focus-within:text-orange transition-colors" size={18} />
+                        <textarea
+                          placeholder="Notes (Optional)"
+                          rows={2}
+                          value={form.refereeMessage}
+                          onChange={(e) => handleFormChange('refereeMessage', e.target.value)}
+                          className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 text-navy font-outfit resize-none transition-all hover:border-slate-300"
+                        />
                       </div>
-                    )}
-                  </form>
-                )}
+
+                      {submitError && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="p-4 rounded-xl text-red-700 text-xs font-semibold border border-red-200 bg-red-50/70 flex items-start gap-2"
+                        >
+                          <span className="text-base mt-0.5">⚠</span>
+                          <span>{submitError}</span>
+                        </motion.div>
+                      )}
+
+                      <button
+                        type="submit"
+                        disabled={submitLoading}
+                        className="w-full py-3.5 rounded-xl font-outfit flex items-center justify-center gap-2 font-bold text-sm text-white bg-gradient-to-r from-orange to-orange-dark hover:shadow-xl shadow-orange/30 disabled:opacity-60 transition-all border-none cursor-pointer mt-6 hover:-translate-y-0.5 active:translate-y-0"
+                      >
+                        {submitLoading ? 'Submitting...' : <> <Send size={16} /> Submit Referral </>}
+                      </button>
+                    </form>
+                  )}
+                </div>
               </div>
             </motion.div>
-          </div>
+          </>
         )}
       </AnimatePresence>
 
