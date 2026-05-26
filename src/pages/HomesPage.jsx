@@ -5,6 +5,7 @@ import {
   ShieldCheck, Zap, IndianRupee, Wrench, Sun, CheckCircle2,
   Home, Star, ChevronDown, ArrowRight, Leaf, Clock, Award
 } from 'lucide-react'
+import { useModal } from '../context/ModalContext'
 
 const fw = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -60,6 +61,7 @@ const faqs = [
 
 export default function HomesPage() {
   const [openFaq, setOpenFaq] = useState(null)
+  const { openQuoteModal } = useModal()
 
   return (
     <main className="pt-20 bg-white">
@@ -86,9 +88,9 @@ export default function HomesPage() {
               Custom rooftop solar for Indian homes. Save up to 90% on electricity bills, earn from surplus power, and achieve complete energy independence.
             </motion.p>
             <motion.div {...fw(0.3)} className="flex flex-wrap gap-4">
-              <Link to="/contact" className="bg-solarsky hover:bg-solarsky/90 text-white font-outfit font-bold px-10 py-4 rounded-full flex items-center gap-2 group transition-all shadow-xl shadow-solarsky/20 no-underline">
+              <button onClick={openQuoteModal} className="bg-solarsky hover:bg-solarsky/90 text-white font-outfit font-bold px-10 py-4 rounded-full flex items-center gap-2 group transition-all shadow-xl shadow-solarsky/20 border-none cursor-pointer">
                 Get Free Survey <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </button>
               <Link to="/solar/on-grid" className="bg-white hover:bg-slate-50 text-navy font-outfit font-bold px-10 py-4 rounded-full transition-all no-underline border border-gray-200">
                 On-Grid Solar
               </Link>
@@ -240,9 +242,9 @@ export default function HomesPage() {
           <Sun className="w-14 h-14 text-orange/40 mx-auto mb-6" />
           <h2 className="font-outfit text-4xl md:text-5xl font-black text-navy mb-6">Ready to Go Solar?</h2>
           <p className="text-slate-500 text-xl mb-10">Book a free home survey today. Our expert will visit, assess your roof, and give you a detailed savings report — completely free, no obligation.</p>
-          <Link to="/contact" className="bg-orange hover:bg-orange/90 text-white font-outfit font-black px-14 py-5 rounded-full text-lg transition-all shadow-xl shadow-orange/20 no-underline inline-block">
+          <button onClick={openQuoteModal} className="bg-orange hover:bg-orange/90 text-white font-outfit font-black px-14 py-5 rounded-full text-lg transition-all shadow-xl shadow-orange/20 border-none cursor-pointer inline-block">
             Book Free Home Survey
-          </Link>
+          </button>
         </motion.div>
       </section>
 

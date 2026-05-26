@@ -7,6 +7,7 @@ import {
   Headphones, User, UserCog, UserCheck
 } from "lucide-react";
 import Logo from '../../public/urbanlogo.png'
+import { useModal } from '../context/ModalContext'
 
 const stats = [
   { num: '24/7', label: 'Expert Support', icon: <Headphones size={28} /> },
@@ -52,6 +53,7 @@ const fadeUp = (delay = 0) => ({
 })
 
 export default function About() {
+  const { openQuoteModal } = useModal()
   return (
     <>
       {/* ── Hero Banner ── */}

@@ -78,9 +78,10 @@ const amcPlans = [
   {
     name: 'Basic',
     price: '₹599',
-    period: ' + GST',
+    period: ' (included GST)',
     color: '#00A3E0',
     features: [
+      'For 3 kW Panels only',
       '1 Cleaning included',
       'Jet wash',
       'Shampoo application',
@@ -93,11 +94,12 @@ const amcPlans = [
   },
   {
     name: 'Standard',
-    price: '₹1,199',
-    period: ' + GST (6 months)',
+    price: '₹999',
+    period: ' (included GST)',
     color: '#FFB800',
     popular: true,
     features: [
+      'For 3 kW Panels only',
       '2 Cleanings included',
       'Jet wash',
       'Shampoo application',
@@ -120,7 +122,7 @@ const processSteps = [
 const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } }
 
 export default function AfterInstallationServicePage() {
-  const { openModal } = useModal()
+  const { openQuoteModal } = useModal()
   const [activeTab, setActiveTab] = useState('all')
 
   const filtered = activeTab === 'all' ? services : services.filter(s =>
@@ -147,7 +149,7 @@ export default function AfterInstallationServicePage() {
               We provide complete after-sales support — maintenance, AMC, monitoring, emergency repair, and more — to keep your solar system performing at 100% for 25+ years.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <button onClick={openModal} className="flex items-center gap-2 px-7 py-3 rounded-xl font-space font-bold text-white transition-all hover:scale-105 border-none cursor-pointer" style={{ background: '#FF7A00' }}>
+              <button onClick={openQuoteModal} className="flex items-center gap-2 px-7 py-3 rounded-xl font-space font-bold text-white transition-all hover:scale-105 border-none cursor-pointer" style={{ background: '#FF7A00' }}>
                 Book a Service <ArrowRight size={18} />
               </button>
               <a href="https://wa.me/919452516904" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-7 py-3 rounded-xl font-space font-bold text-white hover:scale-105 transition-all border-none cursor-pointer" style={{ background: '#25D366' }}>
@@ -299,7 +301,7 @@ export default function AfterInstallationServicePage() {
               </motion.div>
             ))}
           </div>
-          <p className="text-center text-slate-400 font-space text-sm mt-6">* Prices are indicative. Final quote based on system size & location.</p>
+          <p className="text-center text-slate-400 font-space text-sm mt-6">* Both plans are only for 3 kW panels. Above 3 kW panel cleaning cost will be decided after site visit.</p>
         </div>
       </section>
 
@@ -381,7 +383,7 @@ export default function AfterInstallationServicePage() {
               Don't wait for a breakdown. Schedule a free health check for your solar system and keep it running at peak performance.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <button onClick={openModal} className="flex items-center gap-2 px-8 py-3.5 rounded-xl font-space font-bold text-white hover:scale-105 transition-all border-none cursor-pointer" style={{ background: '#FF7A00' }}>
+              <button onClick={openQuoteModal} className="flex items-center gap-2 px-8 py-3.5 rounded-xl font-space font-bold text-white hover:scale-105 transition-all border-none cursor-pointer" style={{ background: '#FF7A00' }}>
                 Book Free Health Check <ArrowRight size={18} />
               </button>
               <a href="https://wa.me/918960686060" target="_blank" rel="noreferrer"

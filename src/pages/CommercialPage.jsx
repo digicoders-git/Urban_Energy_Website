@@ -5,6 +5,7 @@ import {
   Building2, TrendingUp, Leaf, ShieldCheck, CheckCircle2, Sun,
   Zap, BarChart3, ChevronDown, ArrowRight, IndianRupee, Star, Factory
 } from 'lucide-react'
+import { useModal } from '../context/ModalContext'
 
 const fw = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -66,6 +67,7 @@ const faqs = [
 
 export default function CommercialPage() {
   const [openFaq, setOpenFaq] = useState(null)
+  const { openQuoteModal } = useModal()
 
   return (
     <main className="pt-20 bg-white">
@@ -92,12 +94,12 @@ export default function CommercialPage() {
               Large-scale commercial solar with proven performance, full EPC delivery, and significant tax depreciation benefits. Built for businesses that demand results.
             </motion.p>
             <motion.div {...fw(0.3)} className="flex flex-wrap gap-4">
-              <Link to="/contact" className="bg-orange hover:bg-orange/90 text-white font-outfit font-bold px-10 py-4 rounded-full flex items-center gap-2 group transition-all shadow-xl shadow-orange/20 no-underline">
+              <button onClick={openQuoteModal} className="bg-orange hover:bg-orange/90 text-white font-outfit font-bold px-10 py-4 rounded-full flex items-center gap-2 group transition-all shadow-xl shadow-orange/20 border-none cursor-pointer">
                 Request a Proposal <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link to="/contact" className="bg-white hover:bg-slate-50 text-navy font-outfit font-bold px-10 py-4 rounded-full transition-all no-underline border border-gray-200">
+              </button>
+              <button onClick={openQuoteModal} className="bg-white hover:bg-slate-50 text-navy font-outfit font-bold px-10 py-4 rounded-full transition-all border border-gray-200 cursor-pointer">
                 Talk to an Expert
-              </Link>
+              </button>
             </motion.div>
           </div>
         </div>
@@ -224,9 +226,9 @@ export default function CommercialPage() {
           <Sun className="w-14 h-14 text-orange/30 mx-auto mb-6" />
           <h2 className="font-outfit text-4xl md:text-5xl font-black text-navy mb-6">Let's Power Your Business</h2>
           <p className="text-slate-500 text-xl mb-10">Get a detailed project proposal with ROI analysis, system design, and subsidy breakdown — completely free.</p>
-          <Link to="/contact" className="bg-orange hover:bg-orange/90 text-white font-outfit font-black px-14 py-5 rounded-full text-lg transition-all shadow-xl shadow-orange/20 no-underline inline-block">
+          <button onClick={openQuoteModal} className="bg-orange hover:bg-orange/90 text-white font-outfit font-black px-14 py-5 rounded-full text-lg transition-all shadow-xl shadow-orange/20 border-none cursor-pointer inline-block">
             Get Free Commercial Proposal
-          </Link>
+          </button>
         </motion.div>
       </section>
 

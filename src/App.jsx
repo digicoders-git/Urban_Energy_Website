@@ -25,6 +25,7 @@ import FAQPage from './pages/FAQPage'
 import ReviewPage from './pages/ReviewPage'
 import NotFound from './pages/NotFound'
 import AfterInstallationServicePage from './pages/AfterInstallationServicePage'
+import ContactPage from './pages/ContactPage'
 
 export default function App() {
   return (
@@ -42,7 +43,7 @@ export default function App() {
           <Route path="/solar/on-grid" element={<OnGridSolarPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/refer-now" element={<ReferPage />} />
-          <Route path="/contact" element={<ReferPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/calculator" element={<CalculatorPage />} />
           <Route path="/become-a-partner" element={<PartnerPage />} />
           <Route path="/careers" element={<CareersPage />} />

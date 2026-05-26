@@ -5,6 +5,7 @@ import {
   Users, IndianRupee, Zap, ShieldCheck, CheckCircle2, Sun,
   Building2, ChevronDown, ArrowRight, Star, Leaf, BarChart3, Car
 } from 'lucide-react'
+import { useModal } from '../context/ModalContext'
 
 const fw = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -68,6 +69,7 @@ const faqs = [
 
 export default function HousingSocietiesPage() {
   const [openFaq, setOpenFaq] = useState(null)
+  const { openQuoteModal } = useModal()
 
   return (
     <main className="pt-20 bg-white">
@@ -94,12 +96,12 @@ export default function HousingSocietiesPage() {
               Centralised solar for housing societies, apartments, and gated communities. Reduce maintenance charges, power common areas for free, and make your society future-ready.
             </motion.p>
             <motion.div {...fw(0.3)} className="flex flex-wrap gap-4">
-              <Link to="/contact" className="bg-solarsky hover:bg-solarsky/90 text-white font-outfit font-bold px-10 py-4 rounded-full flex items-center gap-2 group transition-all shadow-xl shadow-solarsky/20 no-underline">
+              <button onClick={openQuoteModal} className="bg-solarsky hover:bg-solarsky/90 text-white font-outfit font-bold px-10 py-4 rounded-full flex items-center gap-2 group transition-all shadow-xl shadow-solarsky/20 border-none cursor-pointer">
                 Get Society Quote <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link to="/contact" className="bg-white hover:bg-slate-50 text-navy font-outfit font-bold px-10 py-4 rounded-full transition-all no-underline border border-gray-200">
+              </button>
+              <button onClick={openQuoteModal} className="bg-white hover:bg-slate-50 text-navy font-outfit font-bold px-10 py-4 rounded-full transition-all border border-gray-200 cursor-pointer">
                 Free RWA Presentation
-              </Link>
+              </button>
             </motion.div>
           </div>
           <motion.div {...fw(0.3)} className="grid grid-cols-2 gap-4">
@@ -256,9 +258,9 @@ export default function HousingSocietiesPage() {
           <Sun className="w-14 h-14 text-orange/30 mx-auto mb-6" />
           <h2 className="font-outfit text-4xl md:text-5xl font-black text-navy mb-6">Bring Solar to Your Society</h2>
           <p className="text-slate-500 text-xl mb-10">We'll present a free savings report to your RWA committee — showing exactly how much your society will save every month.</p>
-          <Link to="/contact" className="bg-orange hover:bg-orange/90 text-white font-outfit font-black px-14 py-5 rounded-full text-lg transition-all shadow-xl shadow-orange/20 no-underline inline-block">
+          <button onClick={openQuoteModal} className="bg-orange hover:bg-orange/90 text-white font-outfit font-black px-14 py-5 rounded-full text-lg transition-all shadow-xl shadow-orange/20 border-none cursor-pointer inline-block">
             Book Free RWA Presentation
-          </Link>
+          </button>
         </motion.div>
       </section>
 

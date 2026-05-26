@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useModal } from '../context/ModalContext'
 
 const API = import.meta.env.VITE_API_URL
 const cityIrr = {
@@ -10,6 +11,7 @@ const cityIrr = {
 }
 
 export default function SolarCalculator() {
+  const { openQuoteModal } = useModal()
   const [form, setForm] = useState({ bill: 3000, city: 'lucknow', roof: 500, type: 'grid' })
   const [results, setResults] = useState(null)
   const [queryForm, setQueryForm] = useState({ name: '', phone: '', requirement: '' })
@@ -232,12 +234,12 @@ export default function SolarCalculator() {
   </motion.div>
 
   {/* CTA */}
-  <a
-    href="#contact"
-    className="btn-primary text-center text-base sm:text-lg py-3 sm:py-4"
+  <button
+    onClick={openQuoteModal}
+    className="btn-primary text-center text-base sm:text-lg py-3 sm:py-4 border-none cursor-pointer"
   >
     Get My Custom Quote →
-  </a>
+  </button>
 
   {/* Query Form */}
   {results && (

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import HeroImage from '../../public/hero.png'
 import { ChevronRight, Sun } from 'lucide-react'
+import { useModal } from '../context/ModalContext'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 40 },
@@ -11,6 +12,7 @@ const fadeUp = (delay = 0) => ({
 })
 
 export default function Hero() {
+  const { openQuoteModal } = useModal()
   return (
     <section className="relative w-full min-h-screen overflow-hidden flex flex-col bg-white">
 
@@ -58,14 +60,14 @@ export default function Hero() {
           </motion.p>
 
           <motion.div {...fadeUp(0.3)} className="mt-8 flex flex-col items-center gap-3">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 group font-space font-bold text-base px-8 py-3.5 rounded-full text-white transition-all duration-300 w-full justify-center"
+            <button
+              onClick={openQuoteModal}
+              className="inline-flex items-center gap-2 group font-space font-bold text-base px-8 py-3.5 rounded-full text-white transition-all duration-300 w-full justify-center cursor-pointer border-none"
               style={{ background: 'linear-gradient(135deg, #FFB800, #FF7A00)', boxShadow: '0 6px 24px rgba(255,122,0,0.3)' }}
             >
               Get Free Consultation
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </button>
             <Link to="/solar/on-grid" className="inline-flex items-center gap-2 font-space font-semibold text-base px-8 py-3.5 rounded-full w-full justify-center transition-all duration-300" style={{ background: '#f8faff', border: '1.5px solid #e2e8f0', color: '#0B1D51' }}>
               Explore Solutions
             </Link>
@@ -120,14 +122,14 @@ export default function Hero() {
           </motion.p>
 
           <motion.div {...fadeUp(0.3)} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 group font-space font-bold text-base px-10 py-4 rounded-full text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+            <button
+              onClick={openQuoteModal}
+              className="inline-flex items-center gap-2 group font-space font-bold text-base px-10 py-4 rounded-full text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl cursor-pointer border-none"
               style={{ background: 'linear-gradient(135deg, #FFB800, #FF7A00)', boxShadow: '0 8px 32px rgba(255,122,0,0.3)' }}
             >
               Get Free Consultation
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </button>
             <Link to="/solar/on-grid" className="inline-flex items-center gap-2 font-space font-semibold text-base px-10 py-4 rounded-full transition-all duration-300 hover:-translate-y-1" style={{ background: '#f8faff', border: '1.5px solid #e2e8f0', color: '#0B1D51' }}>
               Explore Solutions
             </Link>
