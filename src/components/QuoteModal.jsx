@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Send, Phone, User, MapPin, Mail, IndianRupee, MessageSquare } from 'lucide-react'
+import { X, Send, Phone, User, MapPin, Mail, IndianRupee, MessageSquare, Zap, ChevronDown } from 'lucide-react'
 import { useModal } from '../context/ModalContext'
 
 const API = import.meta.env.VITE_API_URL
 
-const EMPTY = { name: '', phone: '', email: '', city: '', bill: '', message: '' }
+const EMPTY = { name: '', phone: '', email: '', city: '', category: 'residential', bill: '', message: '' }
 
 export default function QuoteModal() {
   const { isQuoteModalOpen, closeQuoteModal } = useModal()
@@ -28,7 +28,7 @@ export default function QuoteModal() {
     setError('')
     setLoading(true)
     try {
-      const res = await fetch(`${API}/contacts`, {
+      const res = await fetch(`${API}/quotes`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -36,7 +36,8 @@ export default function QuoteModal() {
           phone:      form.phone.trim(),
           email:      form.email.trim(),
           city:       form.city.trim(),
-          bill:       form.bill ? Number(form.bill) : 0,
+          category:   form.category,
+          bill:       form.bill ? String(form.bill) : '0',
           message:    form.message.trim(),
         })
       })
@@ -120,6 +121,22 @@ export default function QuoteModal() {
                         value={form.bill} onChange={e => set('bill', e.target.value)}
                         className="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all text-navy font-outfit" />
                     </div>
+                  </div>
+
+                  {/* Category Dropdown */}
+                  <div className="relative">
+                    <Zap className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                    <select
+                      value={form.category}
+                      onChange={e => set('category', e.target.value)}
+                      className="w-full pl-11 pr-10 py-3 border border-slate-200 rounded-xl text-sm outline-none focus:border-orange transition-all bg-white text-navy font-outfit cursor-pointer appearance-none"
+                    >
+                      <option value="residential">Residential</option>
+                      <option value="commercial">Commercial</option>
+                      <option value="ongrid">On Grid</option>
+                      <option value="offgrid">Off Grid</option>
+                    </select>
+                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
                   </div>
 
                   {/* Message */}
