@@ -118,6 +118,14 @@ export default function PartnerPage() {
                 <div className="w-10 h-10 rounded-full bg-orange/10 flex items-center justify-center text-orange"><ArrowRight size={18} /></div>
                 <span className="font-medium text-slate-700">Direct Lead Flow</span>
               </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-orange/10 flex items-center justify-center text-orange"><ArrowRight size={18} /></div>
+                <span className="font-medium text-slate-700">Marketing Support</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-orange/10 flex items-center justify-center text-orange"><ArrowRight size={18} /></div>
+                <span className="font-medium text-slate-700">Customer Support</span>
+              </div>
             </motion.div>
           </div>
 

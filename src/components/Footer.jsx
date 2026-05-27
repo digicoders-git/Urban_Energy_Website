@@ -30,7 +30,7 @@ const footerLinks = {
 const contactInfo = [
   { icon: <FaMapMarkerAlt size={16} />, label: 'Address', val: <>KH-3/283/124, Vistarit Area Part-2, Khargapur,<br />Sector-6, Gomti Nagar Extension,<br />Lucknow</> },
   { icon: <FaPhoneAlt size={16} />, label: 'Phone', val: '+91 8960-68-6060' },
-  { icon: <FaEnvelope size={16} />, label: 'Email', val: 'hello@vaulixsolar.in' },
+  { icon: <FaEnvelope size={16} />, label: 'Email', val: 'support@vaulixsolar.in' },
   { icon: <FaClock size={16} />, label: 'Hours', val: 'Mon – Sat: 9 AM – 7 PM' },
 ]
 
