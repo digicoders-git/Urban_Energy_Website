@@ -245,11 +245,11 @@ export default function ReferrerDashboard({ referrer, token, onLogout, API }) {
         <div className="lg:col-span-4 flex flex-col justify-stretch gap-6">
           <button
             onClick={() => setShowReferModal(true)}
-            className="flex-1 w-full flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-navy to-slate-900 text-white rounded-2xl p-8 hover:shadow-xl shadow-navy/20 border-none cursor-pointer group transition-all relative overflow-hidden"
+            className="flex-1 w-full flex flex-col items-center justify-center gap-4 bg-[#FF7A00] text-white rounded-2xl p-8 hover:shadow-xl shadow-navy/20 border-none cursor-pointer group transition-all relative overflow-hidden"
             style={{ minHeight: '160px' }}
           >
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange/10 rounded-full blur-3xl pointer-events-none group-hover:bg-orange/20 transition-all duration-300" />
-            <div className="w-14 h-14 bg-white/10 text-orange rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+            <div className="w-14 h-14 bg-white/10 text-black rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
               <Plus size={32} />
             </div>
             <div className="text-center">
