@@ -284,7 +284,7 @@ export default function PartnerPage() {
                     <label className="block text-xs font-bold uppercase text-navy/60 mb-2">Applicant Type</label>
                     <select value={formData.type} onChange={(e) => setFormData({ ...formData, type: e.target.value })} className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:border-orange focus:ring-0 outline-none text-navy transition-all bg-white cursor-pointer">
                       <option value="Dealer">Associates</option>
-                      <option value="Installer">Vendors</option>
+                      <option value="Installer">Installation Partners</option>
                       <option value="Distributor">Partners</option>
                     </select>
                   </div>
