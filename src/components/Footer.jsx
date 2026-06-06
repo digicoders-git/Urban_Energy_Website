@@ -129,7 +129,7 @@ export default function Footer() {
             © 2025 VAULIX™ ENERGIES LLP. All rights reserved.
           </span>
          
-         
+        
         </div>
       </div>
     </footer>
