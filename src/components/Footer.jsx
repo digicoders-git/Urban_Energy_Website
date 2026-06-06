@@ -128,15 +128,8 @@ export default function Footer() {
           <span className="text-xs text-slate-400">
             © 2025 VAULIX™ ENERGIES LLP. All rights reserved.
           </span>
-          {/* <a
-            href="https://digicoders.in"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm flex items-center gap-1 no-underline transition-colors hover:opacity-80"
-            style={{ color: '#FF7A00', fontWeight: 500 }}
-          >
-            Crafted By DigiCoders
-          </a> */}
+         
+         
         </div>
       </div>
     </footer>
