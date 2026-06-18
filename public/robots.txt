@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block any admin or private paths (add if needed)
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://vaulixsolar.in/sitemap.xml

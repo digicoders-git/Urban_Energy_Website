@@ -495,7 +495,7 @@ export default function Refer() {
             </span>
           </h2>
           <p className="text-slate-500 text-base leading-relaxed">
-            Welcome to the <strong>VAULIX™ Solar Energy Referral Network</strong>. Register as a partner, share clean solar energy, and unlock direct commission rewards of ₹1,999 to ₹4,999 per successful installation!
+            Welcome to the <strong>VAULIX™ Solar Energy Referral Network</strong>. Register as a partner, share clean solar energy, and unlock direct commission reward of per successful installation!
           </p>
 
           <div className="space-y-4 pt-4 border-t border-slate-100">
